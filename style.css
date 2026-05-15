@@ -158,6 +158,20 @@ main {
   margin: 0 0 1.8rem;
 }
 
+.hero-headshot-wrap {
+  margin-bottom: 1rem;
+}
+
+.hero-headshot {
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 2px solid var(--rule);
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--ink) 20%, transparent);
+}
+
 .meta {
   list-style: none;
   padding: 0;
@@ -264,6 +278,115 @@ a:hover {
 .topics dd {
   margin: 0.15rem 0 0 1.4rem;
   color: var(--ink-soft);
+}
+
+/* ------------------------------------------------------------
+   Education + Certifications
+------------------------------------------------------------ */
+.timeline-item {
+  padding: 1rem 0;
+  border-bottom: 1px dashed var(--rule);
+}
+
+.timeline-item:last-child {
+  border-bottom: none;
+}
+
+.timeline-org {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--display);
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.org-logo {
+  width: 64px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid var(--rule);
+  padding: 4px;
+}
+
+.org-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: var(--paper-alt);
+  border: 1px solid var(--rule);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.timeline-title {
+  margin: 0.55rem 0 0.25rem;
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.timeline-meta {
+  margin: 0;
+  color: var(--muted);
+}
+
+.cert-group-heading {
+  margin: 1.35rem 0 0.65rem;
+  font-family: var(--display);
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.cert-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.cert-list li {
+  margin: 0 0 0.65rem;
+  color: var(--ink-soft);
+}
+
+.cert-list.two-col {
+  columns: 2;
+  column-gap: 1.5rem;
+}
+
+.cert-list.two-col li {
+  break-inside: avoid;
+}
+
+/* ------------------------------------------------------------
+   Projects
+------------------------------------------------------------ */
+.project-card {
+  padding: 1rem 0;
+  border-bottom: 1px dashed var(--rule);
+}
+
+.project-card:last-child {
+  border-bottom: none;
+}
+
+.project-figure {
+  margin: 0.9rem 0 0;
+}
+
+.project-figure img {
+  width: 100%;
+  max-width: 520px;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  display: block;
 }
 
 /* ------------------------------------------------------------
@@ -389,6 +512,8 @@ footer {
 
   .hero { padding: 3rem 0 2rem; }
   .graph-motif { width: 110px; }
+  .hero-headshot { width: 112px; height: 112px; }
+  .org-logo { width: 56px; height: 36px; }
 
   .meta-label {
     display: block;
@@ -398,4 +523,8 @@ footer {
   .meta li { margin-bottom: 0.4rem; }
 
   .news-date { width: 6.5rem; }
+
+  .cert-list.two-col {
+    columns: 1;
+  }
 }
