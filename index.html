@@ -17,15 +17,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
   <nav class="topnav" aria-label="Section navigation">
     <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#projects">Projects</a>
     <a href="#research">Research</a>
-    <a href="#publications">Publications</a>
-    <a href="#news">News</a>
+    <a href="#conferences">Conferences</a>
+    <a href="#organizations">Organizations</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -60,16 +63,20 @@
         </g>
       </svg>
 
+      <div class="hero-headshot-wrap">
+        <img src="headshot.jpeg" alt="Headshot of Bryant Pollard" class="hero-headshot" />
+      </div>
+
       <h1 class="name">Bryant Pollard</h1>
       <p class="role">Researcher in Graph Deep Learning</p>
 
       <ul class="meta">
-        <li><span class="meta-label">Affiliation</span> <!-- TODO: your university / lab --> [Your University / Lab]</li>
-        <li><span class="meta-label">Location</span> Lutz, Florida</li>
-        <li><span class="meta-label">Email</span> <a href="mailto:you@example.com">[you@example.com]</a></li>
-        <li><span class="meta-label">Scholar</span> <a href="#" rel="me">[Google Scholar]</a></li>
+        <li><span class="meta-label">Affiliation</span> Clemson University · Independent Researcher</li>
+        <li><span class="meta-label">Location</span> Tampa Bay, Florida</li>
+        <li><span class="meta-label">ORCID</span> <a href="https://orcid.org/0009-0007-1910-2962" target="_blank" rel="me noopener noreferrer">0009-0007-1910-2962</a></li>
+        <li><span class="meta-label">Scholar</span> <a href="https://scholar.google.com/citations?hl=en&user=oxk3HuMAAAAJ" target="_blank" rel="me noopener noreferrer">Google Scholar</a></li>
         <li><span class="meta-label">GitHub</span> <a href="https://github.com/BryantPollard" rel="me">@BryantPollard</a></li>
-        <li><span class="meta-label">LinkedIn</span> <a href="#" rel="me">[LinkedIn]</a></li>
+        <li><span class="meta-label">LinkedIn</span> <a href="https://www.linkedin.com/in/bryantpollard/" target="_blank" rel="me noopener noreferrer">LinkedIn</a></li>
       </ul>
     </header>
 
@@ -84,7 +91,7 @@
       graph-structured data — learning representations of nodes, edges, and
       whole graphs in ways that respect their underlying combinatorial structure.
       I'm broadly interested in the foundations of graph neural networks
-      (GNNs), the theory of geometric deep learning, and how these methods
+      (GNNs), the mathematics behind geometric deep learning, and how these methods
       transfer to scientific and real-world problems.
       <!-- TODO: rewrite this paragraph in your own voice. --></p>
 
@@ -94,12 +101,162 @@
       generalization, better calibration. I try to keep my code clean and my
       experiments reproducible.
       <!-- TODO: replace with your own statement of values / interests. --></p>
+    </section>
 
-      <p><strong>A bit more about me.</strong>
-      <!-- TODO: short personal paragraph — where you're from, your path here,
-           hobbies, anything you want a reader to know. Keep it brief. -->
-      [Short personal paragraph here. Where you grew up, how you got into
-      research, what you do when you're not at a terminal.]</p>
+    <!-- ============================================================
+         EDUCATION
+    ============================================================= -->
+    <section id="education">
+      <h2>Education</h2>
+
+      <div class="timeline-item">
+        <div class="timeline-org">
+          <img class="org-logo" src="https://www.clemson.edu/brand/images/logo/logo-usage/logo-wordmark-1.png" alt="Clemson University logo" loading="lazy" referrerpolicy="no-referrer" />
+          <span>Clemson University</span>
+        </div>
+        <h3 class="timeline-title">Master of Science (MS), Computer Science - Human Artificial Intelligence</h3>
+        <p class="timeline-meta">Aug 2025 - May 2027 · GPA: 4.0</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-org">
+          <img class="org-logo" src="https://www.wku.edu/marketingandcommunications/images/wkucuptall.jpg" alt="Western Kentucky University logo" loading="lazy" referrerpolicy="no-referrer" />
+          <span>Western Kentucky University</span>
+        </div>
+        <h3 class="timeline-title">Bachelor of Science, Computer Science Major, Mathematics Minor</h3>
+        <p class="timeline-meta">1992 - 1997</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CERTIFICATIONS
+    ============================================================= -->
+    <section id="certifications">
+      <h2>Certifications &amp; Certificates</h2>
+
+      <h3 class="cert-group-heading">Clemson University</h3>
+      <ul class="cert-list">
+        <li>
+          <strong>GIS Fundamentals Workshop Series Certification</strong><br />
+          Issued Apr 2026<br />
+          Skills: ArcGIS Products · Spatial Analysis
+        </li>
+        <li>
+          <strong>Advanced Responsibility Credit (ACR): What could go wrong in the field?</strong><br />
+          Issued Apr 2026<br />
+          Credential ID: 1 RCR credit verification available upon request
+        </li>
+        <li>
+          <strong>Advanced Responsible Conduct of Research (RCR): Ethical And Regulatory Framework For Animal Use In Research And Teaching: Understanding IACUC Oversight</strong><br />
+          Issued Mar 2026<br />
+          Credential ID: 1 RCR credit verification available upon request
+        </li>
+        <li>
+          <strong>Advanced Responsible Conduct of Research (RCR): Publishing with Integrity</strong><br />
+          Issued Jan 2026<br />
+          Credential ID: 1 RCR credit verification available upon request<br />
+          Skills: Research Skills · Ethics · Academic Publishing · Scientific Integrity Compliance
+        </li>
+      </ul>
+
+      <h3 class="cert-group-heading">NeurIPS</h3>
+      <ul class="cert-list">
+        <li>
+          <strong>NeurIPS Certificate of Attendance 2025</strong><br />
+          Issued Dec 2025<br />
+          Skills: Machine Learning Research
+        </li>
+      </ul>
+
+      <h3 class="cert-group-heading">Neo4j</h3>
+      <ul class="cert-list two-col">
+        <li><strong>Neo4j Certified Professional</strong> · Issued Feb 2025 · Credential ID: 2d268c1d-b80a-49f5-bae6-0607a70de480</li>
+        <li><strong>Neo4j Graph Data Science Certification</strong> · Issued Feb 2025 · Credential ID: 4b6f20d1-ab95-4cfd-bf2d-38286a05e712</li>
+        <li><strong>Neo4j Graph Data Science Fundamentals</strong> · Issued Feb 2025</li>
+        <li><strong>Introduction to Neo4j Graph Data Science</strong> · Issued Mar 2025 · Credential ID: 2129ae2e-238b-47a5-9945-c88b546cb2cc</li>
+        <li><strong>Path Finding with GDS</strong> · Issued Feb 2025</li>
+        <li><strong>Neo4j Fundamentals</strong> · Issued Feb 2025 · Credential ID: 8a35cc94-85ac-4e68-aba0-aefc67495089</li>
+        <li><strong>Graph Data Modeling Fundamentals</strong> · Issued Feb 2025 · Credential ID: 751582cc-ede7-496c-9684-95c0327c03a7</li>
+        <li><strong>Intermediate Cypher Queries</strong> · Issued Mar 2025 · Credential ID: f4a8a53b-71bc-4ee3-8f30-e8eb2cdaa910</li>
+        <li><strong>Importing Data Fundamentals</strong> · Issued Feb 2025 · Credential ID: 863f2603-e595-48b9-9a64-71d135e4600d</li>
+        <li><strong>Building Neo4j Applications with Python</strong> · Issued Mar 2025 · Credential ID: 32156efe-240a-4749-869e-927747e29f41</li>
+      </ul>
+
+      <h3 class="cert-group-heading">Amazon Web Services (AWS)</h3>
+      <ul class="cert-list two-col">
+        <li><strong>AWS Certified Machine Learning Engineer - Associate</strong> · Issued Sep 2024</li>
+        <li><strong>AWS Certified Machine Learning Engineer - Associate Early Adopter</strong> · Issued Sep 2024</li>
+        <li><strong>AWS Certified AI Practitioner</strong> · Issued Aug 2024</li>
+        <li><strong>AWS Certified AI Practitioner Early Adopter</strong> · Issued Aug 2024</li>
+        <li><strong>AWS Certified SysOps Administrator - Associate</strong> · Issued May 2024</li>
+        <li><strong>AWS Certified: Data Engineer - Associate</strong> · Issued Apr 2024</li>
+        <li><strong>AWS Certified Solutions Architect - Associate</strong> · Issued Apr 2024</li>
+        <li><strong>AWS Certified Solutions Architect - Professional</strong> · Issued Aug 2023</li>
+        <li><strong>AWS Certified Machine Learning - Specialty</strong> · Issued Mar 2023</li>
+        <li><strong>AWS Certified Developer - Associate</strong> · Issued Oct 2022</li>
+        <li><strong>AWS Certified DevOps Engineer - Professional</strong> · Issued Nov 2022</li>
+        <li><strong>Amazon Rekognition and .NET Workloads</strong> · Issued May 2024</li>
+        <li><strong>Amazon Textract and .NET Workloads</strong> · Issued May 2024</li>
+        <li><strong>Well-Architected Proficient</strong> · Issued Jul 2023</li>
+        <li><strong>AWS Learning: Storage Technologist</strong> · Issued Jul 2023</li>
+        <li><strong>AWS Learning: Data Migration</strong> · Issued Jul 2023</li>
+        <li><strong>AWS Learning: Data Protection &amp; Disaster Recovery</strong> · Issued Jul 2023</li>
+        <li><strong>AWS Learning: Storage Core</strong> · Issued Jun 2023</li>
+        <li><strong>AWS Learning: Cloud Essentials</strong> · Issued Jun 2023</li>
+        <li><strong>AWS Learning: Block Storage</strong> · Issued Jun 2023</li>
+        <li><strong>AWS Learning: Architecting</strong> · Issued Apr 2023</li>
+        <li><strong>AWS Learning: Object Storage</strong> · Issued Apr 2023</li>
+        <li><strong>AWS Learning: File Storage</strong> · Issued Apr 2023</li>
+        <li><strong>AWS Learning: Serverless</strong> · Issued Dec 2022</li>
+      </ul>
+
+      <h3 class="cert-group-heading">IBM</h3>
+      <ul class="cert-list">
+        <li><strong>IBM Machine Learning Professional Certificate</strong> · Issued Jul 2024</li>
+        <li><strong>IBM AI Engineering Professional Certificate</strong> · Issued Jul 2024</li>
+      </ul>
+    </section>
+
+    <!-- ============================================================
+         PROJECTS
+    ============================================================= -->
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <article class="project-card">
+        <h3 class="timeline-title">EdgeScore</h3>
+        <p>
+          A highly scalable algorithm for predicting labels on temporal knowledge graphs and
+          temporal heterogeneous graphs. Designed for large-scale datasets with a planned
+          2026 submission target to Learning on Graphs (LoG) and eventual benchmark evaluation
+          against the Temporal Graph Benchmark.
+        </p>
+        <p class="timeline-meta">Repository: <a href="https://github.com/BryantPollard/EdgeScore" target="_blank" rel="noopener noreferrer">github.com/BryantPollard/EdgeScore</a></p>
+      </article>
+
+      <article class="project-card">
+        <h3 class="timeline-title">Human Centered AI for Underground Shuttle Routing</h3>
+        <p>
+          A human-centered AI project where a graph neural network was utilized to provide
+          route predictions for shuttle cars in room-and-pillar coal mines.
+        </p>
+        <p class="timeline-meta">No public repository.</p>
+      </article>
+
+      <article class="project-card">
+        <h3 class="timeline-title">Generating Synthetic Relational Data Using GNN and Ensemble ML Models</h3>
+        <p class="timeline-meta">Nov 2024 - May 2025</p>
+        <p>
+          Researched a novel approach to synthetic relational data generation. Relationships are produced
+          with graph neural networks while row-level attributes are generated with an ensemble of machine
+          learning algorithms. Submitted to arXiv with identifier submit/7513766. This project is currently
+          on hold for other research opportunities.
+        </p>
+        <p class="timeline-meta">No public repository.</p>
+        <figure class="project-figure">
+          <img src="SyntheticRelationalData.jpeg" alt="Synthetic Relational Data project visual" loading="lazy" />
+        </figure>
+      </article>
     </section>
 
     <!-- ============================================================
@@ -108,90 +265,119 @@
     <section id="research">
       <h2>Research</h2>
 
-      <p>My current work sits at the intersection of the topics below.
-      If any of these overlap with your interests, I'd be glad to hear from you.</p>
+      <p>
+        My research centers on graph machine learning with an emphasis on scalable temporal graph methods,
+        mathematical foundations, and high-impact applications. I focus on research that is both theoretically
+        grounded and practical on real-world data.
+      </p>
 
       <dl class="topics">
-        <dt>Graph neural networks</dt>
-        <dd>Message-passing architectures, attention on graphs, and
-        higher-order / subgraph methods. Understanding what these models can
-        and cannot represent.</dd>
+        <dt>Temporal graph learning at scale</dt>
+        <dd>
+          Developing efficient methods for label prediction on temporal knowledge graphs and
+          temporal heterogeneous graphs, including large-scale settings motivated by EdgeScore.
+        </dd>
 
-        <dt>Expressivity &amp; theory</dt>
-        <dd>Connections between GNNs and the Weisfeiler–Leman hierarchy,
-        positional and structural encodings, and the limits of message passing.</dd>
+        <dt>Mathematics of graph learning</dt>
+        <dd>
+          Studying the mathematical structure behind graph neural networks and geometric deep learning
+          to improve model reliability, expressivity, and generalization.
+        </dd>
 
-        <dt>Geometric &amp; equivariant models</dt>
-        <dd>Learning on data with symmetry — group-equivariant networks
-        for molecules, point clouds, and physical systems.</dd>
+        <dt>Human-centered graph AI systems</dt>
+        <dd>
+          Applying graph learning in operational environments, including route prediction for shuttle cars
+          in room-and-pillar coal mines.
+        </dd>
 
-        <dt>Scalability &amp; large graphs</dt>
-        <dd>Training and inference on web-scale graphs: sampling, sparsification,
-        and efficient architectures.</dd>
+        <dt>Synthetic relational data generation</dt>
+        <dd>
+          Exploring hybrid pipelines where GNNs generate relational structure and ensemble ML models generate
+          row-level attributes for realistic synthetic datasets.
+        </dd>
 
-        <dt>Applications</dt>
-        <dd>Molecular property prediction, knowledge graphs, and other domains
-        where structure carries real information.</dd>
+        <dt>Knowledge graphs and semantic AI infrastructure</dt>
+        <dd>
+          Investigating the intersection of knowledge graphs, semantic layers, and agentic AI systems for
+          enterprise-scale reasoning and trustworthy analytics.
+        </dd>
       </dl>
-      <!-- TODO: edit this list to match your actual interests. -->
-    </section>
-
-    <!-- ============================================================
-         PUBLICATIONS
-    ============================================================= -->
-    <section id="publications">
-      <h2>Publications</h2>
-
-      <p class="muted">* denotes equal contribution.</p>
-
-      <ol class="pubs" reversed>
-        <!-- TODO: replace these placeholders with your real publications. -->
-        <li>
-          <span class="pub-title">[Paper title goes here].</span>
-          <span class="pub-authors">[Author A], <strong>Bryant Pollard</strong>, [Author C].</span>
-          <span class="pub-venue"><em>[Venue]</em>, 2026.</span>
-          <span class="pub-links">
-            <a href="#">paper</a> ·
-            <a href="#">arXiv</a> ·
-            <a href="#">code</a>
-          </span>
-        </li>
-
-        <li>
-          <span class="pub-title">[Earlier paper title].</span>
-          <span class="pub-authors"><strong>Bryant Pollard</strong>, [Author B].</span>
-          <span class="pub-venue"><em>[Workshop or Conference]</em>, 2025.</span>
-          <span class="pub-links">
-            <a href="#">paper</a> ·
-            <a href="#">code</a>
-          </span>
-        </li>
-      </ol>
     </section>
 
     <!-- ============================================================
          NEWS
     ============================================================= -->
-    <section id="news">
-      <h2>News</h2>
+    <section id="conferences">
+      <h2>Conferences Attended</h2>
 
       <table class="news">
         <tbody>
-          <!-- TODO: add real items, most recent first. -->
           <tr>
-            <td class="news-date">May 2026</td>
-            <td>Launched this website.</td>
+            <td class="news-date">Dec 2025</td>
+            <td>
+              <strong>NeurIPS 2025</strong> — San Diego, CA
+            </td>
           </tr>
           <tr>
-            <td class="news-date">[Mon Year]</td>
-            <td>[Talk, paper acceptance, new role, etc.]</td>
+            <td class="news-date">2026</td>
+            <td>
+              <strong>The Knowledge Graph Conference 2026</strong> — Cornell Tech, New York
+            </td>
           </tr>
           <tr>
-            <td class="news-date">[Mon Year]</td>
-            <td>[Another news item.]</td>
+            <td class="news-date">2026</td>
+            <td>
+              <strong>NodesAI 2026</strong>
+            </td>
+          </tr>
+          <tr>
+            <td class="news-date">2025</td>
+            <td>
+              <strong>LoG (Learning on Graphs) 2025</strong>
+            </td>
+          </tr>
+          <tr>
+            <td class="news-date">2026</td>
+            <td>
+              <strong>The Semantic Layer Summit 2026</strong> —
+              <a href="https://www.semanticlayersummit.com/agenda/" target="_blank" rel="noopener noreferrer">Agenda</a>
+              <br />
+              Focus areas include agentic AI context architecture, semantic layers versus knowledge graphs and ontologies,
+              and open semantic standards for AI-native analytics.
+            </td>
           </tr>
         </tbody>
       </table>
+    </section>
+
+    <section id="organizations">
+      <h2>Organizations</h2>
+
+      <div class="timeline-item">
+        <div class="timeline-org">
+          <span>ACM SIGAI</span>
+        </div>
+        <h3 class="timeline-title">Member, ACM SIGAI</h3>
+        <p class="timeline-meta">Dec 2025 - Present</p>
+        <p>
+          Engaged member of ACM SIGAI, a global community dedicated to advancing AI principles.
+          I leverage the ACM Digital Library and AI Matters publications to stay current on graph
+          neural network breakthroughs, including insights from flagship conferences such as AAAI.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-org">
+          <span>The Institute of Electrical and Electronics Engineers (IEEE)</span>
+        </div>
+        <h3 class="timeline-title">Member, IEEE</h3>
+        <p class="timeline-meta">Dec 2025 - Present</p>
+        <p>
+          Engaged member of the world's largest technical professional organization.
+          I use IEEE Xplore and global conference output to stay at the forefront of
+          AI and graph systems and to contribute to local chapter technical discussions.
+        </p>
+      </div>
     </section>
 
     <!-- ============================================================
@@ -200,14 +386,7 @@
     <section id="contact">
       <h2>Contact</h2>
       <p>
-        The fastest way to reach me is by email at
-        <a href="mailto:you@example.com">[you@example.com]</a>.
-        I read everything, though I may take a few days to reply.
-      </p>
-      <p>
-        You can also find me on
-        <a href="https://github.com/BryantPollard">GitHub</a>
-        and <a href="#">LinkedIn</a>.
+        <a href="https://www.linkedin.com/in/bryantpollard/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </p>
     </section>
 
