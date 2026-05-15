@@ -1,0 +1,401 @@
+/* ============================================================
+   Bryant Pollard — personal site
+   Refined academic minimalism with a quiet graph-DL accent.
+   ============================================================ */
+
+:root {
+  /* Palette: warm paper + ink, single muted slate-blue accent */
+  --paper:       #fafaf6;
+  --paper-alt:   #f3f1ea;
+  --ink:         #1a1a1a;
+  --ink-soft:    #3a3a3a;
+  --muted:       #6a6a6a;
+  --rule:        #e0ddd4;
+  --accent:      #2a4a7f;   /* quiet slate-blue */
+  --accent-soft: #5d7aa8;
+
+  /* Type */
+  --serif:   "Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --display: "Fraunces", "Source Serif 4", Georgia, serif;
+  --mono:    "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  --content-max: 680px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:       #161614;
+    --paper-alt:   #1d1d1a;
+    --ink:         #ece8df;
+    --ink-soft:    #c9c5bc;
+    --muted:       #8d8a82;
+    --rule:        #2d2c28;
+    --accent:      #9bb4dc;
+    --accent-soft: #7892c0;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.65;
+  font-feature-settings: "kern", "liga", "onum";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 24px 6rem;
+}
+
+/* ------------------------------------------------------------
+   Top navigation
+------------------------------------------------------------ */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--rule);
+  padding: 0.9rem 24px;
+  text-align: center;
+}
+
+.topnav a {
+  display: inline-block;
+  margin: 0 0.6rem;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-variation-settings: "opsz" 14;
+  color: var(--ink-soft);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.topnav a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ------------------------------------------------------------
+   Hero
+------------------------------------------------------------ */
+.hero {
+  padding: 4.5rem 0 2.5rem;
+  position: relative;
+}
+
+.graph-motif {
+  width: 140px;
+  height: auto;
+  display: block;
+  margin: 0 0 1.5rem -6px;
+  opacity: 0.9;
+}
+
+.graph-motif .edges line {
+  stroke: var(--accent-soft);
+  stroke-width: 1;
+  opacity: 0.55;
+}
+
+.graph-motif .nodes circle {
+  fill: var(--accent);
+}
+
+/* gentle pulse on the nodes so the motif feels alive */
+.graph-motif .nodes circle {
+  animation: node-pulse 6s ease-in-out infinite;
+  transform-origin: center;
+}
+.graph-motif .nodes circle:nth-child(2) { animation-delay: 0.6s; }
+.graph-motif .nodes circle:nth-child(3) { animation-delay: 1.2s; }
+.graph-motif .nodes circle:nth-child(4) { animation-delay: 1.8s; }
+.graph-motif .nodes circle:nth-child(5) { animation-delay: 2.4s; }
+.graph-motif .nodes circle:nth-child(6) { animation-delay: 3.0s; }
+.graph-motif .nodes circle:nth-child(7) { animation-delay: 3.6s; }
+
+@keyframes node-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.45; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .graph-motif .nodes circle { animation: none; }
+}
+
+.name {
+  font-family: var(--display);
+  font-weight: 500;
+  font-variation-settings: "opsz" 96, "SOFT" 30;
+  font-size: clamp(2.4rem, 5.5vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.4rem;
+}
+
+.role {
+  font-family: var(--display);
+  font-style: italic;
+  font-variation-settings: "opsz" 18;
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin: 0 0 1.8rem;
+}
+
+.meta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.35rem;
+  font-size: 0.96rem;
+}
+
+.meta-label {
+  display: inline-block;
+  width: 6.5rem;
+  font-family: var(--display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-variation-settings: "opsz" 9;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  vertical-align: baseline;
+}
+
+/* ------------------------------------------------------------
+   Sections
+------------------------------------------------------------ */
+section {
+  padding: 2.5rem 0 1rem;
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: 70px; /* clear the sticky nav on anchor jump */
+}
+
+h2 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-variation-settings: "opsz" 48;
+  font-size: 1.55rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.2rem;
+  color: var(--ink);
+}
+
+h2::before {
+  /* small graph-style marker next to section heads */
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 0.7rem;
+  background: var(--accent);
+  border-radius: 50%;
+  vertical-align: middle;
+  transform: translateY(-3px);
+}
+
+p { margin: 0 0 1.05rem; }
+
+p strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-style: italic;
+}
+
+/* ------------------------------------------------------------
+   Research topics (definition list)
+------------------------------------------------------------ */
+.topics {
+  margin: 1.2rem 0 0;
+  padding: 0;
+}
+
+.topics dt {
+  font-family: var(--display);
+  font-weight: 600;
+  font-variation-settings: "opsz" 18;
+  font-size: 1.02rem;
+  color: var(--ink);
+  margin-top: 1.1rem;
+}
+
+.topics dt::before {
+  content: "—";
+  margin-right: 0.5rem;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.topics dd {
+  margin: 0.15rem 0 0 1.4rem;
+  color: var(--ink-soft);
+}
+
+/* ------------------------------------------------------------
+   Publications
+------------------------------------------------------------ */
+.pubs {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  counter-reset: pub;
+}
+
+.pubs li {
+  position: relative;
+  padding: 0.9rem 0 0.9rem 2.2rem;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: pub;
+}
+
+.pubs li:last-child {
+  border-bottom: none;
+}
+
+.pubs li::before {
+  content: counter(pub);
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  width: 1.6rem;
+  text-align: right;
+}
+
+.pub-title {
+  display: block;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+
+.pub-authors {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+}
+
+.pub-venue {
+  display: block;
+  color: var(--muted);
+  font-size: 0.96rem;
+  margin-top: 0.1rem;
+}
+
+.pub-links {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+
+.pub-links a {
+  border-bottom: none;
+  color: var(--accent);
+}
+.pub-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ------------------------------------------------------------
+   News table
+------------------------------------------------------------ */
+.news {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.97rem;
+}
+
+.news td {
+  padding: 0.7rem 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+
+.news tr:last-child td {
+  border-bottom: none;
+}
+
+.news-date {
+  width: 9rem;
+  font-family: var(--display);
+  font-weight: 500;
+  font-variation-settings: "opsz" 14;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------
+   Footer
+------------------------------------------------------------ */
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+/* ------------------------------------------------------------
+   Responsive
+------------------------------------------------------------ */
+@media (max-width: 520px) {
+  body { font-size: 17px; }
+
+  .topnav { padding: 0.7rem 12px; }
+  .topnav a { margin: 0 0.4rem; font-size: 0.88rem; }
+
+  main { padding: 0 18px 4rem; }
+
+  .hero { padding: 3rem 0 2rem; }
+  .graph-motif { width: 110px; }
+
+  .meta-label {
+    display: block;
+    width: auto;
+    margin-bottom: 0.1rem;
+  }
+  .meta li { margin-bottom: 0.4rem; }
+
+  .news-date { width: 6.5rem; }
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bryant Pollard</title>
+  <meta name="description" content="Bryant Pollard — graph deep learning research." />
+  <meta name="author" content="Bryant Pollard" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bryant Pollard" />
+  <meta property="og:description" content="Graph deep learning research." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="topnav" aria-label="Section navigation">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+
+    <!-- ============================================================
+         HEADER
+    ============================================================= -->
+    <header class="hero">
+      <!-- Decorative graph motif -->
+      <svg class="graph-motif" viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g class="edges">
+          <line x1="40"  y1="40"  x2="110" y2="20"  />
+          <line x1="40"  y1="40"  x2="80"  y2="95"  />
+          <line x1="110" y1="20"  x2="180" y2="55"  />
+          <line x1="110" y1="20"  x2="140" y2="80"  />
+          <line x1="80"  y1="95"  x2="140" y2="80"  />
+          <line x1="80"  y1="95"  x2="150" y2="120" />
+          <line x1="140" y1="80"  x2="180" y2="55"  />
+          <line x1="140" y1="80"  x2="150" y2="120" />
+          <line x1="180" y1="55"  x2="195" y2="110" />
+          <line x1="150" y1="120" x2="195" y2="110" />
+        </g>
+        <g class="nodes">
+          <circle cx="40"  cy="40"  r="5" />
+          <circle cx="110" cy="20"  r="5" />
+          <circle cx="80"  cy="95"  r="5" />
+          <circle cx="180" cy="55"  r="5" />
+          <circle cx="140" cy="80"  r="5" />
+          <circle cx="150" cy="120" r="5" />
+          <circle cx="195" cy="110" r="5" />
+        </g>
+      </svg>
+
+      <h1 class="name">Bryant Pollard</h1>
+      <p class="role">Researcher in Graph Deep Learning</p>
+
+      <ul class="meta">
+        <li><span class="meta-label">Affiliation</span> <!-- TODO: your university / lab --> [Your University / Lab]</li>
+        <li><span class="meta-label">Location</span> Lutz, Florida</li>
+        <li><span class="meta-label">Email</span> <a href="mailto:you@example.com">[you@example.com]</a></li>
+        <li><span class="meta-label">Scholar</span> <a href="#" rel="me">[Google Scholar]</a></li>
+        <li><span class="meta-label">GitHub</span> <a href="https://github.com/BryantPollard" rel="me">@BryantPollard</a></li>
+        <li><span class="meta-label">LinkedIn</span> <a href="#" rel="me">[LinkedIn]</a></li>
+      </ul>
+    </header>
+
+    <!-- ============================================================
+         ABOUT
+    ============================================================= -->
+    <section id="about">
+      <h2>About</h2>
+
+      <p><strong>I work on graph deep learning.</strong>
+      My research focuses on building neural network models that operate on
+      graph-structured data — learning representations of nodes, edges, and
+      whole graphs in ways that respect their underlying combinatorial structure.
+      I'm broadly interested in the foundations of graph neural networks
+      (GNNs), the theory of geometric deep learning, and how these methods
+      transfer to scientific and real-world problems.
+      <!-- TODO: rewrite this paragraph in your own voice. --></p>
+
+      <p><strong>I care about doing useful, well-grounded work.</strong>
+      I'm drawn to questions where a sharper theoretical understanding of a
+      model leads to a measurably better tool — better expressivity, better
+      generalization, better calibration. I try to keep my code clean and my
+      experiments reproducible.
+      <!-- TODO: replace with your own statement of values / interests. --></p>
+
+      <p><strong>A bit more about me.</strong>
+      <!-- TODO: short personal paragraph — where you're from, your path here,
+           hobbies, anything you want a reader to know. Keep it brief. -->
+      [Short personal paragraph here. Where you grew up, how you got into
+      research, what you do when you're not at a terminal.]</p>
+    </section>
+
+    <!-- ============================================================
+         RESEARCH
+    ============================================================= -->
+    <section id="research">
+      <h2>Research</h2>
+
+      <p>My current work sits at the intersection of the topics below.
+      If any of these overlap with your interests, I'd be glad to hear from you.</p>
+
+      <dl class="topics">
+        <dt>Graph neural networks</dt>
+        <dd>Message-passing architectures, attention on graphs, and
+        higher-order / subgraph methods. Understanding what these models can
+        and cannot represent.</dd>
+
+        <dt>Expressivity &amp; theory</dt>
+        <dd>Connections between GNNs and the Weisfeiler–Leman hierarchy,
+        positional and structural encodings, and the limits of message passing.</dd>
+
+        <dt>Geometric &amp; equivariant models</dt>
+        <dd>Learning on data with symmetry — group-equivariant networks
+        for molecules, point clouds, and physical systems.</dd>
+
+        <dt>Scalability &amp; large graphs</dt>
+        <dd>Training and inference on web-scale graphs: sampling, sparsification,
+        and efficient architectures.</dd>
+
+        <dt>Applications</dt>
+        <dd>Molecular property prediction, knowledge graphs, and other domains
+        where structure carries real information.</dd>
+      </dl>
+      <!-- TODO: edit this list to match your actual interests. -->
+    </section>
+
+    <!-- ============================================================
+         PUBLICATIONS
+    ============================================================= -->
+    <section id="publications">
+      <h2>Publications</h2>
+
+      <p class="muted">* denotes equal contribution.</p>
+
+      <ol class="pubs" reversed>
+        <!-- TODO: replace these placeholders with your real publications. -->
+        <li>
+          <span class="pub-title">[Paper title goes here].</span>
+          <span class="pub-authors">[Author A], <strong>Bryant Pollard</strong>, [Author C].</span>
+          <span class="pub-venue"><em>[Venue]</em>, 2026.</span>
+          <span class="pub-links">
+            <a href="#">paper</a> ·
+            <a href="#">arXiv</a> ·
+            <a href="#">code</a>
+          </span>
+        </li>
+
+        <li>
+          <span class="pub-title">[Earlier paper title].</span>
+          <span class="pub-authors"><strong>Bryant Pollard</strong>, [Author B].</span>
+          <span class="pub-venue"><em>[Workshop or Conference]</em>, 2025.</span>
+          <span class="pub-links">
+            <a href="#">paper</a> ·
+            <a href="#">code</a>
+          </span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============================================================
+         NEWS
+    ============================================================= -->
+    <section id="news">
+      <h2>News</h2>
+
+      <table class="news">
+        <tbody>
+          <!-- TODO: add real items, most recent first. -->
+          <tr>
+            <td class="news-date">May 2026</td>
+            <td>Launched this website.</td>
+          </tr>
+          <tr>
+            <td class="news-date">[Mon Year]</td>
+            <td>[Talk, paper acceptance, new role, etc.]</td>
+          </tr>
+          <tr>
+            <td class="news-date">[Mon Year]</td>
+            <td>[Another news item.]</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============================================================
+         CONTACT
+    ============================================================= -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        The fastest way to reach me is by email at
+        <a href="mailto:you@example.com">[you@example.com]</a>.
+        I read everything, though I may take a few days to reply.
+      </p>
+      <p>
+        You can also find me on
+        <a href="https://github.com/BryantPollard">GitHub</a>
+        and <a href="#">LinkedIn</a>.
+      </p>
+    </section>
+
+    <footer>
+      <p>© <span id="year">2026</span> Bryant Pollard.</p>
+    </footer>
+
+  </main>
+
+  <script>
+    // Keep the footer year correct without needing an edit each January.
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
