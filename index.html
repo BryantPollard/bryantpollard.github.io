@@ -1,615 +1,635 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bryant Pollard</title>
-    <meta
-      name="description"
-      content="Bryant Pollard — graph deep learning research."
-    />
-    <meta name="author" content="Bryant Pollard" />
+/* ============================================================
+   Bryant Pollard — personal site
+   Refined academic minimalism with a quiet graph-DL accent.
+   ============================================================ */
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Bryant Pollard" />
-    <meta property="og:description" content="Graph deep learning research." />
-    <meta property="og:type" content="website" />
+:root {
+  /* Palette: warm paper + ink, single muted slate-blue accent */
+  --paper: #fafaf6;
+  --paper-alt: #f3f1ea;
+  --ink: #1a1a1a;
+  --ink-soft: #3a3a3a;
+  --muted: #6a6a6a;
+  --rule: #e0ddd4;
+  --accent: #2a4a7f; /* quiet slate-blue */
+  --accent-soft: #5d7aa8;
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+  /* Type */
+  --serif: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+  --display: 'Fraunces', 'Source Serif 4', Georgia, serif;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
 
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <nav class="topnav" aria-label="Section navigation">
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#projects">Projects</a>
-      <a href="#research">Research</a>
-      <a href="#conferences">Conferences</a>
-      <a href="#organizations">Organizations</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  --content-max: 680px;
+}
 
-    <main>
-      <!-- ============================================================
-         HEADER
-    ============================================================= -->
-      <header class="hero">
-        <!-- Decorative graph motif -->
-        <svg
-          class="graph-motif"
-          viewBox="0 0 220 140"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <g class="edges">
-            <line x1="40" y1="40" x2="110" y2="20" />
-            <line x1="40" y1="40" x2="80" y2="95" />
-            <line x1="110" y1="20" x2="180" y2="55" />
-            <line x1="110" y1="20" x2="140" y2="80" />
-            <line x1="80" y1="95" x2="140" y2="80" />
-            <line x1="80" y1="95" x2="150" y2="120" />
-            <line x1="140" y1="80" x2="180" y2="55" />
-            <line x1="140" y1="80" x2="150" y2="120" />
-            <line x1="180" y1="55" x2="195" y2="110" />
-            <line x1="150" y1="120" x2="195" y2="110" />
-          </g>
-          <g class="nodes">
-            <circle cx="40" cy="40" r="5" />
-            <circle cx="110" cy="20" r="5" />
-            <circle cx="80" cy="95" r="5" />
-            <circle cx="180" cy="55" r="5" />
-            <circle cx="140" cy="80" r="5" />
-            <circle cx="150" cy="120" r="5" />
-            <circle cx="195" cy="110" r="5" />
-          </g>
-        </svg>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #161614;
+    --paper-alt: #1d1d1a;
+    --ink: #ece8df;
+    --ink-soft: #c9c5bc;
+    --muted: #8d8a82;
+    --rule: #2d2c28;
+    --accent: #9bb4dc;
+    --accent-soft: #7892c0;
+  }
+}
 
-        <div class="hero-headshot-wrap">
-          <img
-            src="headshot.jpeg"
-            alt="Headshot of Bryant Pollard"
-            class="hero-headshot"
-          />
-        </div>
+* {
+  box-sizing: border-box;
+}
 
-        <h1 class="name">Bryant Pollard</h1>
-        <p class="role">Researcher in Graph Deep Learning</p>
+html {
+  scroll-behavior: smooth;
+}
 
-        <ul class="meta">
-          <li>
-            <span class="meta-label">Affiliation</span> Clemson University ·
-            Independent Researcher
-          </li>
-          <li><span class="meta-label">Location</span> Tampa Bay, Florida</li>
-          <li>
-            <span class="meta-label">ORCID</span>
-            <a
-              href="https://orcid.org/0009-0007-1910-2962"
-              target="_blank"
-              rel="me noopener noreferrer"
-              >0009-0007-1910-2962</a
-            >
-          </li>
-          <li>
-            <span class="meta-label">Scholar</span>
-            <a
-              href="https://scholar.google.com/citations?hl=en&user=oxk3HuMAAAAJ"
-              target="_blank"
-              rel="me noopener noreferrer"
-              >Google Scholar</a
-            >
-          </li>
-          <li>
-            <span class="meta-label">GitHub</span>
-            <a href="https://github.com/BryantPollard" rel="me"
-              >@BryantPollard</a
-            >
-          </li>
-          <li>
-            <span class="meta-label">LinkedIn</span>
-            <a
-              href="https://www.linkedin.com/in/bryantpollard/"
-              target="_blank"
-              rel="me noopener noreferrer"
-              >LinkedIn</a
-            >
-          </li>
-        </ul>
-      </header>
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.65;
+  font-feature-settings: 'kern', 'liga', 'onum';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 
-      <!-- ============================================================
-         ABOUT
-    ============================================================= -->
-      <section id="about">
-        <h2>About</h2>
+main {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 24px 6rem;
+}
 
-        <p>
-          <strong>I work on graph deep learning.</strong>
-          My research focuses on building neural network models that operate on
-          graph-structured data — learning representations of nodes, edges, and
-          whole graphs in ways that respect their underlying combinatorial
-          structure. I'm broadly interested in the foundations of graph neural
-          networks (GNNs), the mathematics behind geometric deep learning, and
-          how these methods transfer to scientific and real-world problems.
-          <!-- TODO: rewrite this paragraph in your own voice. -->
-        </p>
+/* ------------------------------------------------------------
+   Top navigation
+------------------------------------------------------------ */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--rule);
+  padding: 0.9rem 24px;
+  text-align: center;
+}
 
-        <p>
-          <strong>I care about doing useful, well-grounded work.</strong>
-          I'm drawn to questions where a sharper theoretical understanding of a
-          model leads to a measurably better tool — better expressivity, better
-          generalization, better calibration. I try to keep my code clean and my
-          experiments reproducible.
-          <!-- TODO: replace with your own statement of values / interests. -->
-        </p>
-      </section>
+.topnav a {
+  display: inline-block;
+  margin: 0 0.6rem;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-variation-settings: 'opsz' 14;
+  color: var(--ink-soft);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease;
+}
 
-      <!-- ============================================================
-         EDUCATION
-    ============================================================= -->
-      <section id="education">
-        <h2>Education</h2>
+.topnav a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
 
-        <div class="timeline-item">
-          <div class="timeline-org">
-            <img
-              class="org-logo"
-              src="https://www.clemson.edu/brand/images/logo/logo-usage/logo-wordmark-1.png"
-              alt="Clemson University logo"
-              loading="lazy"
-              referrerpolicy="no-referrer"
-            />
-            <span>Clemson University</span>
-          </div>
-          <h3 class="timeline-title">
-            Master of Science (MS), Computer Science - Human Artificial
-            Intelligence
-          </h3>
-          <p class="timeline-meta">Aug 2025 - May 2027 · GPA: 4.0</p>
-        </div>
+/* ------------------------------------------------------------
+   Hero
+------------------------------------------------------------ */
+.hero {
+  padding: 4.5rem 0 2.5rem;
+  position: relative;
+}
 
-        <div class="timeline-item">
-          <div class="timeline-org">
-            <img
-              class="org-logo"
-              src="https://www.wku.edu/marketingandcommunications/images/wkucuptall.jpg"
-              alt="Western Kentucky University logo"
-              loading="lazy"
-              referrerpolicy="no-referrer"
-            />
-            <span>Western Kentucky University</span>
-          </div>
-          <h3 class="timeline-title">
-            Bachelor of Science, Computer Science Major, Mathematics Minor
-          </h3>
-          <p class="timeline-meta">1992 - 1997</p>
-        </div>
-      </section>
+.hero-top {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
 
-      <!-- ============================================================
-         CERTIFICATIONS
-    ============================================================= -->
-      <section id="certifications">
-        <h2>Certifications &amp; Certificates</h2>
+.graph-motif {
+  width: 140px;
+  height: auto;
+  display: block;
+  opacity: 0.9;
+}
 
-        <h3 class="cert-group-heading">Clemson University</h3>
-        <ul class="cert-list">
-          <li>
-            <strong>GIS Fundamentals Workshop Series Certification</strong
-            ><br />
-            Issued Apr 2026<br />
-            Skills: ArcGIS Products · Spatial Analysis
-          </li>
-          <li>
-            <strong
-              >Advanced Responsibility Credit (ACR): What could go wrong in the
-              field?</strong
-            ><br />
-            Issued Apr 2026<br />
-            Credential ID: 1 RCR credit verification available upon request
-          </li>
-          <li>
-            <strong
-              >Advanced Responsible Conduct of Research (RCR): Ethical And
-              Regulatory Framework For Animal Use In Research And Teaching:
-              Understanding IACUC Oversight</strong
-            ><br />
-            Issued Mar 2026<br />
-            Credential ID: 1 RCR credit verification available upon request
-          </li>
-          <li>
-            <strong
-              >Advanced Responsible Conduct of Research (RCR): Publishing with
-              Integrity</strong
-            ><br />
-            Issued Jan 2026<br />
-            Credential ID: 1 RCR credit verification available upon request<br />
-            Skills: Research Skills · Ethics · Academic Publishing · Scientific
-            Integrity Compliance
-          </li>
-        </ul>
+.graph-motif .edges line {
+  stroke: var(--accent-soft);
+  stroke-width: 1;
+  opacity: 0.55;
+}
 
-        <h3 class="cert-group-heading">NeurIPS</h3>
-        <ul class="cert-list">
-          <li>
-            <strong>NeurIPS Certificate of Attendance 2025</strong><br />
-            Issued Dec 2025<br />
-            Skills: Machine Learning Research
-          </li>
-        </ul>
+.graph-motif .nodes circle {
+  fill: var(--accent);
+}
 
-        <h3 class="cert-group-heading">Neo4j</h3>
-        <ul class="cert-list two-col">
-          <li>
-            <strong>Neo4j Certified Professional</strong> · Issued Feb 2025 ·
-            Credential ID: 2d268c1d-b80a-49f5-bae6-0607a70de480
-          </li>
-          <li>
-            <strong>Neo4j Graph Data Science Certification</strong> · Issued Feb
-            2025 · Credential ID: 4b6f20d1-ab95-4cfd-bf2d-38286a05e712
-          </li>
-          <li>
-            <strong>Neo4j Graph Data Science Fundamentals</strong> · Issued Feb
-            2025
-          </li>
-          <li>
-            <strong>Introduction to Neo4j Graph Data Science</strong> · Issued
-            Mar 2025 · Credential ID: 2129ae2e-238b-47a5-9945-c88b546cb2cc
-          </li>
-          <li><strong>Path Finding with GDS</strong> · Issued Feb 2025</li>
-          <li>
-            <strong>Neo4j Fundamentals</strong> · Issued Feb 2025 · Credential
-            ID: 8a35cc94-85ac-4e68-aba0-aefc67495089
-          </li>
-          <li>
-            <strong>Graph Data Modeling Fundamentals</strong> · Issued Feb 2025
-            · Credential ID: 751582cc-ede7-496c-9684-95c0327c03a7
-          </li>
-          <li>
-            <strong>Intermediate Cypher Queries</strong> · Issued Mar 2025 ·
-            Credential ID: f4a8a53b-71bc-4ee3-8f30-e8eb2cdaa910
-          </li>
-          <li>
-            <strong>Importing Data Fundamentals</strong> · Issued Feb 2025 ·
-            Credential ID: 863f2603-e595-48b9-9a64-71d135e4600d
-          </li>
-          <li>
-            <strong>Building Neo4j Applications with Python</strong> · Issued
-            Mar 2025 · Credential ID: 32156efe-240a-4749-869e-927747e29f41
-          </li>
-        </ul>
+/* gentle pulse on the nodes so the motif feels alive */
+.graph-motif .nodes circle {
+  animation: node-pulse 6s ease-in-out infinite;
+  transform-origin: center;
+}
+.graph-motif .nodes circle:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.graph-motif .nodes circle:nth-child(3) {
+  animation-delay: 1.2s;
+}
+.graph-motif .nodes circle:nth-child(4) {
+  animation-delay: 1.8s;
+}
+.graph-motif .nodes circle:nth-child(5) {
+  animation-delay: 2.4s;
+}
+.graph-motif .nodes circle:nth-child(6) {
+  animation-delay: 3s;
+}
+.graph-motif .nodes circle:nth-child(7) {
+  animation-delay: 3.6s;
+}
+.graph-motif .nodes circle:nth-child(8) {
+  animation-delay: 0.3s;
+}
+.graph-motif .nodes circle:nth-child(9) {
+  animation-delay: 0.9s;
+}
+.graph-motif .nodes circle:nth-child(10) {
+  animation-delay: 1.5s;
+}
+.graph-motif .nodes circle:nth-child(11) {
+  animation-delay: 2.1s;
+}
+.graph-motif .nodes circle:nth-child(12) {
+  animation-delay: 2.7s;
+}
+.graph-motif .nodes circle:nth-child(13) {
+  animation-delay: 3.3s;
+}
+.graph-motif .nodes circle:nth-child(14) {
+  animation-delay: 3.9s;
+}
+.graph-motif .nodes circle:nth-child(15) {
+  animation-delay: 0.45s;
+}
+.graph-motif .nodes circle:nth-child(16) {
+  animation-delay: 1.05s;
+}
+.graph-motif .nodes circle:nth-child(17) {
+  animation-delay: 1.65s;
+}
+.graph-motif .nodes circle:nth-child(18) {
+  animation-delay: 2.25s;
+}
+.graph-motif .nodes circle:nth-child(19) {
+  animation-delay: 2.85s;
+}
+.graph-motif .nodes circle:nth-child(20) {
+  animation-delay: 3.45s;
+}
+.graph-motif .nodes circle:nth-child(21) {
+  animation-delay: 4.05s;
+}
 
-        <h3 class="cert-group-heading">Amazon Web Services (AWS)</h3>
-        <ul class="cert-list two-col">
-          <li>
-            <strong>AWS Certified Machine Learning Engineer - Associate</strong>
-            · Issued Sep 2024
-          </li>
-          <li>
-            <strong
-              >AWS Certified Machine Learning Engineer - Associate Early
-              Adopter</strong
-            >
-            · Issued Sep 2024
-          </li>
-          <li>
-            <strong>AWS Certified AI Practitioner</strong> · Issued Aug 2024
-          </li>
-          <li>
-            <strong>AWS Certified AI Practitioner Early Adopter</strong> ·
-            Issued Aug 2024
-          </li>
-          <li>
-            <strong>AWS Certified SysOps Administrator - Associate</strong> ·
-            Issued May 2024
-          </li>
-          <li>
-            <strong>AWS Certified: Data Engineer - Associate</strong> · Issued
-            Apr 2024
-          </li>
-          <li>
-            <strong>AWS Certified Solutions Architect - Associate</strong> ·
-            Issued Apr 2024
-          </li>
-          <li>
-            <strong>AWS Certified Solutions Architect - Professional</strong> ·
-            Issued Aug 2023
-          </li>
-          <li>
-            <strong>AWS Certified Machine Learning - Specialty</strong> · Issued
-            Mar 2023
-          </li>
-          <li>
-            <strong>AWS Certified Developer - Associate</strong> · Issued Oct
-            2022
-          </li>
-          <li>
-            <strong>AWS Certified DevOps Engineer - Professional</strong> ·
-            Issued Nov 2022
-          </li>
-          <li>
-            <strong>Amazon Rekognition and .NET Workloads</strong> · Issued May
-            2024
-          </li>
-          <li>
-            <strong>Amazon Textract and .NET Workloads</strong> · Issued May
-            2024
-          </li>
-          <li>
-            <strong>Well-Architected Proficient</strong> · Issued Jul 2023
-          </li>
-          <li>
-            <strong>AWS Learning: Storage Technologist</strong> · Issued Jul
-            2023
-          </li>
-          <li>
-            <strong>AWS Learning: Data Migration</strong> · Issued Jul 2023
-          </li>
-          <li>
-            <strong
-              >AWS Learning: Data Protection &amp; Disaster Recovery</strong
-            >
-            · Issued Jul 2023
-          </li>
-          <li><strong>AWS Learning: Storage Core</strong> · Issued Jun 2023</li>
-          <li>
-            <strong>AWS Learning: Cloud Essentials</strong> · Issued Jun 2023
-          </li>
-          <li>
-            <strong>AWS Learning: Block Storage</strong> · Issued Jun 2023
-          </li>
-          <li><strong>AWS Learning: Architecting</strong> · Issued Apr 2023</li>
-          <li>
-            <strong>AWS Learning: Object Storage</strong> · Issued Apr 2023
-          </li>
-          <li><strong>AWS Learning: File Storage</strong> · Issued Apr 2023</li>
-          <li><strong>AWS Learning: Serverless</strong> · Issued Dec 2022</li>
-        </ul>
+@keyframes node-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
 
-        <h3 class="cert-group-heading">IBM</h3>
-        <ul class="cert-list">
-          <li>
-            <strong>IBM Machine Learning Professional Certificate</strong> ·
-            Issued Jul 2024
-          </li>
-          <li>
-            <strong>IBM AI Engineering Professional Certificate</strong> ·
-            Issued Jul 2024
-          </li>
-        </ul>
-      </section>
+@media (prefers-reduced-motion: reduce) {
+  .graph-motif .nodes circle {
+    animation: none;
+  }
+}
 
-      <!-- ============================================================
-         PROJECTS
-    ============================================================= -->
-      <section id="projects">
-        <h2>Projects</h2>
+.name {
+  font-family: var(--display);
+  font-weight: 500;
+  font-variation-settings:
+    'opsz' 96,
+    'SOFT' 30;
+  font-size: clamp(2.4rem, 5.5vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.4rem;
+}
 
-        <article class="project-card">
-          <h3 class="timeline-title">EdgeScore</h3>
-          <p>
-            A highly scalable algorithm for predicting labels on temporal
-            knowledge graphs and temporal heterogeneous graphs. Designed for
-            large-scale datasets with a planned 2026 submission target to
-            Learning on Graphs (LoG) and eventual benchmark evaluation against
-            the Temporal Graph Benchmark.
-          </p>
-          <p class="timeline-meta">
-            Repository:
-            <a
-              href="https://github.com/BryantPollard/EdgeScore"
-              target="_blank"
-              rel="noopener noreferrer"
-              >github.com/BryantPollard/EdgeScore</a
-            >
-          </p>
-        </article>
+.role {
+  font-family: var(--display);
+  font-style: italic;
+  font-variation-settings: 'opsz' 18;
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin: 0 0 1.8rem;
+}
 
-        <article class="project-card">
-          <h3 class="timeline-title">
-            Human Centered AI for Underground Shuttle Routing
-          </h3>
-          <p>
-            A human-centered AI project where a graph neural network was
-            utilized to provide route predictions for shuttle cars in
-            room-and-pillar coal mines.
-          </p>
-          <p class="timeline-meta">No public repository.</p>
-        </article>
+.hero-headshot-wrap {
+  flex: 0 0 auto;
+}
 
-        <article class="project-card">
-          <h3 class="timeline-title">
-            Generating Synthetic Relational Data Using GNN and Ensemble ML
-            Models
-          </h3>
-          <p class="timeline-meta">Nov 2024 - May 2025</p>
-          <p>
-            Researched a novel approach to synthetic relational data generation.
-            Relationships are produced with graph neural networks while
-            row-level attributes are generated with an ensemble of machine
-            learning algorithms. Submitted to arXiv with identifier
-            submit/7513766. This project is currently on hold for other research
-            opportunities.
-          </p>
-          <p class="timeline-meta">No public repository.</p>
-          <figure class="project-figure">
-            <img
-              src="SyntheticRelationalData.jpeg"
-              alt="Synthetic Relational Data project visual"
-              loading="lazy"
-            />
-          </figure>
-        </article>
-      </section>
+.hero-headshot {
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 2px solid var(--rule);
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--ink) 20%, transparent);
+}
 
-      <!-- ============================================================
-         RESEARCH
-    ============================================================= -->
-      <section id="research">
-        <h2>Research</h2>
+.meta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.35rem;
+  font-size: 0.96rem;
+}
 
-        <p>
-          My research centers on graph machine learning with an emphasis on
-          scalable temporal graph methods, mathematical foundations, and
-          high-impact applications. I focus on research that is both
-          theoretically grounded and practical on real-world data.
-        </p>
+.meta-label {
+  display: inline-block;
+  width: 6.5rem;
+  font-family: var(--display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-variation-settings: 'opsz' 9;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  vertical-align: baseline;
+}
 
-        <dl class="topics">
-          <dt>Temporal graph learning at scale</dt>
-          <dd>
-            Developing efficient methods for label prediction on temporal
-            knowledge graphs and temporal heterogeneous graphs, including
-            large-scale settings motivated by EdgeScore.
-          </dd>
+/* ------------------------------------------------------------
+   Sections
+------------------------------------------------------------ */
+section {
+  padding: 2.5rem 0 1rem;
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: 70px; /* clear the sticky nav on anchor jump */
+}
 
-          <dt>Mathematics of graph learning</dt>
-          <dd>
-            Studying the mathematical structure behind graph neural networks and
-            geometric deep learning to improve model reliability, expressivity,
-            and generalization.
-          </dd>
+h2 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-variation-settings: 'opsz' 48;
+  font-size: 1.55rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.2rem;
+  color: var(--ink);
+}
 
-          <dt>Human-centered graph AI systems</dt>
-          <dd>
-            Applying graph learning in operational environments, including route
-            prediction for shuttle cars in room-and-pillar coal mines.
-          </dd>
+h2::before {
+  /* small graph-style marker next to section heads */
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 0.7rem;
+  background: var(--accent);
+  border-radius: 50%;
+  vertical-align: middle;
+  transform: translateY(-3px);
+}
 
-          <dt>Synthetic relational data generation</dt>
-          <dd>
-            Exploring hybrid pipelines where GNNs generate relational structure
-            and ensemble ML models generate row-level attributes for realistic
-            synthetic datasets.
-          </dd>
+p {
+  margin: 0 0 1.05rem;
+}
 
-          <dt>Knowledge graphs and semantic AI infrastructure</dt>
-          <dd>
-            Investigating the intersection of knowledge graphs, semantic layers,
-            and agentic AI systems for enterprise-scale reasoning and
-            trustworthy analytics.
-          </dd>
-        </dl>
-      </section>
+p strong {
+  font-weight: 600;
+  color: var(--ink);
+}
 
-      <!-- ============================================================
-         NEWS
-    ============================================================= -->
-      <section id="conferences">
-        <h2>Conferences Attended</h2>
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  transition:
+    border-color 160ms ease,
+    color 160ms ease;
+}
 
-        <table class="news">
-          <tbody>
-            <tr>
-              <td class="news-date">Dec 2025</td>
-              <td><strong>NeurIPS 2025</strong> — San Diego, CA</td>
-            </tr>
-            <tr>
-              <td class="news-date">2026</td>
-              <td>
-                <strong>The Knowledge Graph Conference 2026</strong> — Cornell
-                Tech, New York
-              </td>
-            </tr>
-            <tr>
-              <td class="news-date">2026</td>
-              <td>
-                <strong>NodesAI 2026</strong>
-              </td>
-            </tr>
-            <tr>
-              <td class="news-date">2025</td>
-              <td>
-                <strong>LoG (Learning on Graphs) 2025</strong>
-              </td>
-            </tr>
-            <tr>
-              <td class="news-date">2026</td>
-              <td>
-                <strong>The Semantic Layer Summit 2026</strong> —
-                <a
-                  href="https://www.semanticlayersummit.com/agenda/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Agenda</a
-                >
-                <br />
-                Focus areas include agentic AI context architecture, semantic
-                layers versus knowledge graphs and ontologies, and open semantic
-                standards for AI-native analytics.
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+a:hover {
+  border-bottom-color: var(--accent);
+}
 
-      <section id="organizations">
-        <h2>Organizations</h2>
+.muted {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-style: italic;
+}
 
-        <div class="timeline-item">
-          <div class="timeline-org">
-            <span>ACM SIGAI</span>
-          </div>
-          <h3 class="timeline-title">Member, ACM SIGAI</h3>
-          <p class="timeline-meta">Dec 2025 - Present</p>
-          <p>
-            Engaged member of ACM SIGAI, a global community dedicated to
-            advancing AI principles. I leverage the ACM Digital Library and AI
-            Matters publications to stay current on graph neural network
-            breakthroughs, including insights from flagship conferences such as
-            AAAI.
-          </p>
-        </div>
+/* ------------------------------------------------------------
+   Research topics (definition list)
+------------------------------------------------------------ */
+.topics {
+  margin: 1.2rem 0 0;
+  padding: 0;
+}
 
-        <div class="timeline-item">
-          <div class="timeline-org">
-            <span
-              >The Institute of Electrical and Electronics Engineers
-              (IEEE)</span
-            >
-          </div>
-          <h3 class="timeline-title">Member, IEEE</h3>
-          <p class="timeline-meta">Dec 2025 - Present</p>
-          <p>
-            Engaged member of the world's largest technical professional
-            organization. I use IEEE Xplore and global conference output to stay
-            at the forefront of AI and graph systems and to contribute to local
-            chapter technical discussions.
-          </p>
-        </div>
-      </section>
+.topics dt {
+  font-family: var(--display);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 18;
+  font-size: 1.02rem;
+  color: var(--ink);
+  margin-top: 1.1rem;
+}
 
-      <!-- ============================================================
-         CONTACT
-    ============================================================= -->
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>
-          <a
-            href="https://www.linkedin.com/in/bryantpollard/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >LinkedIn</a
-          >
-        </p>
-      </section>
+.topics dt::before {
+  content: '—';
+  margin-right: 0.5rem;
+  color: var(--accent);
+  font-weight: 400;
+}
 
-      <footer>
-        <p>© <span id="year">2026</span> Bryant Pollard.</p>
-      </footer>
-    </main>
+.topics dd {
+  margin: 0.15rem 0 0 1.4rem;
+  color: var(--ink-soft);
+}
 
-    <script>
-      // Keep the footer year correct without needing an edit each January.
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-  </body>
-</html>
+/* ------------------------------------------------------------
+   Education + Certifications
+------------------------------------------------------------ */
+.timeline-item {
+  padding: 1rem 0;
+  border-bottom: 1px dashed var(--rule);
+}
+
+.timeline-item:last-child {
+  border-bottom: none;
+}
+
+.timeline-org {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--display);
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.org-logo {
+  width: 64px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid var(--rule);
+  padding: 4px;
+}
+
+.org-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: var(--paper-alt);
+  border: 1px solid var(--rule);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.timeline-title {
+  margin: 0.55rem 0 0.25rem;
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.timeline-meta {
+  margin: 0;
+  color: var(--muted);
+}
+
+.cert-group-heading {
+  margin: 1.35rem 0 0.65rem;
+  font-family: var(--display);
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.cert-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.cert-list li {
+  margin: 0 0 0.65rem;
+  color: var(--ink-soft);
+}
+
+.cert-list.two-col {
+  columns: 2;
+  column-gap: 1.5rem;
+}
+
+.cert-list.two-col li {
+  break-inside: avoid;
+}
+
+/* ------------------------------------------------------------
+   Projects
+------------------------------------------------------------ */
+.project-card {
+  padding: 1rem 0;
+  border-bottom: 1px dashed var(--rule);
+}
+
+.project-card:last-child {
+  border-bottom: none;
+}
+
+.project-figure {
+  margin: 0.9rem 0 0;
+}
+
+.project-figure img {
+  width: 100%;
+  max-width: 520px;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  display: block;
+}
+
+/* ------------------------------------------------------------
+   Publications
+------------------------------------------------------------ */
+.pubs {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  counter-reset: pub;
+}
+
+.pubs li {
+  position: relative;
+  padding: 0.9rem 0 0.9rem 2.2rem;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: pub;
+}
+
+.pubs li:last-child {
+  border-bottom: none;
+}
+
+.pubs li::before {
+  content: counter(pub);
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  width: 1.6rem;
+  text-align: right;
+}
+
+.pub-title {
+  display: block;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+
+.pub-authors {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+}
+
+.pub-venue {
+  display: block;
+  color: var(--muted);
+  font-size: 0.96rem;
+  margin-top: 0.1rem;
+}
+
+.pub-links {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+
+.pub-links a {
+  border-bottom: none;
+  color: var(--accent);
+}
+.pub-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ------------------------------------------------------------
+   News table
+------------------------------------------------------------ */
+.news {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.97rem;
+}
+
+.news td {
+  padding: 0.7rem 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+
+.news tr:last-child td {
+  border-bottom: none;
+}
+
+.news-date {
+  width: 9rem;
+  font-family: var(--display);
+  font-weight: 500;
+  font-variation-settings: 'opsz' 14;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------
+   Footer
+------------------------------------------------------------ */
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+/* ------------------------------------------------------------
+   Responsive
+------------------------------------------------------------ */
+@media (max-width: 520px) {
+  body {
+    font-size: 17px;
+  }
+
+  .topnav {
+    padding: 0.7rem 12px;
+  }
+  .topnav a {
+    margin: 0 0.4rem;
+    font-size: 0.88rem;
+  }
+
+  main {
+    padding: 0 18px 4rem;
+  }
+
+  .hero {
+    padding: 3rem 0 2rem;
+  }
+  .hero-top {
+    gap: 1rem;
+  }
+  .graph-motif {
+    width: 110px;
+  }
+  .hero-headshot {
+    width: 112px;
+    height: 112px;
+  }
+  .org-logo {
+    width: 56px;
+    height: 36px;
+  }
+
+  .meta-label {
+    display: block;
+    width: auto;
+    margin-bottom: 0.1rem;
+  }
+  .meta li {
+    margin-bottom: 0.4rem;
+  }
+
+  .news-date {
+    width: 6.5rem;
+  }
+
+  .cert-list.two-col {
+    columns: 1;
+  }
+}
