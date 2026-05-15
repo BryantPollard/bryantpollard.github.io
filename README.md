@@ -5,7 +5,8 @@ Personal academic site — graph deep learning research.
 ## What this is
 
 A single-page static site. Plain HTML
-+ CSS, no build step, no framework. Just push and GitHub Pages serves it.
+
+- CSS, no build step, no framework. Just push and GitHub Pages serves it.
 
 ## File layout
 
