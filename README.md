@@ -4,8 +4,7 @@ Personal academic site — graph deep learning research.
 
 ## What this is
 
-A single-page static site styled after [ekmpa.github.io](https://ekmpa.github.io)
-and [savannahferretti.github.io](https://savannahferretti.github.io). Plain HTML
+A single-page static site. Plain HTML
 + CSS, no build step, no framework. Just push and GitHub Pages serves it.
 
 ## File layout
