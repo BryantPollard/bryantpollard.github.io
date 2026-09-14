@@ -13,6 +13,9 @@
 @prefix unit:    <http://qudt.org/vocab/unit/> .
 @prefix obo:     <http://purl.obolibrary.org/obo/> .
 @prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix schema:  <https://schema.org/> .
 
 #################################################################
 # Ontology header
@@ -23,9 +26,29 @@
     owl:versionIRI <https://bryantpollard.github.io/neon-epn/ontology/0.6.0> ;
     owl:versionInfo "0.6.0" ;
     dcterms:title "NEON-EPN Ontology: National Ecological Observatory Network Eco-Pathogen Network"@en ;
-    dcterms:creator "Bryant Pollard" ;
+    dcterms:description """An OWL ontology for wildlife pathogen surveillance, vector abundance and plant phenology observed across a continental ecological monitoring network. Host-pathogen assays, drag-cloth vector sampling, phenophase checks and sensor telemetry are modelled as specialisations of the W3C SOSA observation pattern over a spatial hierarchy of domains, sites and plots, so that products sharing no identifier in their published form become jointly queryable. Observations record the contributing network, allowing records from more than one monitoring programme to be integrated without losing provenance."""@en ;
+    dcterms:abstract "Semantic layer integrating wildlife pathogen, vector, phenology and climate observations from ecological monitoring networks, modelled on SOSA."@en ;
+    dcterms:creator [ a foaf:Person ; foaf:name "Bryant Pollard" ] ;
+    dcterms:publisher [ a foaf:Organization ; foaf:name "Clemson University" ] ;
     dcterms:created "2026-09-04"^^xsd:date ;
+    dcterms:modified "2026-09-14"^^xsd:date ;
+    dcterms:issued "2026-09-14"^^xsd:date ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights "Released under CC BY 4.0. Underlying NEON and USA-NPN data are also CC BY 4.0."@en ;
+    dcterms:language "en" ;
+    dcterms:source <https://www.neonscience.org/>, <https://www.usanpn.org/> ;
+    dcterms:bibliographicCitation "Pollard, B. (2026). NEON-EPN Ontology, version 0.6.0. https://bryantpollard.github.io/neon-epn/ontology" ;
+    vann:preferredNamespacePrefix "neonepn" ;
+    vann:preferredNamespaceUri "https://bryantpollard.github.io/neon-epn/ontology#" ;
+    schema:codeRepository <https://github.com/BryantPollard/neon-epn> ;
+    rdfs:seeAlso <https://github.com/BryantPollard/neon-epn> ;
+    owl:priorVersion <https://bryantpollard.github.io/neon-epn/ontology/0.5.0> ;
+    prov:wasGeneratedBy [
+        a prov:Activity ;
+        rdfs:label "NEON-EPN ontology development"@en ;
+        rdfs:comment "Developed against seven competency questions, formalised in OWL, and evaluated by competency-question coverage, structural metrics, annotation coverage and a SHACL gate over the instantiated graph."@en ] ;
+    prov:wasDerivedFrom <http://www.w3.org/ns/sosa/>,
+                        <http://purl.obolibrary.org/obo/ppo.owl> ;
     rdfs:comment """Semantic layer (TBox) for the NEON-EPN capstone project. Models NEON
 host-pathogen sampling events and continuous climate sensor telemetry over a dynamic
 spatial hierarchy, as specializations of the W3C SOSA observation pattern. Serves as the
