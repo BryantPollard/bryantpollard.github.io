@@ -1,0 +1,20 @@
+<h2 id="desc" class="list">NEON-EPN Ontology: National Ecological Observatory Network Eco-Pathogen Network: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+<span class="markdown">Semantic layer (TBox) for the NEON-EPN capstone project. Models NEON
+host-pathogen sampling events and continuous climate sensor telemetry over a dynamic
+spatial hierarchy, as specializations of the W3C SOSA observation pattern. Serves as the
+single schema that governs RDF ingestion (Stage 2), SHACL validation (Stage 3), SPARQL
+serving (Stage 4), and the flattened Temporal Graph Benchmark export (Stage 5).
+
+Reuse policy: SOSA is imported in full - Observation, Sampling, FeatureOfInterest,
+Sensor, resultTime and hasResult are all load-bearing here. Everything else is
+soft-referenced by IRI (MIREOT-style) rather than imported: GeoSPARQL, QUDT,
+NCBITaxon, ENVO, the Plant Phenology Ontology (PPO, CC BY 3.0), and the three
+OWL-Time terms below, and PROV-O for the contributing network. Phenophase
+individuals carry skos:closeMatch links to PPO, which was designed to
+accommodate both NEON and USA-NPN status-based monitoring; that shared
+vocabulary is what allows observations from the two networks to be queried
+together without a bespoke crosswalk. Importing OWL-Time in full
+pulled in Duration, GeneralDurationDescription, DateTimeDescription, TRS and a dozen
+other classes that no instance data ever used, tripling the apparent size of the
+model for no benefit.</span>

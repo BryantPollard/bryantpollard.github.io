@@ -1,0 +1,1566 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://bryantpollard.github.io/neon-epn/ontology#"
+     xml:base="https://bryantpollard.github.io/neon-epn/ontology"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:prov="http://www.w3.org/ns/prov#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:schema="https://schema.org/"
+     xmlns:schema1="http://schema.org/">
+    <owl:Ontology rdf:about="https://bryantpollard.github.io/neon-epn/ontology">
+        <owl:versionIRI rdf:resource="https://bryantpollard.github.io/neon-epn/ontology/0.6.0"/>
+        <owl:imports rdf:resource="http://www.w3.org/ns/sosa/"/>
+        <terms:abstract xml:lang="en">Semantic layer integrating wildlife pathogen, vector, phenology and climate observations from ecological monitoring networks, modelled on SOSA.</terms:abstract>
+        <terms:bibliographicCitation>Pollard, B. (2026). NEON-EPN Ontology, version 0.6.0. https://bryantpollard.github.io/neon-epn/ontology</terms:bibliographicCitation>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-09-04</terms:created>
+        <terms:creator rdf:nodeID="genid1"/>
+        <terms:description xml:lang="en">An OWL ontology for wildlife pathogen surveillance, vector abundance and plant phenology observed across a continental ecological monitoring network. Host-pathogen assays, drag-cloth vector sampling, phenophase checks and sensor telemetry are modelled as specialisations of the W3C SOSA observation pattern over a spatial hierarchy of domains, sites and plots, so that products sharing no identifier in their published form become jointly queryable. Observations record the contributing network, allowing records from more than one monitoring programme to be integrated without losing provenance.</terms:description>
+        <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-09-14</terms:issued>
+        <terms:language>en</terms:language>
+        <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-09-14</terms:modified>
+        <terms:publisher rdf:nodeID="genid2"/>
+        <terms:rights xml:lang="en">Released under CC BY 4.0. Underlying NEON and USA-NPN data are also CC BY 4.0.</terms:rights>
+        <terms:source rdf:resource="https://www.neonscience.org/"/>
+        <terms:source rdf:resource="https://www.usanpn.org/"/>
+        <terms:title xml:lang="en">NEON-EPN Ontology: National Ecological Observatory Network Eco-Pathogen Network</terms:title>
+        <vann:preferredNamespacePrefix>neonepn</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>https://bryantpollard.github.io/neon-epn/ontology#</vann:preferredNamespaceUri>
+        <rdfs:comment xml:lang="en">Semantic layer (TBox) for the NEON-EPN capstone project. Models NEON
+host-pathogen sampling events and continuous climate sensor telemetry over a dynamic
+spatial hierarchy, as specializations of the W3C SOSA observation pattern. Serves as the
+single schema that governs RDF ingestion (Stage 2), SHACL validation (Stage 3), SPARQL
+serving (Stage 4), and the flattened Temporal Graph Benchmark export (Stage 5).
+
+Reuse policy: SOSA is imported in full - Observation, Sampling, FeatureOfInterest,
+Sensor, resultTime and hasResult are all load-bearing here. Everything else is
+soft-referenced by IRI (MIREOT-style) rather than imported: GeoSPARQL, QUDT,
+NCBITaxon, ENVO, the Plant Phenology Ontology (PPO, CC BY 3.0), and the three
+OWL-Time terms below, and PROV-O for the contributing network. Phenophase
+individuals carry skos:closeMatch links to PPO, which was designed to
+accommodate both NEON and USA-NPN status-based monitoring; that shared
+vocabulary is what allows observations from the two networks to be queried
+together without a bespoke crosswalk. Importing OWL-Time in full
+pulled in Duration, GeneralDurationDescription, DateTimeDescription, TRS and a dozen
+other classes that no instance data ever used, tripling the apparent size of the
+model for no benefit.</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="https://bryantpollard.github.io/"/>
+        <rdfs:seeAlso rdf:resource="https://github.com/BryantPollard/neon-epn"/>
+        <rdfs:seeAlso rdf:resource="https://www.neonscience.org/"/>
+        <owl:priorVersion rdf:resource="https://bryantpollard.github.io/neon-epn/ontology/0.5.0"/>
+        <owl:versionInfo>0.6.0</owl:versionInfo>
+        <prov:wasDerivedFrom rdf:resource="http://purl.obolibrary.org/obo/ppo.owl"/>
+        <prov:wasDerivedFrom rdf:resource="http://www.w3.org/ns/sosa/"/>
+        <prov:wasGeneratedBy rdf:nodeID="genid3"/>
+        <schema:codeRepository rdf:resource="https://github.com/BryantPollard/neon-epn"/>
+    </owl:Ontology>
+    <rdf:Description rdf:nodeID="genid1">
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <foaf:name>Bryant Pollard</foaf:name>
+    </rdf:Description>
+    <rdf:Description rdf:nodeID="genid2">
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <foaf:name>Clemson University</foaf:name>
+    </rdf:Description>
+    <rdf:Description rdf:nodeID="genid3">
+        <rdf:type rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+        <rdfs:comment xml:lang="en">Developed against seven competency questions, formalised in OWL, and evaluated by competency-question coverage, structural metrics, annotation coverage and a SHACL gate over the instantiated graph.</rdfs:comment>
+        <rdfs:label xml:lang="en">NEON-EPN ontology development</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/dc/terms/abstract -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/abstract"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/bibliographicCitation -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/bibliographicCitation"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/issued -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/issued"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/language -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/language"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/publisher -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/publisher"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/source -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/source"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#closeMatch -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#closeMatch"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#wasDerivedFrom -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#wasDerivedFrom"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#wasGeneratedBy -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#wasGeneratedBy"/>
+    
+
+
+    <!-- https://schema.org/codeRepository -->
+
+
+    <owl:AnnotationProperty rdf:about="https://schema.org/codeRepository"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#sfWithin -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.opengis.net/ont/geosparql#sfWithin"/>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasBeginning -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasBeginning">
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2006/time#"/>
+        <rdfs:label xml:lang="en">has beginning</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time#hasEnd -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasEnd">
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2006/time#"/>
+        <rdfs:label xml:lang="en">has end</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#collectedAt -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#collectedAt">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#TickSample"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit"/>
+        <rdfs:comment xml:lang="en">The spatial unit where a tick sample was collected.</rdfs:comment>
+        <rdfs:label xml:lang="en">collected at</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#deployedAt -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#deployedAt">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ClimateSensor"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit"/>
+        <rdfs:comment xml:lang="en">The spatial unit where a sensor is installed.</rdfs:comment>
+        <rdfs:label xml:lang="en">deployed at</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#detectedAt -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#detectedAt">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit"/>
+        <rdfs:comment xml:lang="en">Asserted pathogen-place detection edge: the pathogen taxon was detected in a vector sample collected at this spatial unit. Materialized from each TickPathogenAssay whose hasAssayResult is Detected. This is the vector-borne counterpart of detectedIn and the second link-prediction target of the temporal graph.</rdfs:comment>
+        <rdfs:label xml:lang="en">detected at</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#detectedIn -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#detectedIn">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#HostIndividual"/>
+        <rdfs:comment xml:lang="en">Asserted pathogen-host detection edge: the pathogen taxon was detected in the host individual. Materialized during Stage 2 from each PathogenAssay whose hasAssayResult is Detected; this is the primary positive edge type of the temporal graph and the main link-prediction target.</rdfs:comment>
+        <rdfs:label xml:lang="en">detected in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#expressedAt -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#expressedAt">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Phenophase"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit"/>
+        <rdfs:comment xml:lang="en">Asserted phenophase-place edge: this phenophase was observed expressed at this spatial unit. Materialized from observations whose status is Expressed. Densely labelled, like observedAt, and it supplies the seasonal timing against which vector activity and pathogen detection can be compared.</rdfs:comment>
+        <rdfs:label xml:lang="en">expressed at</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#fromDragSample -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#fromDragSample">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#DragSample"/>
+        <rdfs:comment xml:lang="en">Links an identified tick occurrence back to the bout that collected it, so that effort and sampled area remain recoverable.</rdfs:comment>
+        <rdfs:label xml:lang="en">from drag sample</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#hasAssayResult -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#hasAssayResult">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#AssayResult"/>
+        <rdfs:comment xml:lang="en">The single outcome of an assay, drawn from the closed AssayResult value set.</rdfs:comment>
+        <rdfs:label xml:lang="en">has assay result</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#hasPhenophaseStatus -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#hasPhenophaseStatus">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseStatus"/>
+        <rdfs:comment xml:lang="en">Relates a phenophase observation to its outcome. Functional: a single check yields one status.</rdfs:comment>
+        <rdfs:label xml:lang="en">has phenophase status</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#hostOf -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#hostOf">
+        <owl:inverseOf rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#detectedIn"/>
+        <rdfs:comment xml:lang="en">Inverse of detectedIn: relates a host individual to a pathogen found in it.</rdfs:comment>
+        <rdfs:label xml:lang="en">host of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#nearFieldSite -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#nearFieldSite">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ObservationSite"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#FieldSite"/>
+        <rdfs:comment xml:lang="en">Asserted proximity between an external observation site and a NEON field site, materialized when the two lie within a stated distance. Deliberately NOT withinSpatialUnit: an external site is not contained by a NEON site, and treating proximity as containment would license false inference through the transitive spatial hierarchy.</rdfs:comment>
+        <rdfs:label xml:lang="en">near field site</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#observedAt -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#observedAt">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#VectorTaxon"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit"/>
+        <rdfs:comment xml:lang="en">Asserted vector-presence edge: this tick species was collected at this spatial unit. Materialized from drag samples in which the taxon was identified. Unlike detectedIn and detectedAt, which record rare pathogen detections, this relation is densely labelled - roughly half of all bouts find the target taxa - which makes it a well-powered companion task on the same graph.</rdfs:comment>
+        <rdfs:label xml:lang="en">observed at</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#observedByNetwork -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#observedByNetwork">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ObservationNetwork"/>
+        <rdfs:comment xml:lang="en">The programme whose protocol produced this observation. Present on every observation once more than one source is integrated, so that provenance survives the merge.</rdfs:comment>
+        <rdfs:label xml:lang="en">observed by network</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#observedPhenophase -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#observedPhenophase">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Phenophase"/>
+        <rdfs:comment xml:lang="en">The phenophase being checked. Functional, and drawn from the closed set NEON records.</rdfs:comment>
+        <rdfs:label xml:lang="en">observed phenophase</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#ofPlantTaxon -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#ofPlantTaxon">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PlantIndividual"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PlantTaxon"/>
+        <rdfs:comment xml:lang="en">The species of a marked plant. Functional, and shared across both contributing networks so that taxa are not duplicated per source.</rdfs:comment>
+        <rdfs:label xml:lang="en">of plant taxon</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#ofTaxon -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#ofTaxon">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#HostIndividual"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#HostTaxon"/>
+        <rdfs:comment xml:lang="en">Links an individual organism to its species-level taxon.</rdfs:comment>
+        <rdfs:label xml:lang="en">of taxon</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#ofVectorTaxon -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#ofVectorTaxon">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#VectorTaxon"/>
+        <rdfs:comment xml:lang="en">The tick species identified in a drag-cloth collection. Functional: one occurrence records one taxon.</rdfs:comment>
+        <rdfs:label xml:lang="en">of vector taxon</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#sampledAt -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#sampledAt">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/ns/sosa/Observation"/>
+                    <rdf:Description rdf:about="http://www.w3.org/ns/sosa/Sampling"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit"/>
+        <rdfs:comment xml:lang="en">The spatial unit at which an observation or sampling act occurred. Combined with withinSpatialUnit, every event resolves upward to site and domain.</rdfs:comment>
+        <rdfs:label xml:lang="en">sampled at</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#testedForPathogen -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#testedForPathogen">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon"/>
+        <rdfs:comment xml:lang="en">The single pathogen taxon targeted by an assay.</rdfs:comment>
+        <rdfs:label xml:lang="en">tested for pathogen</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#withinSpatialUnit -->
+
+
+    <owl:ObjectProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#withinSpatialUnit">
+        <rdfs:subPropertyOf rdf:resource="http://www.opengis.net/ont/geosparql#sfWithin"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit"/>
+        <rdfs:range rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit"/>
+        <rdfs:comment xml:lang="en">Transitive containment along the NEON spatial hierarchy (plot within site within domain). Sub-property of GeoSPARQL sfWithin so spatial reasoners interoperate.</rdfs:comment>
+        <rdfs:label xml:lang="en">within spatial unit</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.w3.org/2006/time#inXSDDateTimeStamp -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#inXSDDateTimeStamp">
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2006/time#"/>
+        <rdfs:label xml:lang="en">in XSD date-time stamp</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#adultCount -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#adultCount">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#DragSample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Adult ticks collected in a drag bout. Distinct from nymphs and larvae, which differ in both host preference and epidemiological importance.</rdfs:comment>
+        <rdfs:label xml:lang="en">adult count</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#adultTicksAttached -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#adultTicksAttached">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Presence of attached ticks by life stage at capture. Bridges hosts to the vector layer: an animal carrying ticks links that host individual to the tick populations sampled by drag cloth at the same plot.</rdfs:comment>
+        <rdfs:label xml:lang="en">adult ticks attached</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#attachedTickCount -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#attachedTickCount">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Number of attached ticks counted at capture (NEON tickNumber). Recorded on only a small fraction of captures; absence means not counted, not zero.</rdfs:comment>
+        <rdfs:label xml:lang="en">attached tick count</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#distanceToFieldSiteKm -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#distanceToFieldSiteKm">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ObservationSite"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment xml:lang="en">Great-circle distance to the nearest NEON field site. Recorded so that a user can choose a proximity threshold rather than inherit the one used at ingestion.</rdfs:comment>
+        <rdfs:label xml:lang="en">distance to field site (km)</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#individualCount -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#individualCount">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#TickSample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Number of tick individuals in the tested subsample. Uniformly 1 in the NEON data examined; retained so that pooled testing, which the source field permits, would be representable without a schema change.</rdfs:comment>
+        <rdfs:label xml:lang="en">individual count</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#larvaCount -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#larvaCount">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#DragSample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Larval ticks collected in a drag bout. Larvae hatch uninfected, so their host associations determine whether the transmission cycle establishes.</rdfs:comment>
+        <rdfs:label xml:lang="en">larva count</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#larvalTicksAttached -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#larvalTicksAttached">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Whether larval ticks were attached to a captured animal. NEON records presence as Y/N, not as a count; parsing it as an integer silently discards every value.</rdfs:comment>
+        <rdfs:label xml:lang="en">larval ticks attached</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#lifeStage -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#lifeStage">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Life stage or sex as recorded by NEON: Larva, Nymph, Female, Male.</rdfs:comment>
+        <rdfs:label xml:lang="en">life stage</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#neonDomainCode -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#neonDomainCode">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#EcoDomain"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">NEON domain identifier, e.g., &apos;D01&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">NEON domain code</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#neonSiteCode -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#neonSiteCode">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#FieldSite"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Four-letter NEON site identifier, e.g., &apos;HARV&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">NEON site code</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#nymphCount -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#nymphCount">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#DragSample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Nymphs are the life stage responsible for most human Lyme transmission, so nymphal presence is the epidemiologically relevant target.</rdfs:comment>
+        <rdfs:label xml:lang="en">nymph count</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#nymphalTicksAttached -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#nymphalTicksAttached">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Whether nymphal ticks were attached to a captured animal. Recorded as Y/N. Nymphs cause most human Lyme transmission, so their presence on reservoir hosts is the epidemiologically informative stage.</rdfs:comment>
+        <rdfs:label xml:lang="en">nymphal ticks attached</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#phenophaseIntensity -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#phenophaseIntensity">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">NEON&apos;s ordinal abundance band for the phase when expressed, for example &apos;&lt; 5%&apos; or &apos;25-49%&apos;. Kept as recorded rather than coerced to a number, since the bands are not evenly spaced.</rdfs:comment>
+        <rdfs:label xml:lang="en">phenophase intensity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#plotId -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#plotId">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Plot"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">NEON plot identifier, e.g., &apos;HARV_001&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">plot identifier</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#sampledAreaSqM -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#sampledAreaSqM">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#DragSample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment xml:lang="en">Area covered by the drag cloth, so counts can be expressed as density rather than raw abundance when effort varies.</rdfs:comment>
+        <rdfs:label xml:lang="en">sampled area (m2)</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#tagId -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#tagId">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#HostIndividual"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">NEON mark-recapture tag for an individual animal.</rdfs:comment>
+        <rdfs:label xml:lang="en">tag identifier</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#targetTaxaPresent -->
+
+
+    <owl:DatatypeProperty rdf:about="https://bryantpollard.github.io/neon-epn/ontology#targetTaxaPresent">
+        <rdfs:domain rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#DragSample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Whether any target tick taxa were collected in this bout. The observed negative that makes vector presence a balanced prediction task.</rdfs:comment>
+        <rdfs:label xml:lang="en">target taxa present</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://qudt.org/schema/qudt/QuantityValue -->
+
+
+    <owl:Class rdf:about="http://qudt.org/schema/qudt/QuantityValue"/>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#Feature -->
+
+
+    <owl:Class rdf:about="http://www.opengis.net/ont/geosparql#Feature"/>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Instant -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Instant">
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2006/time#"/>
+        <rdfs:label xml:lang="en">Instant</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Interval -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Interval">
+        <rdfs:comment xml:lang="en">A temporal entity with extent. Used here for the span covered by a daily climate aggregate.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2006/time#"/>
+        <rdfs:label xml:lang="en">Interval</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Activity -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Activity"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Agent -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Agent"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Organization -->
+
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Organization"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person"/>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#AssayResult -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#AssayResult">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#Detected"/>
+                    <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#Inconclusive"/>
+                    <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#NotDetected"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">Closed value set for pathogen assay outcomes. Closure is enforced here by owl:oneOf and again defensively by SHACL in Stage 3.</rdfs:comment>
+        <rdfs:label xml:lang="en">Assay result</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sampling"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/hasFeatureOfInterest"/>
+                <owl:someValuesFrom rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#HostIndividual"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#sampledAt"/>
+                <owl:someValuesFrom rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Plot"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A discrete NEON trapping/sampling act in which a host individual is captured at a plot at a point in time (sosa:resultTime).</rdfs:comment>
+        <rdfs:label xml:lang="en">Capture event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/ObservableProperty"/>
+        <rdfs:comment xml:lang="en">An observable meteorological/soil property streamed by NEON instrumentation.</rdfs:comment>
+        <rdfs:label xml:lang="en">Climate property</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#ClimateReading -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#ClimateReading">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/hasResult"/>
+                <owl:someValuesFrom rdf:resource="http://qudt.org/schema/qudt/QuantityValue"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/madeBySensor"/>
+                <owl:someValuesFrom rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ClimateSensor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/observedProperty"/>
+                <owl:someValuesFrom rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">One measurement from the climate telemetry. Native-resolution readings carry sosa:resultTime (an instant). Daily aggregates additionally carry sosa:phenomenonTime pointing at a time:Interval spanning the day, because a daily mean is not observed at an instant. Results use QUDT QuantityValue (value + unit), or sosa:hasSimpleResult in lean mode.</rdfs:comment>
+        <rdfs:label xml:lang="en">Climate reading</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#ClimateSensor -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#ClimateSensor">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#deployedAt"/>
+                <owl:someValuesFrom rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A NEON instrument streaming climate readings from a deployment location.</rdfs:comment>
+        <rdfs:label xml:lang="en">Climate sensor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#DragSample -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#DragSample">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sampling"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#sampledAt"/>
+                <owl:someValuesFrom rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Plot"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">One drag-cloth sampling bout at a plot: a cloth of known area is dragged through vegetation and the ticks collected are counted by life stage. Recorded whether or not ticks are found, so absence is observed rather than inferred.</rdfs:comment>
+        <rdfs:label xml:lang="en">Drag sample</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#EcoDomain -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#EcoDomain">
+        <rdfs:subClassOf rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit"/>
+        <rdfs:comment xml:lang="en">One of NEON&apos;s 20 ecoclimatic domains (e.g., D01 Northeast).</rdfs:comment>
+        <rdfs:label xml:lang="en">Ecoclimatic domain</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#FieldSite -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#FieldSite">
+        <rdfs:subClassOf rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#withinSpatialUnit"/>
+                <owl:someValuesFrom rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#EcoDomain"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A NEON field site (e.g., HARV, OSBS). Every field site lies within an ecoclimatic domain.</rdfs:comment>
+        <rdfs:label xml:lang="en">Field site</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#HostIndividual -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#HostIndividual">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/FeatureOfInterest"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ofTaxon"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#HostTaxon"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#TickSample"/>
+        <rdfs:comment xml:lang="en">An individual captured/sampled organism (e.g., one tagged deer mouse). The feature of interest of pathogen assays.</rdfs:comment>
+        <rdfs:label xml:lang="en">Host individual</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#HostTaxon -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#HostTaxon">
+        <rdfs:subClassOf rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Taxon"/>
+        <rdfs:comment xml:lang="en">A taxon acting as a pathogen host in this network (e.g., small mammal species sampled by NEON).</rdfs:comment>
+        <rdfs:label xml:lang="en">Host taxon</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#ObservationNetwork -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#ObservationNetwork">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Agent"/>
+        <rdfs:comment xml:lang="en">A programme that collects observations to a defined protocol. Recorded so that records from different networks remain distinguishable after integration.</rdfs:comment>
+        <rdfs:label xml:lang="en">Observation network</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#ObservationSite -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#ObservationSite">
+        <rdfs:subClassOf rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit"/>
+        <rdfs:comment xml:lang="en">A location at which a network makes observations, where that location is not part of NEON&apos;s domain-site-plot hierarchy. USA-NPN stations are volunteer-chosen points, so they are related to NEON field sites by proximity rather than by containment.</rdfs:comment>
+        <rdfs:label xml:lang="en">Observation site</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#PathogenAssay -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#PathogenAssay">
+        <rdfs:subClassOf rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/hasFeatureOfInterest"/>
+                <owl:someValuesFrom rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#HostIndividual"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/observedProperty"/>
+                <owl:hasValue rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PathogenPresence"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#hasAssayResult"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#AssayResult"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#testedForPathogen"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#TickPathogenAssay"/>
+        <rdfs:comment xml:lang="en">A laboratory test (e.g., qPCR/ELISA) of one host individual&apos;s blood sample for one pathogen taxon. Source: NEON rodent-borne pathogen status, linked to trapping by bloodSampleID.</rdfs:comment>
+        <rdfs:label xml:lang="en">Host pathogen assay</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon">
+        <rdfs:subClassOf rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Taxon"/>
+        <rdfs:comment xml:lang="en">A taxon acting as a pathogen or vector-borne agent tested for by NEON assays (e.g., Borrelia burgdorferi).</rdfs:comment>
+        <rdfs:label xml:lang="en">Pathogen taxon</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#PathogenTest -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/observedProperty"/>
+                <owl:hasValue rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PathogenPresence"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#hasAssayResult"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#AssayResult"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#testedForPathogen"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Any test for the presence of one pathogen taxon in one sampled entity, yielding exactly one closed-set result at a point in time. Specialized by PathogenAssay (host blood) and TickPathogenAssay (pooled tick subsample).</rdfs:comment>
+        <rdfs:label xml:lang="en">Pathogen test</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#Phenophase -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#Phenophase">
+        <rdfs:comment xml:lang="en">A recognisable stage in a plant&apos;s annual cycle, such as breaking leaf buds or open flowers. Members of a closed set defined by NEON&apos;s observation protocol.</rdfs:comment>
+        <rdfs:label xml:lang="en">Phenophase</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#hasPhenophaseStatus"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseStatus"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#observedPhenophase"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Phenophase"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">One check of whether one phenophase is currently expressed on one plant. Recorded on every visit whether or not the phase is present, so absence is observed rather than inferred, as with drag sampling. Carries neonepn:observedByNetwork, since both NEON and USA-NPN contribute observations of the same phenophases to this class.</rdfs:comment>
+        <rdfs:label xml:lang="en">Phenophase observation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#PhenophaseStatus -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseStatus">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#Expressed"/>
+                    <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#NotExpressed"/>
+                    <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#StatusUncertain"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">Whether a phenophase was observable on a plant at the moment of a visit. A closed set, so an unrecognised value is rejected at validation rather than propagating.</rdfs:comment>
+        <rdfs:label xml:lang="en">Phenophase status</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#PlantIndividual -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#PlantIndividual">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/FeatureOfInterest"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ofPlantTaxon"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PlantTaxon"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A marked plant observed repeatedly through the season, identified by the contributing network&apos;s individual identifier. Unlike a host animal it is sessile, so its location is fixed and it is revisited on a schedule rather than recaptured by chance. Identifiers are network-scoped: a NEON individualID and a USA-NPN individual_id may collide numerically and are kept in separate IRI spaces.</rdfs:comment>
+        <rdfs:label xml:lang="en">Plant individual</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#PlantTaxon -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#PlantTaxon">
+        <rdfs:subClassOf rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Taxon"/>
+        <rdfs:comment xml:lang="en">A plant species under phenological observation, for example Quercus rubra or Acer rubrum.</rdfs:comment>
+        <rdfs:label xml:lang="en">Plant taxon</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#Plot -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#Plot">
+        <rdfs:subClassOf rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#withinSpatialUnit"/>
+                <owl:someValuesFrom rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#FieldSite"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A sampling plot within a NEON field site (e.g., a small-mammal trapping grid).</rdfs:comment>
+        <rdfs:label xml:lang="en">Plot</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
+        <rdfs:comment xml:lang="en">Any node of the NEON spatial hierarchy (ecoclimatic domain, field site, or plot). Subclass of geo:Feature so WKT geometries can be attached.</rdfs:comment>
+        <rdfs:label xml:lang="en">Spatial unit</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#Taxon -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#Taxon">
+        <rdfs:comment xml:lang="en">A biological taxon referenced by the project. Individuals should carry a skos:exactMatch to the corresponding purl.obolibrary.org NCBITaxon IRI.</rdfs:comment>
+        <rdfs:label xml:lang="en">Taxon</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_1"/>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#TickPathogenAssay -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#TickPathogenAssay">
+        <rdfs:subClassOf rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/hasFeatureOfInterest"/>
+                <owl:someValuesFrom rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#TickSample"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A laboratory test of one pooled tick subsample for one pathogen taxon. Source: NEON tick-borne pathogen status.</rdfs:comment>
+        <rdfs:label xml:lang="en">Tick pathogen assay</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#TickSample -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#TickSample">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/FeatureOfInterest"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#collectedAt"/>
+                <owl:someValuesFrom rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A tick specimen collected by drag-cloth sampling at a plot and submitted for pathogen testing, identified by NEON subsampleID. In every NEON record examined (231,892 across 39 sites) individualCount is 1, so a sample is a single tick; the count is retained because the field permits pooling in principle. Unlike a host individual, a tick sample is an environmental sample with no tagged organism, so vector-borne detections attach to place rather than to an animal.</rdfs:comment>
+        <rdfs:label xml:lang="en">Tick sample</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ofVectorTaxon"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#VectorTaxon"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Identification of one tick taxon (optionally at one life stage) within one drag sample, with the number of individuals counted.</rdfs:comment>
+        <rdfs:label xml:lang="en">Vector occurrence</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#VectorTaxon -->
+
+
+    <owl:Class rdf:about="https://bryantpollard.github.io/neon-epn/ontology#VectorTaxon">
+        <rdfs:subClassOf rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Taxon"/>
+        <rdfs:comment xml:lang="en">A tick species that may transmit pathogens, identified from drag-cloth collections (e.g. Ixodes scapularis, Amblyomma americanum).</rdfs:comment>
+        <rdfs:label xml:lang="en">Vector taxon</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#AirTemperature -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#AirTemperature">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty"/>
+        <rdfs:comment xml:lang="en">Air temperature at tower height. Note that ticks quest in the litter layer rather than two metres up, so this is a proxy for the microclimate they actually experience.</rdfs:comment>
+        <rdfs:label xml:lang="en">air temperature</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#BreakingLeafBuds -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#BreakingLeafBuds">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Phenophase"/>
+        <rdfs:comment xml:lang="en">The canonical green-up indicator: the first date this is expressed marks the onset of the growing season. PPO:0001012 &apos;breaking vegetative bud&apos; carries &apos;breaking leaf bud&apos; as an alternative label.</rdfs:comment>
+        <rdfs:label xml:lang="en">Breaking leaf buds</rdfs:label>
+        <skos:closeMatch rdf:resource="http://purl.obolibrary.org/obo/PPO_0001012"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#ColoredLeaves -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#ColoredLeaves">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Phenophase"/>
+        <rdfs:comment xml:lang="en">Aligned to &apos;senescing true leaf present&apos; (PPO:0002317). NEON scores leaf colour as the visible marker of senescence; PPO names the underlying state.</rdfs:comment>
+        <rdfs:label xml:lang="en">Colored leaves</rdfs:label>
+        <skos:closeMatch rdf:resource="http://purl.obolibrary.org/obo/PPO_0002317"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#Detected -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#Detected">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#AssayResult"/>
+        <rdfs:comment xml:lang="en">The assay found the pathogen in this sample.</rdfs:comment>
+        <rdfs:label xml:lang="en">detected</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#EmergingNeedles -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#EmergingNeedles">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Phenophase"/>
+        <rdfs:comment xml:lang="en">Aligned to &apos;unfolding true leaf present&apos; (PPO:0002314). PPO treats needles as vascular leaves and its unfolding stage explicitly covers conifers.</rdfs:comment>
+        <rdfs:label xml:lang="en">Emerging needles</rdfs:label>
+        <skos:closeMatch rdf:resource="http://purl.obolibrary.org/obo/PPO_0002314"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#Expressed -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#Expressed">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseStatus"/>
+        <rdfs:comment xml:lang="en">The phenophase is currently observable on the plant. Corresponds to PPO&apos;s &apos;present&apos; traits, e.g. &apos;open flower present&apos; (PPO:0002333) for OpenFlowers.</rdfs:comment>
+        <rdfs:label xml:lang="en">Expressed</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#FallingLeaves -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#FallingLeaves">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Phenophase"/>
+        <rdfs:comment xml:lang="en">Aligned to &apos;abscised leaf present&apos; (PPO:0002357), which counts leaves shed within the current growing season.</rdfs:comment>
+        <rdfs:label xml:lang="en">Falling leaves</rdfs:label>
+        <skos:closeMatch rdf:resource="http://purl.obolibrary.org/obo/PPO_0002357"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#Inconclusive -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#Inconclusive">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#AssayResult"/>
+        <rdfs:comment xml:lang="en">The assay could not be resolved. Excluded from both positives and negatives rather than treated as an absence.</rdfs:comment>
+        <rdfs:label xml:lang="en">inconclusive</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#IncreasingLeafSize -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#IncreasingLeafSize">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Phenophase"/>
+        <rdfs:comment xml:lang="en">Aligned to &apos;expanding true leaf present&apos; (PPO:0002322).</rdfs:comment>
+        <rdfs:label xml:lang="en">Increasing leaf size</rdfs:label>
+        <skos:closeMatch rdf:resource="http://purl.obolibrary.org/obo/PPO_0002322"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#InitialGrowth -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#InitialGrowth">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Phenophase"/>
+        <rdfs:comment xml:lang="en">NEON scores initial growth for grasses and forbs, where new basal or vegetative growth emerges without a distinct bud-break event. No PPO counterpart was found, so this individual is deliberately left unaligned rather than forced onto an approximate term.</rdfs:comment>
+        <rdfs:label xml:lang="en">Initial growth</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#Leaves -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#Leaves">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Phenophase"/>
+        <rdfs:comment xml:lang="en">Aligned to &apos;true leaf present&apos; (PPO:0002313).</rdfs:comment>
+        <rdfs:label xml:lang="en">Leaves</rdfs:label>
+        <skos:closeMatch rdf:resource="http://purl.obolibrary.org/obo/PPO_0002313"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#NEON -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#NEON">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ObservationNetwork"/>
+        <rdfs:comment xml:lang="en">Continental-scale observatory operated by Battelle under NSF cooperative agreement. Observations are made by trained technicians on fixed plots to a published protocol.</rdfs:comment>
+        <rdfs:label xml:lang="en">National Ecological Observatory Network</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://www.neonscience.org/"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#NotDetected -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#NotDetected">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#AssayResult"/>
+        <rdfs:comment xml:lang="en">The assay was performed and did not find the pathogen. An observed absence, not a missing value: this is what makes prevalence computable, since it supplies the denominator.</rdfs:comment>
+        <rdfs:label xml:lang="en">not detected</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#NotExpressed -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#NotExpressed">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseStatus"/>
+        <rdfs:comment xml:lang="en">The plant was checked and the phenophase was not observable. An observed absence, not a missing value; corresponds to PPO&apos;s &apos;absent&apos; traits, e.g. &apos;open flower absent&apos; (PPO:0002632).</rdfs:comment>
+        <rdfs:label xml:lang="en">Not expressed</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#OpenFlowers -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#OpenFlowers">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Phenophase"/>
+        <rdfs:comment xml:lang="en">Aligned to &apos;open flower present&apos; (PPO:0002333). The closest correspondence in the set.</rdfs:comment>
+        <rdfs:label xml:lang="en">Open flowers</rdfs:label>
+        <skos:closeMatch rdf:resource="http://purl.obolibrary.org/obo/PPO_0002333"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#OpenPollenCones -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#OpenPollenCones">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Phenophase"/>
+        <rdfs:comment xml:lang="en">Aligned to &apos;open microsporangiate strobilus&apos; (PPO:0001047). PPO offers no paired presence trait for pollen cones, so the match is to the structure class itself.</rdfs:comment>
+        <rdfs:label xml:lang="en">Open pollen cones</rdfs:label>
+        <skos:closeMatch rdf:resource="http://purl.obolibrary.org/obo/PPO_0001047"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#PathogenPresence -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#PathogenPresence">
+        <rdf:type rdf:resource="http://www.w3.org/ns/sosa/ObservableProperty"/>
+        <rdfs:comment xml:lang="en">The observable property measured by a pathogen assay: presence/absence of a target pathogen in a host individual or its sample.</rdfs:comment>
+        <rdfs:label xml:lang="en">pathogen presence</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#Precipitation -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#Precipitation">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty"/>
+        <rdfs:comment xml:lang="en">Bulk precipitation from the weighing gauge (DP1.00044.001), which replaced the deprecated DP1.00006.001 in October 2025.</rdfs:comment>
+        <rdfs:label xml:lang="en">precipitation</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#RelativeHumidity -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#RelativeHumidity">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty"/>
+        <rdfs:comment xml:lang="en">Relative humidity. Capacitive sensors read slightly above 100 percent in fog and frost; values to 105 percent are retained with a warning rather than discarded.</rdfs:comment>
+        <rdfs:label xml:lang="en">relative humidity</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#SoilTemperature -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#SoilTemperature">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty"/>
+        <rdfs:comment xml:lang="en">Soil temperature. Declared for completeness; NEON soil arrays sit 9.5 km or more from the nearest drag plot, so the product is not ingested.</rdfs:comment>
+        <rdfs:label xml:lang="en">soil temperature</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#StatusUncertain -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#StatusUncertain">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseStatus"/>
+        <rdfs:comment xml:lang="en">The observer could not determine the status. Excluded from derived timing measures.</rdfs:comment>
+        <rdfs:label xml:lang="en">Uncertain</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#USANPN -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#USANPN">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ObservationNetwork"/>
+        <rdfs:comment xml:lang="en">Volunteer phenology monitoring through the Nature&apos;s Notebook programme, coordinated by the USA-NPN National Coordinating Office. Observers are dispersed and self-selected, and the coordinating office has limited ability to verify individual observer skill, so a single record carries less assurance than a NEON record while the aggregate covers far more of the country.</rdfs:comment>
+        <rdfs:label xml:lang="en">USA National Phenology Network</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://www.usanpn.org/"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#UnidentifiedHostTaxon -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#UnidentifiedHostTaxon">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#HostTaxon"/>
+        <rdfs:comment xml:lang="en">Sentinel taxon for captured animals NEON recorded without a usable species identification (an animal escaping before identification, or an incomplete record). Modelling this explicitly keeps the capture and any assay in the graph while making the taxonomic uncertainty visible, rather than silently dropping the animal.</rdfs:comment>
+        <rdfs:label xml:lang="en">Unidentified host taxon</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#WindSpeed -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#WindSpeed">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty"/>
+        <rdfs:comment xml:lang="en">Wind speed. Declared for completeness; not currently ingested.</rdfs:comment>
+        <rdfs:label xml:lang="en">wind speed</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://bryantpollard.github.io/neon-epn/ontology#YoungNeedles -->
+
+
+    <owl:NamedIndividual rdf:about="https://bryantpollard.github.io/neon-epn/ontology#YoungNeedles">
+        <rdf:type rdf:resource="https://bryantpollard.github.io/neon-epn/ontology#Phenophase"/>
+        <rdfs:comment xml:lang="en">Aligned to &apos;immature unfolded true leaf present&apos; (PPO:0002318).</rdfs:comment>
+        <rdfs:label xml:lang="en">Young needles</rdfs:label>
+        <skos:closeMatch rdf:resource="http://purl.obolibrary.org/obo/PPO_0002318"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent"/>
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#ClimateReading"/>
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#DragSample"/>
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest"/>
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation"/>
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#EcoDomain"/>
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#FieldSite"/>
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#Plot"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#HostTaxon"/>
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon"/>
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#PlantTaxon"/>
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#VectorTaxon"/>
+        </owl:members>
+        <rdfs:comment>Disjoint within the scope of this model: no taxon plays both roles in NEON-EPN.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#Detected"/>
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#Inconclusive"/>
+            <rdf:Description rdf:about="https://bryantpollard.github.io/neon-epn/ontology#NotDetected"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,4496 @@
+{
+  "_comment" : "Created with OWL2VOWL (version 0.3.5), http://vowl.visualdataweb.org",
+  "header" : {
+    "languages" : [ "en", "undefined" ],
+    "baseIris" : [ "http://www.w3.org/1999/02/22-rdf-syntax-ns", "http://purl.org/vocommons/voaf", "https://bryantpollard.github.io/neon-epn/ontology", "http://qudt.org/schema/qudt", "http://www.w3.org/2000/01/rdf-schema", "http://www.w3.org/ns/prov", "http://www.w3.org/2001/XMLSchema", "http://www.w3.org/ns/sosa", "http://xmlns.com/foaf/0.1", "http://www.w3.org/2006/time", "http://www.opengis.net/ont/geosparql" ],
+    "title" : {
+      "en" : "NEON-EPN Ontology: National Ecological Observatory Network Eco-Pathogen Network"
+    },
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "version" : "0.6.0",
+    "author" : [ "_:genid2147483648" ],
+    "description" : {
+      "en" : "An OWL ontology for wildlife pathogen surveillance, vector abundance and plant phenology observed across a continental ecological monitoring network. Host-pathogen assays, drag-cloth vector sampling, phenophase checks and sensor telemetry are modelled as specialisations of the W3C SOSA observation pattern over a spatial hierarchy of domains, sites and plots, so that products sharing no identifier in their published form become jointly queryable. Observations record the contributing network, allowing records from more than one monitoring programme to be integrated without losing provenance."
+    },
+    "comments" : {
+      "en" : "Semantic layer (TBox) for the NEON-EPN capstone project. Models NEON\nhost-pathogen sampling events and continuous climate sensor telemetry over a dynamic\nspatial hierarchy, as specializations of the W3C SOSA observation pattern. Serves as the\nsingle schema that governs RDF ingestion (Stage 2), SHACL validation (Stage 3), SPARQL\nserving (Stage 4), and the flattened Temporal Graph Benchmark export (Stage 5).\n\nReuse policy: SOSA is imported in full - Observation, Sampling, FeatureOfInterest,\nSensor, resultTime and hasResult are all load-bearing here. Everything else is\nsoft-referenced by IRI (MIREOT-style) rather than imported: GeoSPARQL, QUDT,\nNCBITaxon, ENVO, the Plant Phenology Ontology (PPO, CC BY 3.0), and the three\nOWL-Time terms below, and PROV-O for the contributing network. Phenophase\nindividuals carry skos:closeMatch links to PPO, which was designed to\naccommodate both NEON and USA-NPN status-based monitoring; that shared\nvocabulary is what allows observations from the two networks to be queried\ntogether without a bespoke crosswalk. Importing OWL-Time in full\npulled in Duration, GeneralDurationDescription, DateTimeDescription, TRS and a dozen\nother classes that no instance data ever used, tripling the apparent size of the\nmodel for no benefit."
+    },
+    "other" : {
+      "priorVersion" : [ {
+        "identifier" : "priorVersion",
+        "language" : "undefined",
+        "value" : "https://bryantpollard.github.io/neon-epn/ontology/0.5.0",
+        "type" : "iri"
+      } ],
+      "creator" : [ {
+        "identifier" : "creator",
+        "language" : "undefined",
+        "value" : "_:genid2147483648",
+        "type" : "label"
+      } ],
+      "created" : [ {
+        "identifier" : "created",
+        "language" : "undefined",
+        "value" : "2026-09-04",
+        "type" : "label"
+      } ],
+      "wasDerivedFrom" : [ {
+        "identifier" : "wasDerivedFrom",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      }, {
+        "identifier" : "wasDerivedFrom",
+        "language" : "undefined",
+        "value" : "http://purl.obolibrary.org/obo/ppo.owl",
+        "type" : "iri"
+      } ],
+      "language" : [ {
+        "identifier" : "language",
+        "language" : "undefined",
+        "value" : "en",
+        "type" : "label"
+      } ],
+      "source" : [ {
+        "identifier" : "source",
+        "language" : "undefined",
+        "value" : "https://www.neonscience.org/",
+        "type" : "iri"
+      }, {
+        "identifier" : "source",
+        "language" : "undefined",
+        "value" : "https://www.usanpn.org/",
+        "type" : "iri"
+      } ],
+      "abstract" : [ {
+        "identifier" : "abstract",
+        "language" : "en",
+        "value" : "Semantic layer integrating wildlife pathogen, vector, phenology and climate observations from ecological monitoring networks, modelled on SOSA.",
+        "type" : "label"
+      } ],
+      "versionInfo" : [ {
+        "identifier" : "versionInfo",
+        "language" : "undefined",
+        "value" : "0.6.0",
+        "type" : "label"
+      } ],
+      "title" : [ {
+        "identifier" : "title",
+        "language" : "en",
+        "value" : "NEON-EPN Ontology: National Ecological Observatory Network Eco-Pathogen Network",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "https://github.com/BryantPollard/neon-epn",
+        "type" : "iri"
+      }, {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "https://bryantpollard.github.io/",
+        "type" : "iri"
+      }, {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "https://www.neonscience.org/",
+        "type" : "iri"
+      } ],
+      "license" : [ {
+        "identifier" : "license",
+        "language" : "undefined",
+        "value" : "https://creativecommons.org/licenses/by/4.0/",
+        "type" : "iri"
+      } ],
+      "wasGeneratedBy" : [ {
+        "identifier" : "wasGeneratedBy",
+        "language" : "undefined",
+        "value" : "_:genid2147483650",
+        "type" : "label"
+      } ],
+      "rights" : [ {
+        "identifier" : "rights",
+        "language" : "en",
+        "value" : "Released under CC BY 4.0. Underlying NEON and USA-NPN data are also CC BY 4.0.",
+        "type" : "label"
+      } ],
+      "preferredNamespacePrefix" : [ {
+        "identifier" : "preferredNamespacePrefix",
+        "language" : "undefined",
+        "value" : "neonepn",
+        "type" : "label"
+      } ],
+      "publisher" : [ {
+        "identifier" : "publisher",
+        "language" : "undefined",
+        "value" : "_:genid2147483649",
+        "type" : "label"
+      } ],
+      "modified" : [ {
+        "identifier" : "modified",
+        "language" : "undefined",
+        "value" : "2026-09-14",
+        "type" : "label"
+      } ],
+      "codeRepository" : [ {
+        "identifier" : "codeRepository",
+        "language" : "undefined",
+        "value" : "https://github.com/BryantPollard/neon-epn",
+        "type" : "iri"
+      } ],
+      "preferredNamespaceUri" : [ {
+        "identifier" : "preferredNamespaceUri",
+        "language" : "undefined",
+        "value" : "https://bryantpollard.github.io/neon-epn/ontology#",
+        "type" : "label"
+      } ],
+      "bibliographicCitation" : [ {
+        "identifier" : "bibliographicCitation",
+        "language" : "undefined",
+        "value" : "Pollard, B. (2026). NEON-EPN Ontology, version 0.6.0. https://bryantpollard.github.io/neon-epn/ontology",
+        "type" : "label"
+      } ],
+      "issued" : [ {
+        "identifier" : "issued",
+        "language" : "undefined",
+        "value" : "2026-09-14",
+        "type" : "label"
+      } ]
+    }
+  },
+  "namespace" : [ ],
+  "class" : [ {
+    "id" : "3",
+    "type" : "owl:Class"
+  }, {
+    "id" : "10",
+    "type" : "owl:Class"
+  }, {
+    "id" : "12",
+    "type" : "owl:Class"
+  }, {
+    "id" : "16",
+    "type" : "owl:Class"
+  }, {
+    "id" : "15",
+    "type" : "owl:Class"
+  }, {
+    "id" : "22",
+    "type" : "owl:Class"
+  }, {
+    "id" : "11",
+    "type" : "owl:Class"
+  }, {
+    "id" : "30",
+    "type" : "owl:Class"
+  }, {
+    "id" : "31",
+    "type" : "owl:Class"
+  }, {
+    "id" : "32",
+    "type" : "owl:Class"
+  }, {
+    "id" : "33",
+    "type" : "owl:Class"
+  }, {
+    "id" : "34",
+    "type" : "owl:Class"
+  }, {
+    "id" : "37",
+    "type" : "owl:Class"
+  }, {
+    "id" : "21",
+    "type" : "owl:Class"
+  }, {
+    "id" : "58",
+    "type" : "owl:Class"
+  }, {
+    "id" : "40",
+    "type" : "owl:Class"
+  }, {
+    "id" : "52",
+    "type" : "owl:Class"
+  }, {
+    "id" : "50",
+    "type" : "owl:Class"
+  }, {
+    "id" : "4",
+    "type" : "owl:Class"
+  }, {
+    "id" : "13",
+    "type" : "owl:Class"
+  }, {
+    "id" : "26",
+    "type" : "owl:Class"
+  }, {
+    "id" : "72",
+    "type" : "owl:Class"
+  }, {
+    "id" : "78",
+    "type" : "owl:Class"
+  }, {
+    "id" : "79",
+    "type" : "owl:Class"
+  }, {
+    "id" : "82",
+    "type" : "owl:Class"
+  }, {
+    "id" : "83",
+    "type" : "owl:Class"
+  }, {
+    "id" : "91",
+    "type" : "owl:Class"
+  }, {
+    "id" : "61",
+    "type" : "owl:Class"
+  }, {
+    "id" : "105",
+    "type" : "owl:Class"
+  }, {
+    "id" : "14",
+    "type" : "owl:Class"
+  }, {
+    "id" : "119",
+    "type" : "owl:Class"
+  }, {
+    "id" : "122",
+    "type" : "owl:Class"
+  }, {
+    "id" : "63",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "49",
+    "type" : "owl:Class"
+  }, {
+    "id" : "123",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "57",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "124",
+    "type" : "owl:Class"
+  }, {
+    "id" : "43",
+    "type" : "owl:Class"
+  }, {
+    "id" : "1",
+    "type" : "owl:Class"
+  }, {
+    "id" : "75",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "24",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "127",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "128",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "51",
+    "type" : "owl:Class"
+  }, {
+    "id" : "66",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "60",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "130",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "131",
+    "type" : "owl:Class"
+  }, {
+    "id" : "132",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "7",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "41",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "135",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "112",
+    "type" : "owl:Class"
+  }, {
+    "id" : "20",
+    "type" : "owl:unionOf"
+  }, {
+    "id" : "93",
+    "type" : "owl:Class"
+  }, {
+    "id" : "54",
+    "type" : "owl:Class"
+  }, {
+    "id" : "6",
+    "type" : "owl:Class"
+  }, {
+    "id" : "68",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "70",
+    "type" : "owl:Class"
+  }, {
+    "id" : "9",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "165",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "126",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "81",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "98",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "44",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "136",
+    "type" : "owl:Class"
+  }, {
+    "id" : "174",
+    "type" : "owl:Class"
+  }, {
+    "id" : "178",
+    "type" : "owl:Class"
+  }, {
+    "id" : "38",
+    "type" : "owl:Class"
+  }, {
+    "id" : "189",
+    "type" : "owl:Class"
+  }, {
+    "id" : "110",
+    "type" : "owl:Class"
+  }, {
+    "id" : "2",
+    "type" : "owl:Class"
+  }, {
+    "id" : "17",
+    "type" : "owl:Class"
+  } ],
+  "classAttribute" : [ {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#ClimateSensor",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ClimateSensor",
+      "en" : "Climate sensor"
+    },
+    "comment" : {
+      "en" : "A NEON instrument streaming climate readings from a deployment location."
+    },
+    "id" : "3",
+    "superClasses" : [ "4" ]
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#ObservationNetwork",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ObservationNetwork",
+      "en" : "Observation network"
+    },
+    "individuals" : [ {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#USANPN",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "annotations" : {
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://www.usanpn.org/",
+          "type" : "iri"
+        } ]
+      },
+      "comment" : {
+        "en" : "Volunteer phenology monitoring through the Nature's Notebook programme, coordinated by the USA-NPN National Coordinating Office. Observers are dispersed and self-selected, and the coordinating office has limited ability to verify individual observer skill, so a single record carries less assurance than a NEON record while the aggregate covers far more of the country."
+      },
+      "labels" : {
+        "IRI-based" : "USANPN",
+        "en" : "USA National Phenology Network"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#NEON",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "annotations" : {
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://www.neonscience.org/",
+          "type" : "iri"
+        } ]
+      },
+      "comment" : {
+        "en" : "Continental-scale observatory operated by Battelle under NSF cooperative agreement. Observations are made by trained technicians on fixed plots to a published protocol."
+      },
+      "labels" : {
+        "IRI-based" : "NEON",
+        "en" : "National Ecological Observatory Network"
+      }
+    } ],
+    "comment" : {
+      "en" : "A programme that collects observations to a defined protocol. Recorded so that records from different networks remain distinguishable after integration."
+    },
+    "id" : "10",
+    "superClasses" : [ "11" ]
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/Observation",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest. Links to a Sensor to describe what made the Observation and how; links to an ObservableProperty to describe what the result is an estimate of, and to a FeatureOfInterest to detail what that property was associated with.",
+        "type" : "label"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "The activity of estimating the intensity of an Earthquake using the Mercalli intensity scale is an Observation as is measuring the moment magnitude, i.e., the energy released by said earthquake.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Observation",
+      "en" : "Observation"
+    },
+    "subClasses" : [ "13", "1", "14", "15" ],
+    "comment" : {
+      "en" : "Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest. Links to a Sensor to describe what made the Observation and how; links to an ObservableProperty to describe what the result is an estimate of, and to a FeatureOfInterest to detail what that property was associated with."
+    },
+    "attributes" : [ "external" ],
+    "id" : "12"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#VectorTaxon",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "VectorTaxon",
+      "en" : "Vector taxon"
+    },
+    "comment" : {
+      "en" : "A tick species that may transmit pathogens, identified from drag-cloth collections (e.g. Ixodes scapularis, Amblyomma americanum)."
+    },
+    "id" : "16",
+    "superClasses" : [ "17" ]
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "VectorOccurrence",
+      "en" : "Vector occurrence"
+    },
+    "comment" : {
+      "en" : "Identification of one tick taxon (optionally at one life stage) within one drag sample, with the number of individuals counted."
+    },
+    "id" : "15",
+    "superClasses" : [ "12" ]
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#PathogenAssay",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "PathogenAssay",
+      "en" : "Host pathogen assay"
+    },
+    "comment" : {
+      "en" : "A laboratory test (e.g., qPCR/ELISA) of one host individual's blood sample for one pathogen taxon. Source: NEON rodent-borne pathogen status, linked to trapping by bloodSampleID."
+    },
+    "id" : "22",
+    "superClasses" : [ "1" ]
+  }, {
+    "iri" : "http://www.w3.org/ns/prov#Agent",
+    "baseIri" : "http://www.w3.org/ns/prov",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Agent"
+    },
+    "subClasses" : [ "10" ],
+    "attributes" : [ "external" ],
+    "id" : "11"
+  }, {
+    "iri" : "http://purl.org/vocommons/voaf#Vocabulary",
+    "baseIri" : "http://purl.org/vocommons/voaf",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Vocabulary"
+    },
+    "individuals" : [ {
+      "iri" : "http://www.w3.org/ns/sosa/",
+      "baseIri" : "http://www.w3.org/ns",
+      "labels" : { }
+    } ],
+    "attributes" : [ "external" ],
+    "id" : "30"
+  }, {
+    "iri" : "http://www.opengis.net/ont/geosparql#Feature",
+    "baseIri" : "http://www.opengis.net/ont/geosparql",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Feature"
+    },
+    "subClasses" : [ "21" ],
+    "attributes" : [ "external" ],
+    "id" : "31"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#HostTaxon",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "HostTaxon",
+      "en" : "Host taxon"
+    },
+    "individuals" : [ {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#UnidentifiedHostTaxon",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "comment" : {
+        "en" : "Sentinel taxon for captured animals NEON recorded without a usable species identification (an animal escaping before identification, or an incomplete record). Modelling this explicitly keeps the capture and any assay in the graph while making the taxonomic uncertainty visible, rather than silently dropping the animal."
+      },
+      "labels" : {
+        "IRI-based" : "UnidentifiedHostTaxon",
+        "en" : "Unidentified host taxon"
+      }
+    } ],
+    "comment" : {
+      "en" : "A taxon acting as a pathogen host in this network (e.g., small mammal species sampled by NEON)."
+    },
+    "id" : "32",
+    "superClasses" : [ "17" ]
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/ActuatableProperty",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "An actuatable quality (property, characteristic) of a FeatureOfInterest.",
+        "type" : "label"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "A window actuator acts by changing the state between a frame and a window. The ability of the window to be opened and closed is its ActuatableProperty.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "ActuatableProperty",
+      "en" : "Actuatable Property"
+    },
+    "comment" : {
+      "en" : "An actuatable quality (property, characteristic) of a FeatureOfInterest."
+    },
+    "attributes" : [ "external" ],
+    "id" : "33"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#PlantTaxon",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "PlantTaxon",
+      "en" : "Plant taxon"
+    },
+    "comment" : {
+      "en" : "A plant species under phenological observation, for example Quercus rubra or Acer rubrum."
+    },
+    "id" : "34",
+    "superClasses" : [ "17" ]
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#PlantIndividual",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "PlantIndividual",
+      "en" : "Plant individual"
+    },
+    "comment" : {
+      "en" : "A marked plant observed repeatedly through the season, identified by the contributing network's individual identifier. Unlike a host animal it is sessile, so its location is fixed and it is revisited on a schedule rather than recaptured by chance. Identifiers are network-scoped: a NEON individualID and a USA-NPN individual_id may collide numerically and are kept in separate IRI spaces."
+    },
+    "id" : "37",
+    "superClasses" : [ "38" ]
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "SpatialUnit",
+      "en" : "Spatial unit"
+    },
+    "subClasses" : [ "49", "50", "51", "52" ],
+    "comment" : {
+      "en" : "Any node of the NEON spatial hierarchy (ecoclimatic domain, field site, or plot). Subclass of geo:Feature so WKT geometries can be attached."
+    },
+    "id" : "21",
+    "superClasses" : [ "31" ]
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/Actuation",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "An Actuation carries out an (Actuation) Procedure to change the state of the world using an Actuator.",
+        "type" : "label"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "The activity of automatically closing a window if the temperature in a room drops below 20 degree Celsius. The activity is the Actuation and the device that closes the window is the Actuator. The Procedure is the rule, plan, or specification that defines the conditions that triggers the Actuation, here a drop in temperature. ",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Actuation",
+      "en" : "Actuation"
+    },
+    "comment" : {
+      "en" : "An Actuation carries out an (Actuation) Procedure to change the state of the world using an Actuator."
+    },
+    "attributes" : [ "external" ],
+    "id" : "58"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#DragSample",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "DragSample",
+      "en" : "Drag sample"
+    },
+    "comment" : {
+      "en" : "One drag-cloth sampling bout at a plot: a cloth of known area is dragged through vegetation and the ticks collected are counted by life stage. Recorded whether or not ticks are found, so absence is observed rather than inferred."
+    },
+    "id" : "40",
+    "superClasses" : [ "61" ]
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#ObservationSite",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ObservationSite",
+      "en" : "Observation site"
+    },
+    "comment" : {
+      "en" : "A location at which a network makes observations, where that location is not part of NEON's domain-site-plot hierarchy. USA-NPN stations are volunteer-chosen points, so they are related to NEON field sites by proximity rather than by containment."
+    },
+    "id" : "52",
+    "superClasses" : [ "21" ]
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#EcoDomain",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "EcoDomain",
+      "en" : "Ecoclimatic domain"
+    },
+    "comment" : {
+      "en" : "One of NEON's 20 ecoclimatic domains (e.g., D01 Northeast)."
+    },
+    "id" : "50",
+    "superClasses" : [ "21" ]
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/Sensor",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure. Sensors respond to a stimulus, e.g., a change in the environment, or input data composed from the results of prior Observations, and generate a Result. Sensors can be hosted by Platforms.",
+        "type" : "label"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "Accelerometers, gyroscopes, barometers, magnetometers, and so forth are Sensors that are typically mounted on a modern smart phone (which acts as Platform). Other examples of sensors include the human eyes.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Sensor",
+      "en" : "Sensor"
+    },
+    "subClasses" : [ "3" ],
+    "comment" : {
+      "en" : "Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure. Sensors respond to a stimulus, e.g., a change in the environment, or input data composed from the results of prior Observations, and generate a Result. Sensors can be hosted by Platforms."
+    },
+    "attributes" : [ "external" ],
+    "id" : "4"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#ClimateReading",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ClimateReading",
+      "en" : "Climate reading"
+    },
+    "comment" : {
+      "en" : "One measurement from the climate telemetry. Native-resolution readings carry sosa:resultTime (an instant). Daily aggregates additionally carry sosa:phenomenonTime pointing at a time:Interval spanning the day, because a daily mean is not observed at an instant. Results use QUDT QuantityValue (value + unit), or sosa:hasSimpleResult in lean mode."
+    },
+    "id" : "13",
+    "superClasses" : [ "12" ]
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#AssayResult",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "AssayResult",
+      "en" : "Assay result"
+    },
+    "individuals" : [ {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#NotDetected",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "comment" : {
+        "en" : "The assay was performed and did not find the pathogen. An observed absence, not a missing value: this is what makes prevalence computable, since it supplies the denominator."
+      },
+      "labels" : {
+        "IRI-based" : "NotDetected",
+        "en" : "not detected"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#Inconclusive",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "comment" : {
+        "en" : "The assay could not be resolved. Excluded from both positives and negatives rather than treated as an absence."
+      },
+      "labels" : {
+        "IRI-based" : "Inconclusive",
+        "en" : "inconclusive"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#Detected",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "comment" : {
+        "en" : "The assay found the pathogen in this sample."
+      },
+      "labels" : {
+        "IRI-based" : "Detected",
+        "en" : "detected"
+      }
+    } ],
+    "comment" : {
+      "en" : "Closed value set for pathogen assay outcomes. Closure is enforced here by owl:oneOf and again defensively by SHACL in Stage 3."
+    },
+    "id" : "26"
+  }, {
+    "iri" : "http://www.w3.org/2006/time#TemporalEntity",
+    "baseIri" : "http://www.w3.org/2006/time",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "TemporalEntity"
+    },
+    "attributes" : [ "external" ],
+    "id" : "72"
+  }, {
+    "iri" : "http://www.w3.org/2006/time#Interval",
+    "baseIri" : "http://www.w3.org/2006/time",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/2006/time#",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Interval",
+      "en" : "Interval"
+    },
+    "comment" : {
+      "en" : "A temporal entity with extent. Used here for the span covered by a daily climate aggregate."
+    },
+    "attributes" : [ "external" ],
+    "id" : "78"
+  }, {
+    "iri" : "http://www.w3.org/ns/prov#Activity",
+    "baseIri" : "http://www.w3.org/ns/prov",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Activity"
+    },
+    "attributes" : [ "external" ],
+    "id" : "79"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/Actuator",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "A device that is used by, or implements, an (Actuation) Procedure that changes the state of the world.",
+        "type" : "label"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "A window actuator for automatic window control, i.e., opening or closing the window.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Actuator",
+      "en" : "Actuator"
+    },
+    "comment" : {
+      "en" : "A device that is used by, or implements, an (Actuation) Procedure that changes the state of the world."
+    },
+    "attributes" : [ "external" ],
+    "id" : "82"
+  }, {
+    "iri" : "http://xmlns.com/foaf/0.1/Agent",
+    "baseIri" : "http://xmlns.com/foaf/0.1",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Agent"
+    },
+    "attributes" : [ "external" ],
+    "id" : "83"
+  }, {
+    "iri" : "http://xmlns.com/foaf/0.1/Organization",
+    "baseIri" : "http://xmlns.com/foaf/0.1",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Organization"
+    },
+    "attributes" : [ "external" ],
+    "id" : "91"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/Sampling",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "An act of Sampling carries out a sampling Procedure to create or transform one or more samples.",
+        "type" : "label"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "Registering an image of the landscape.",
+        "type" : "label"
+      }, {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "Selecting a subset of a population.",
+        "type" : "label"
+      }, {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "Digging a pit through a soil sequence.",
+        "type" : "label"
+      }, {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "Crushing a rock sample in a ball mill.",
+        "type" : "label"
+      }, {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "Splitting a piece of drill-core to create two new samples.",
+        "type" : "label"
+      }, {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "Drawing blood from a patient.",
+        "type" : "label"
+      }, {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "Drilling an observation well.",
+        "type" : "label"
+      }, {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "Taking a diamond-drill core from a rock outcrop.",
+        "type" : "label"
+      }, {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "Establishing a station for environmental monitoring.",
+        "type" : "label"
+      }, {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "Dividing a field site into quadrants.",
+        "type" : "label"
+      }, {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "Sieving a powder to separate the subset finer than 100-mesh.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Sampling",
+      "en" : "Sampling"
+    },
+    "subClasses" : [ "40", "6" ],
+    "comment" : {
+      "en" : "An act of Sampling carries out a sampling Procedure to create or transform one or more samples."
+    },
+    "attributes" : [ "external" ],
+    "id" : "61"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#TickPathogenAssay",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "TickPathogenAssay",
+      "en" : "Tick pathogen assay"
+    },
+    "comment" : {
+      "en" : "A laboratory test of one pooled tick subsample for one pathogen taxon. Source: NEON tick-borne pathogen status."
+    },
+    "id" : "105",
+    "superClasses" : [ "1" ]
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "PhenophaseObservation",
+      "en" : "Phenophase observation"
+    },
+    "comment" : {
+      "en" : "One check of whether one phenophase is currently expressed on one plant. Recorded on every visit whether or not the phase is present, so absence is observed rather than inferred, as with drag sampling. Carries neonepn:observedByNetwork, since both NEON and USA-NPN contribute observations of the same phenophases to this class."
+    },
+    "id" : "14",
+    "superClasses" : [ "12" ]
+  }, {
+    "iri" : "http://xmlns.com/foaf/0.1/Person",
+    "baseIri" : "http://xmlns.com/foaf/0.1",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Person"
+    },
+    "attributes" : [ "external" ],
+    "id" : "119"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/Result",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "The Result of an Observation, Actuation, or act of Sampling. To store an observation's simple result value one can use the hasSimpleResult property.",
+        "type" : "label"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "The value 20 as the height of a certain tree together with the unit, e.g., Meter.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Result",
+      "en" : "Result"
+    },
+    "comment" : {
+      "en" : "The Result of an Observation, Actuation, or act of Sampling. To store an observation's simple result value one can use the hasSimpleResult property."
+    },
+    "attributes" : [ "external" ],
+    "id" : "122"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "63",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#Plot",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Plot",
+      "en" : "Plot"
+    },
+    "comment" : {
+      "en" : "A sampling plot within a NEON field site (e.g., a small-mammal trapping grid)."
+    },
+    "id" : "49",
+    "superClasses" : [ "21" ]
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "123",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "57",
+    "label" : {
+      "IRI-based" : "boolean"
+    }
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/Procedure",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "instances" : 0,
+    "annotations" : {
+      "note" : [ {
+        "identifier" : "note",
+        "language" : "en",
+        "value" : "Many observations may be created via the same Procedure, the same way as many tables are assembled using the same instructions (as information objects, not their concrete realization).",
+        "type" : "label"
+      } ],
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation, create a Sample, or make a change to the state of the world (via an Actuator). A Procedure is re-usable, and might be involved in many Observations, Samplings, or Actuations. It explains the steps to be carried out to arrive at reproducible results.",
+        "type" : "label"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "The measured wind speed differs depending on the height of the sensor above the surface, e.g., due to friction. Consequently, procedures for measuring wind speed define a standard height for anemometers above ground, typically 10m for meteorological measures and 2m in Agrometeorology. This definition of height, sensor placement, and so forth are defined by the Procedure.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Procedure",
+      "en" : "Procedure"
+    },
+    "comment" : {
+      "en" : "A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation, create a Sample, or make a change to the state of the world (via an Actuator). A Procedure is re-usable, and might be involved in many Observations, Samplings, or Actuations. It explains the steps to be carried out to arrive at reproducible results."
+    },
+    "attributes" : [ "external" ],
+    "id" : "124"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#HostIndividual",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "HostIndividual",
+      "en" : "Host individual"
+    },
+    "comment" : {
+      "en" : "An individual captured/sampled organism (e.g., one tagged deer mouse). The feature of interest of pathogen assays."
+    },
+    "id" : "43",
+    "superClasses" : [ "38" ]
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#PathogenTest",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "PathogenTest",
+      "en" : "Pathogen test"
+    },
+    "subClasses" : [ "22", "105" ],
+    "comment" : {
+      "en" : "Any test for the presence of one pathogen taxon in one sampled entity, yielding exactly one closed-set result at a point in time. Specialized by PathogenAssay (host blood) and TickPathogenAssay (pooled tick subsample)."
+    },
+    "id" : "1",
+    "superClasses" : [ "12" ]
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "75",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "24",
+    "label" : {
+      "IRI-based" : "boolean"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "127",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "128",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#FieldSite",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "FieldSite",
+      "en" : "Field site"
+    },
+    "comment" : {
+      "en" : "A NEON field site (e.g., HARV, OSBS). Every field site lies within an ecoclimatic domain."
+    },
+    "id" : "51",
+    "superClasses" : [ "21" ]
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#double",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "66",
+    "label" : {
+      "IRI-based" : "double"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "60",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "130",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/Sample",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "instances" : 0,
+    "annotations" : {
+      "note" : [ {
+        "identifier" : "note",
+        "language" : "en",
+        "value" : "A transient sample, such as a ships-track or flight-line, might be identified and described, but is unlikely to be revisited exactly.",
+        "type" : "label"
+      } ],
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Feature which is intended to be representative of a FeatureOfInterest on which Observations may be made.",
+        "type" : "label"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "A 'station' is essentially an identifiable locality where a sensor system or Procedure may be deployed and an observation made. In the context of the observation model, it connotes the 'world in the vicinity of the station', so the observed properties relate to the physical medium at the station, and not to any physical artifact such as a mooring, buoy, benchmark, monument, well, etc.",
+        "type" : "label"
+      }, {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "A statistical sample is often designed to be characteristic of an entire population, so that observations can be made regarding the sample that provide a good estimate of the properties of the population.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Sample",
+      "en" : "Sample"
+    },
+    "comment" : {
+      "en" : "A Sample is the result from an act of Sampling."
+    },
+    "attributes" : [ "external" ],
+    "id" : "131"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "132",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "7",
+    "label" : {
+      "IRI-based" : "boolean"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "41",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "135",
+    "label" : {
+      "IRI-based" : "dateTime"
+    }
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ClimateProperty",
+      "en" : "Climate property"
+    },
+    "individuals" : [ {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#AirTemperature",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "comment" : {
+        "en" : "Air temperature at tower height. Note that ticks quest in the litter layer rather than two metres up, so this is a proxy for the microclimate they actually experience."
+      },
+      "labels" : {
+        "IRI-based" : "AirTemperature",
+        "en" : "air temperature"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#WindSpeed",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "comment" : {
+        "en" : "Wind speed. Declared for completeness; not currently ingested."
+      },
+      "labels" : {
+        "IRI-based" : "WindSpeed",
+        "en" : "wind speed"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#RelativeHumidity",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "comment" : {
+        "en" : "Relative humidity. Capacitive sensors read slightly above 100 percent in fog and frost; values to 105 percent are retained with a warning rather than discarded."
+      },
+      "labels" : {
+        "IRI-based" : "RelativeHumidity",
+        "en" : "relative humidity"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#Precipitation",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "comment" : {
+        "en" : "Bulk precipitation from the weighing gauge (DP1.00044.001), which replaced the deprecated DP1.00006.001 in October 2025."
+      },
+      "labels" : {
+        "IRI-based" : "Precipitation",
+        "en" : "precipitation"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#SoilTemperature",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "comment" : {
+        "en" : "Soil temperature. Declared for completeness; NEON soil arrays sit 9.5 km or more from the nearest drag plot, so the product is not ingested."
+      },
+      "labels" : {
+        "IRI-based" : "SoilTemperature",
+        "en" : "soil temperature"
+      }
+    } ],
+    "comment" : {
+      "en" : "An observable meteorological/soil property streamed by NEON instrumentation."
+    },
+    "id" : "112",
+    "superClasses" : [ "136" ]
+  }, {
+    "instances" : 0,
+    "union" : [ "61", "12" ],
+    "attributes" : [ "union", "anonymous" ],
+    "id" : "20"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#TickSample",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "TickSample",
+      "en" : "Tick sample"
+    },
+    "comment" : {
+      "en" : "A tick specimen collected by drag-cloth sampling at a plot and submitted for pathogen testing, identified by NEON subsampleID. In every NEON record examined (231,892 across 39 sites) individualCount is 1, so a sample is a single tick; the count is retained because the field permits pooling in principle. Unlike a host individual, a tick sample is an environmental sample with no tagged organism, so vector-borne detections attach to place rather than to an animal."
+    },
+    "id" : "93",
+    "superClasses" : [ "38" ]
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#PhenophaseStatus",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "PhenophaseStatus",
+      "en" : "Phenophase status"
+    },
+    "individuals" : [ {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#Expressed",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "comment" : {
+        "en" : "The phenophase is currently observable on the plant. Corresponds to PPO's 'present' traits, e.g. 'open flower present' (PPO:0002333) for OpenFlowers."
+      },
+      "labels" : {
+        "IRI-based" : "Expressed",
+        "en" : "Expressed"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#StatusUncertain",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "comment" : {
+        "en" : "The observer could not determine the status. Excluded from derived timing measures."
+      },
+      "labels" : {
+        "IRI-based" : "StatusUncertain",
+        "en" : "Uncertain"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#NotExpressed",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "comment" : {
+        "en" : "The plant was checked and the phenophase was not observable. An observed absence, not a missing value; corresponds to PPO's 'absent' traits, e.g. 'open flower absent' (PPO:0002632)."
+      },
+      "labels" : {
+        "IRI-based" : "NotExpressed",
+        "en" : "Not expressed"
+      }
+    } ],
+    "comment" : {
+      "en" : "Whether a phenophase was observable on a plant at the moment of a visit. A closed set, so an unrecognised value is rejected at validation rather than propagating."
+    },
+    "id" : "54"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "CaptureEvent",
+      "en" : "Capture event"
+    },
+    "comment" : {
+      "en" : "A discrete NEON trapping/sampling act in which a host individual is captured at a plot at a point in time (sosa:resultTime)."
+    },
+    "id" : "6",
+    "superClasses" : [ "61" ]
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "68",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#Phenophase",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Phenophase",
+      "en" : "Phenophase"
+    },
+    "individuals" : [ {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#IncreasingLeafSize",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "annotations" : {
+        "closeMatch" : [ {
+          "identifier" : "closeMatch",
+          "language" : "undefined",
+          "value" : "http://purl.obolibrary.org/obo/PPO_0002322",
+          "type" : "iri"
+        } ]
+      },
+      "comment" : {
+        "en" : "Aligned to 'expanding true leaf present' (PPO:0002322)."
+      },
+      "labels" : {
+        "IRI-based" : "IncreasingLeafSize",
+        "en" : "Increasing leaf size"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#FallingLeaves",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "annotations" : {
+        "closeMatch" : [ {
+          "identifier" : "closeMatch",
+          "language" : "undefined",
+          "value" : "http://purl.obolibrary.org/obo/PPO_0002357",
+          "type" : "iri"
+        } ]
+      },
+      "comment" : {
+        "en" : "Aligned to 'abscised leaf present' (PPO:0002357), which counts leaves shed within the current growing season."
+      },
+      "labels" : {
+        "IRI-based" : "FallingLeaves",
+        "en" : "Falling leaves"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#BreakingLeafBuds",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "annotations" : {
+        "closeMatch" : [ {
+          "identifier" : "closeMatch",
+          "language" : "undefined",
+          "value" : "http://purl.obolibrary.org/obo/PPO_0001012",
+          "type" : "iri"
+        } ]
+      },
+      "comment" : {
+        "en" : "The canonical green-up indicator: the first date this is expressed marks the onset of the growing season. PPO:0001012 'breaking vegetative bud' carries 'breaking leaf bud' as an alternative label."
+      },
+      "labels" : {
+        "IRI-based" : "BreakingLeafBuds",
+        "en" : "Breaking leaf buds"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#OpenPollenCones",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "annotations" : {
+        "closeMatch" : [ {
+          "identifier" : "closeMatch",
+          "language" : "undefined",
+          "value" : "http://purl.obolibrary.org/obo/PPO_0001047",
+          "type" : "iri"
+        } ]
+      },
+      "comment" : {
+        "en" : "Aligned to 'open microsporangiate strobilus' (PPO:0001047). PPO offers no paired presence trait for pollen cones, so the match is to the structure class itself."
+      },
+      "labels" : {
+        "IRI-based" : "OpenPollenCones",
+        "en" : "Open pollen cones"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#ColoredLeaves",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "annotations" : {
+        "closeMatch" : [ {
+          "identifier" : "closeMatch",
+          "language" : "undefined",
+          "value" : "http://purl.obolibrary.org/obo/PPO_0002317",
+          "type" : "iri"
+        } ]
+      },
+      "comment" : {
+        "en" : "Aligned to 'senescing true leaf present' (PPO:0002317). NEON scores leaf colour as the visible marker of senescence; PPO names the underlying state."
+      },
+      "labels" : {
+        "IRI-based" : "ColoredLeaves",
+        "en" : "Colored leaves"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#EmergingNeedles",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "annotations" : {
+        "closeMatch" : [ {
+          "identifier" : "closeMatch",
+          "language" : "undefined",
+          "value" : "http://purl.obolibrary.org/obo/PPO_0002314",
+          "type" : "iri"
+        } ]
+      },
+      "comment" : {
+        "en" : "Aligned to 'unfolding true leaf present' (PPO:0002314). PPO treats needles as vascular leaves and its unfolding stage explicitly covers conifers."
+      },
+      "labels" : {
+        "IRI-based" : "EmergingNeedles",
+        "en" : "Emerging needles"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#Leaves",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "annotations" : {
+        "closeMatch" : [ {
+          "identifier" : "closeMatch",
+          "language" : "undefined",
+          "value" : "http://purl.obolibrary.org/obo/PPO_0002313",
+          "type" : "iri"
+        } ]
+      },
+      "comment" : {
+        "en" : "Aligned to 'true leaf present' (PPO:0002313)."
+      },
+      "labels" : {
+        "IRI-based" : "Leaves",
+        "en" : "Leaves"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#OpenFlowers",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "annotations" : {
+        "closeMatch" : [ {
+          "identifier" : "closeMatch",
+          "language" : "undefined",
+          "value" : "http://purl.obolibrary.org/obo/PPO_0002333",
+          "type" : "iri"
+        } ]
+      },
+      "comment" : {
+        "en" : "Aligned to 'open flower present' (PPO:0002333). The closest correspondence in the set."
+      },
+      "labels" : {
+        "IRI-based" : "OpenFlowers",
+        "en" : "Open flowers"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#YoungNeedles",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "annotations" : {
+        "closeMatch" : [ {
+          "identifier" : "closeMatch",
+          "language" : "undefined",
+          "value" : "http://purl.obolibrary.org/obo/PPO_0002318",
+          "type" : "iri"
+        } ]
+      },
+      "comment" : {
+        "en" : "Aligned to 'immature unfolded true leaf present' (PPO:0002318)."
+      },
+      "labels" : {
+        "IRI-based" : "YoungNeedles",
+        "en" : "Young needles"
+      }
+    }, {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#InitialGrowth",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "comment" : {
+        "en" : "NEON scores initial growth for grasses and forbs, where new basal or vegetative growth emerges without a distinct bud-break event. No PPO counterpart was found, so this individual is deliberately left unaligned rather than forced onto an approximate term."
+      },
+      "labels" : {
+        "IRI-based" : "InitialGrowth",
+        "en" : "Initial growth"
+      }
+    } ],
+    "comment" : {
+      "en" : "A recognisable stage in a plant's annual cycle, such as breaking leaf buds or open flowers. Members of a closed set defined by NEON's observation protocol."
+    },
+    "id" : "70"
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "9",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "165",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#double",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "126",
+    "label" : {
+      "IRI-based" : "double"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "81",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "98",
+    "label" : {
+      "IRI-based" : "boolean"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "44",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/ObservableProperty",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "An observable quality (property, characteristic) of a FeatureOfInterest.",
+        "type" : "label"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "The height of a tree, the depth of a water body, or the temperature of a surface are examples of observable properties, while the value of a classic car is not (directly) observable but asserted.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "ObservableProperty",
+      "en" : "Observable Property"
+    },
+    "individuals" : [ {
+      "iri" : "https://bryantpollard.github.io/neon-epn/ontology#PathogenPresence",
+      "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+      "comment" : {
+        "en" : "The observable property measured by a pathogen assay: presence/absence of a target pathogen in a host individual or its sample."
+      },
+      "labels" : {
+        "IRI-based" : "PathogenPresence",
+        "en" : "pathogen presence"
+      }
+    } ],
+    "subClasses" : [ "112" ],
+    "comment" : {
+      "en" : "An observable quality (property, characteristic) of a FeatureOfInterest."
+    },
+    "attributes" : [ "external" ],
+    "id" : "136"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/Sampler",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "A device that is used by, or implements, a Sampling Procedure to create or transform one or more samples.",
+        "type" : "label"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "A ball mill, diamond drill, hammer, hypodermic syringe and needle, image Sensor or a soil auger can all act as sampling devices (i.e., be Samplers). However, sometimes the distinction between the Sampler and the Sensor is not evident, as they are packaged as a unit. A Sampler need not be a physical device.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Sampler",
+      "en" : "Sampler"
+    },
+    "comment" : {
+      "en" : "A device that is used by, or implements, a Sampling Procedure to create or transform one or more samples."
+    },
+    "attributes" : [ "external" ],
+    "id" : "174"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/Platform",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "A Platform is an entity that hosts other entities, particularly Sensors, Actuators, Samplers, and other Platforms.",
+        "type" : "label"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "A post, buoy, vehicle, ship, aircraft, satellite, cell-phone, human or animal may act as platforms for (technical or biological) sensors or actuators.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Platform",
+      "en" : "Platform"
+    },
+    "comment" : {
+      "en" : "A Platform is an entity that hosts other entities, particularly Sensors, Actuators, Samplers, and other Platforms."
+    },
+    "attributes" : [ "external" ],
+    "id" : "178"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/FeatureOfInterest",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result or whose property is being manipulated by an Actuator, or which is being sampled or transformed in an act of Sampling.",
+        "type" : "label"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "When measuring the height of a tree, the height is the observed ObservableProperty, 20m may be the Result of the Observation, and the tree is the FeatureOfInterest. A window is a FeatureOfInterest for an automatic window control Actuator.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "FeatureOfInterest",
+      "en" : "Feature Of Interest"
+    },
+    "subClasses" : [ "37", "43", "93" ],
+    "comment" : {
+      "en" : "The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result or whose property is being manipulated by an Actuator, or which is being sampled or transformed in an act of Sampling."
+    },
+    "attributes" : [ "external" ],
+    "id" : "38"
+  }, {
+    "iri" : "http://www.w3.org/2006/time#Instant",
+    "baseIri" : "http://www.w3.org/2006/time",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/2006/time#",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Instant",
+      "en" : "Instant"
+    },
+    "attributes" : [ "external" ],
+    "id" : "189"
+  }, {
+    "iri" : "http://qudt.org/schema/qudt/QuantityValue",
+    "baseIri" : "http://qudt.org/schema/qudt",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "QuantityValue"
+    },
+    "attributes" : [ "external" ],
+    "id" : "110"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "PathogenTaxon",
+      "en" : "Pathogen taxon"
+    },
+    "comment" : {
+      "en" : "A taxon acting as a pathogen or vector-borne agent tested for by NEON assays (e.g., Borrelia burgdorferi)."
+    },
+    "id" : "2",
+    "superClasses" : [ "17" ]
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#Taxon",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "instances" : 0,
+    "annotations" : {
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "http://purl.obolibrary.org/obo/NCBITaxon_1",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Taxon",
+      "en" : "Taxon"
+    },
+    "subClasses" : [ "32", "34", "16", "2" ],
+    "comment" : {
+      "en" : "A biological taxon referenced by the project. Individuals should carry a skos:exactMatch to the corresponding purl.obolibrary.org NCBITaxon IRI."
+    },
+    "id" : "17"
+  } ],
+  "property" : [ {
+    "id" : "0",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "5",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "8",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "18",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "19",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "23",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "25",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "27",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "29",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "35",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "36",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "39",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "42",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "28",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "45",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "46",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "47",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "48",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "53",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "55",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "56",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "59",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "62",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "64",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "65",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "67",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "69",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "71",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "73",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "74",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "76",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "77",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "80",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "84",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "85",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "86",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "87",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "88",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "90",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "92",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "94",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "95",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "96",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "97",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "99",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "100",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "101",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "102",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "104",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "106",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "107",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "109",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "111",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "113",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "114",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "115",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "116",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "117",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "118",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "120",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "121",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "89",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "125",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "129",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "103",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "133",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "134",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "137",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "138",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "139",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "140",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "141",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "142",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "143",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "144",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "145",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "146",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "147",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "148",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "149",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "151",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "152",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "153",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "154",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "155",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "156",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "157",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "158",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "159",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "160",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "161",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "162",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "163",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "150",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "164",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "166",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "167",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "168",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "169",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "170",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "171",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "172",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "173",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "175",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "176",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "177",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "179",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "180",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "181",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "182",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "183",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "184",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "185",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "186",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "187",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "108",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "188",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "190",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "191",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "192",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "193",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "194",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "195",
+    "type" : "rdfs:SubClassOf"
+  } ],
+  "propertyAttribute" : [ {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#testedForPathogen",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "2",
+    "label" : {
+      "IRI-based" : "testedForPathogen",
+      "en" : "tested for pathogen"
+    },
+    "domain" : "1",
+    "comment" : {
+      "en" : "The single pathogen taxon targeted by an assay."
+    },
+    "attributes" : [ "object", "functional" ],
+    "id" : "0"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#adultTicksAttached",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "adultTicksAttached",
+      "en" : "adult ticks attached"
+    },
+    "domain" : "6",
+    "comment" : {
+      "en" : "Presence of attached ticks by life stage at capture. Bridges hosts to the vector layer: an animal carrying ticks links that host individual to the tick populations sampled by drag cloth at the same plot."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "5"
+  }, {
+    "iri" : "http://www.w3.org/2006/time#hasBeginning",
+    "baseIri" : "http://www.w3.org/2006/time",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/2006/time#",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "hasBeginning",
+      "en" : "has beginning"
+    },
+    "domain" : "9",
+    "attributes" : [ "external", "object" ],
+    "id" : "8"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/isFeatureOfInterestOf",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "A relation between a FeatureOfInterest and an Observation about it, an Actuation acting on it, or an act of Sampling that sampled it.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      }, {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      }, {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampling",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sample",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/FeatureOfInterest",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "isFeatureOfInterestOf",
+      "en" : "is feature of interest of"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "A relation between a FeatureOfInterest and an Observation about it, an Actuation acting on it, or an act of Sampling that sampled it."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "18"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#sampledAt",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "sampledAt",
+      "en" : "sampled at"
+    },
+    "domain" : "20",
+    "comment" : {
+      "en" : "The spatial unit at which an observation or sampling act occurred. Combined with withinSpatialUnit, every event resolves upward to site and domain."
+    },
+    "attributes" : [ "object" ],
+    "id" : "19"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#larvalTicksAttached",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "24",
+    "label" : {
+      "IRI-based" : "larvalTicksAttached",
+      "en" : "larval ticks attached"
+    },
+    "domain" : "6",
+    "comment" : {
+      "en" : "Whether larval ticks were attached to a captured animal. NEON records presence as Y/N, not as a count; parsing it as an integer silently discards every value."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "23"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#hasAssayResult",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "26",
+    "label" : {
+      "IRI-based" : "hasAssayResult",
+      "en" : "has assay result"
+    },
+    "domain" : "1",
+    "comment" : {
+      "en" : "The single outcome of an assay, drawn from the closed AssayResult value set."
+    },
+    "attributes" : [ "object", "functional" ],
+    "id" : "25"
+  }, {
+    "iri" : "http://www.opengis.net/ont/geosparql#sfWithin",
+    "baseIri" : "http://www.opengis.net/ont/geosparql",
+    "range" : "9",
+    "label" : {
+      "IRI-based" : "sfWithin"
+    },
+    "domain" : "9",
+    "subproperty" : [ "28" ],
+    "attributes" : [ "external", "object" ],
+    "id" : "27"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/isHostedBy",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation between a Sensor, Actuator, Sampler, or Platform, and the Platform that it is mounted on or hosted by.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Platform",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuator",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampler",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Platform",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sensor",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "isHostedBy",
+      "en" : "is hosted by"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation between a Sensor, Actuator, Sampler, or Platform, and the Platform that it is mounted on or hosted by."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "29"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/madeSampling",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation between a Sampler (sampling device or entity) and the Sampling act it performed.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampling",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampler",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "madeSampling",
+      "en" : "made sampling"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation between a Sampler (sampling device or entity) and the Sampling act it performed."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "35"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/isResultOf",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation linking a Result to the Observation or Actuation or act of Sampling that created or caused it.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampling",
+        "type" : "iri"
+      }, {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      }, {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sample",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Result",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "isResultOf",
+      "en" : "is result of"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation linking a Result to the Observation or Actuation or act of Sampling that created or caused it."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "36"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#adultCount",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "41",
+    "label" : {
+      "IRI-based" : "adultCount",
+      "en" : "adult count"
+    },
+    "domain" : "40",
+    "comment" : {
+      "en" : "Adult ticks collected in a drag bout. Distinct from nymphs and larvae, which differ in both host preference and epidemiological importance."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "39"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#tagId",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "44",
+    "label" : {
+      "IRI-based" : "tagId",
+      "en" : "tag identifier"
+    },
+    "domain" : "43",
+    "comment" : {
+      "en" : "NEON mark-recapture tag for an individual animal."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "42"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#withinSpatialUnit",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "withinSpatialUnit",
+      "en" : "within spatial unit"
+    },
+    "superproperty" : [ "27" ],
+    "domain" : "21",
+    "comment" : {
+      "en" : "Transitive containment along the NEON spatial hierarchy (plot within site within domain). Sub-property of GeoSPARQL sfWithin so spatial reasoners interoperate."
+    },
+    "attributes" : [ "object", "transitive" ],
+    "id" : "28"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#ofVectorTaxon",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "16",
+    "label" : {
+      "IRI-based" : "ofVectorTaxon",
+      "en" : "of vector taxon"
+    },
+    "domain" : "15",
+    "comment" : {
+      "en" : "The tick species identified in a drag-cloth collection. Functional: one occurrence records one taxon."
+    },
+    "attributes" : [ "object", "functional" ],
+    "id" : "45"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#observedByNetwork",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "10",
+    "label" : {
+      "IRI-based" : "observedByNetwork",
+      "en" : "observed by network"
+    },
+    "domain" : "12",
+    "comment" : {
+      "en" : "The programme whose protocol produced this observation. Present on every observation once more than one source is integrated, so that provenance survives the merge."
+    },
+    "attributes" : [ "object", "functional" ],
+    "id" : "46"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/hosts",
+    "inverse" : "29",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation between a Platform and a Sensor, Actuator, Sampler, or Platform, hosted or mounted on it.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuator",
+        "type" : "iri"
+      }, {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampler",
+        "type" : "iri"
+      }, {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sensor",
+        "type" : "iri"
+      }, {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Platform",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Platform",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "hosts",
+      "en" : "hosts"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation between a Platform and a Sensor, Actuator, Sampler, or Platform, hosted or mounted on it."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "47"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/hasFeatureOfInterest",
+    "inverse" : "18",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/FeatureOfInterest",
+        "type" : "iri"
+      }, {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sample",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampling",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "For example, in an Observation of the weight of a person, the FeatureOfInterest is the person and the property is its weight.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "hasFeatureOfInterest",
+      "en" : "has feature of interest"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "48"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#hasPhenophaseStatus",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "54",
+    "label" : {
+      "IRI-based" : "hasPhenophaseStatus",
+      "en" : "has phenophase status"
+    },
+    "domain" : "14",
+    "comment" : {
+      "en" : "Relates a phenophase observation to its outcome. Functional: a single check yields one status."
+    },
+    "attributes" : [ "object", "functional" ],
+    "id" : "53"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#deployedAt",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "deployedAt",
+      "en" : "deployed at"
+    },
+    "domain" : "3",
+    "comment" : {
+      "en" : "The spatial unit where a sensor is installed."
+    },
+    "attributes" : [ "object" ],
+    "id" : "55"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#nymphalTicksAttached",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "57",
+    "label" : {
+      "IRI-based" : "nymphalTicksAttached",
+      "en" : "nymphal ticks attached"
+    },
+    "domain" : "6",
+    "comment" : {
+      "en" : "Whether nymphal ticks were attached to a captured animal. Recorded as Y/N. Nymphs cause most human Lyme transmission, so their presence on reservoir hosts is the epidemiologically informative stage."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "56"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#attachedTickCount",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "60",
+    "label" : {
+      "IRI-based" : "attachedTickCount",
+      "en" : "attached tick count"
+    },
+    "domain" : "6",
+    "comment" : {
+      "en" : "Number of attached ticks counted at capture (NEON tickNumber). Recorded on only a small fraction of captures; absence means not counted, not zero."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "59"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#nymphCount",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "63",
+    "label" : {
+      "IRI-based" : "nymphCount",
+      "en" : "nymph count"
+    },
+    "domain" : "40",
+    "comment" : {
+      "en" : "Nymphs are the life stage responsible for most human Lyme transmission, so nymphal presence is the epidemiologically relevant target."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "62"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/phenomenonTime",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "The time that the Result of an Observation, Actuation or Sampling applies to the FeatureOfInterest. Not necessarily the same as the resultTime. May be an Interval or an Instant, or some other compound TemporalEntity.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/2006/time#TemporalEntity",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampling",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "phenomenonTime",
+      "en" : "phenomenon time"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "The time that the Result of an Observation, Actuation or Sampling applies to the FeatureOfInterest. Not necessarily the same as the resultTime. May be an Interval or an Instant, or some other compound TemporalEntity."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "64"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#distanceToFieldSiteKm",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "66",
+    "label" : {
+      "IRI-based" : "distanceToFieldSiteKm",
+      "en" : "distance to field site (km)"
+    },
+    "domain" : "52",
+    "comment" : {
+      "en" : "Great-circle distance to the nearest NEON field site. Recorded so that a user can choose a proximity threshold rather than inherit the one used at ingestion."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "65"
+  }, {
+    "iri" : "http://www.w3.org/2006/time#inXSDDateTimeStamp",
+    "baseIri" : "http://www.w3.org/2006/time",
+    "range" : "68",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/2006/time#",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "inXSDDateTimeStamp",
+      "en" : "in XSD date-time stamp"
+    },
+    "domain" : "9",
+    "attributes" : [ "external", "datatype" ],
+    "id" : "67"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#observedPhenophase",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "70",
+    "label" : {
+      "IRI-based" : "observedPhenophase",
+      "en" : "observed phenophase"
+    },
+    "domain" : "14",
+    "comment" : {
+      "en" : "The phenophase being checked. Functional, and drawn from the closed set NEON records."
+    },
+    "attributes" : [ "object", "functional" ],
+    "id" : "69"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#detectedAt",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "detectedAt",
+      "en" : "detected at"
+    },
+    "domain" : "2",
+    "comment" : {
+      "en" : "Asserted pathogen-place detection edge: the pathogen taxon was detected in a vector sample collected at this spatial unit. Materialized from each TickPathogenAssay whose hasAssayResult is Detected. This is the vector-borne counterpart of detectedIn and the second link-prediction target of the temporal graph."
+    },
+    "attributes" : [ "object" ],
+    "id" : "71"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/usedProcedure",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "A relation to link to a re-usable Procedure used in making an Observation, an Actuation, or a Sample, typically through a Sensor, Actuator or Sampler.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Procedure",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampling",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "usedProcedure",
+      "en" : "used procedure"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "A relation to link to a re-usable Procedure used in making an Observation, an Actuation, or a Sample, typically through a Sensor, Actuator or Sampler."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "73"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#lifeStage",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "75",
+    "label" : {
+      "IRI-based" : "lifeStage",
+      "en" : "life stage"
+    },
+    "domain" : "15",
+    "comment" : {
+      "en" : "Life stage or sex as recorded by NEON: Larva, Nymph, Female, Male."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "74"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/isActedOnBy",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation between an ActuatableProperty of a FeatureOfInterest and an Actuation changing its state.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "In the activity (Actuation) of automatically closing a window if the temperature in a room drops below 20 degrees Celsius, the property on which the Actuator acts upon is the state of the window as it changes from being open to being closed. ",
+        "type" : "label"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/ActuatableProperty",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "isActedOnBy",
+      "en" : "is acted on by"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation between an ActuatableProperty of a FeatureOfInterest and an Actuation changing its state."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "76"
+  }, {
+    "range" : "34",
+    "domain" : "2",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "77"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#plotId",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "81",
+    "label" : {
+      "IRI-based" : "plotId",
+      "en" : "plot identifier"
+    },
+    "domain" : "49",
+    "comment" : {
+      "en" : "NEON plot identifier, e.g., 'HARV_001'."
+    },
+    "attributes" : [ "datatype", "functional" ],
+    "id" : "80"
+  }, {
+    "range" : "16",
+    "domain" : "32",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "84"
+  }, {
+    "range" : "34",
+    "domain" : "32",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "85"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#withinSpatialUnit",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "50",
+    "label" : {
+      "IRI-based" : "withinSpatialUnit",
+      "en" : "within spatial unit"
+    },
+    "superproperty" : [ "27" ],
+    "domain" : "51",
+    "comment" : {
+      "en" : "Transitive containment along the NEON spatial hierarchy (plot within site within domain). Sub-property of GeoSPARQL sfWithin so spatial reasoners interoperate."
+    },
+    "attributes" : [ "someValues", "object", "transitive" ],
+    "id" : "86"
+  }, {
+    "range" : "49",
+    "domain" : "51",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "87"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/isObservedBy",
+    "inverse" : "89",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation between an ObservableProperty and the Sensor able to observe it.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sensor",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/ObservableProperty",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "isObservedBy",
+      "en" : "is observed by"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation between an ObservableProperty and the Sensor able to observe it."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "88"
+  }, {
+    "range" : "2",
+    "domain" : "32",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "90"
+  }, {
+    "range" : "93",
+    "domain" : "43",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "92"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#sampledAt",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "49",
+    "label" : {
+      "IRI-based" : "sampledAt",
+      "en" : "sampled at"
+    },
+    "domain" : "40",
+    "comment" : {
+      "en" : "The spatial unit at which an observation or sampling act occurred. Combined with withinSpatialUnit, every event resolves upward to site and domain."
+    },
+    "attributes" : [ "someValues", "object" ],
+    "id" : "94"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#deployedAt",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "deployedAt",
+      "en" : "deployed at"
+    },
+    "domain" : "3",
+    "comment" : {
+      "en" : "The spatial unit where a sensor is installed."
+    },
+    "attributes" : [ "someValues", "object" ],
+    "id" : "95"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/madeBySampler",
+    "inverse" : "35",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation linking an act of Sampling to the Sampler (sampling device or entity) that made it.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampler",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampling",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "madeBySampler",
+      "en" : "made by sampler"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation linking an act of Sampling to the Sampler (sampling device or entity) that made it."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "96"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#targetTaxaPresent",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "98",
+    "label" : {
+      "IRI-based" : "targetTaxaPresent",
+      "en" : "target taxa present"
+    },
+    "domain" : "40",
+    "comment" : {
+      "en" : "Whether any target tick taxa were collected in this bout. The observed negative that makes vector presence a balanced prediction task."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "97"
+  }, {
+    "range" : "49",
+    "domain" : "50",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "99"
+  }, {
+    "range" : "51",
+    "domain" : "50",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "100"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/actsOnProperty",
+    "inverse" : "76",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation between an Actuation and the property of a FeatureOfInterest it is acting upon.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/ActuatableProperty",
+        "type" : "iri"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "In the activity (Actuation) of automatically closing a window if the temperature in a room drops below 20 degrees Celsius, the property on which the Actuator acts upon is the state of the window as it changes from being open to being closed. ",
+        "type" : "label"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "actsOnProperty",
+      "en" : "acts on property"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation between an Actuation and the property of a FeatureOfInterest it is acting upon."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "101"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/hasSample",
+    "inverse" : "103",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation between a FeatureOfInterest and the Sample used to represent it.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sample",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/FeatureOfInterest",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "hasSample",
+      "en" : "has sample"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation between a FeatureOfInterest and the Sample used to represent it."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "102"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#nearFieldSite",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "51",
+    "label" : {
+      "IRI-based" : "nearFieldSite",
+      "en" : "near field site"
+    },
+    "domain" : "52",
+    "comment" : {
+      "en" : "Asserted proximity between an external observation site and a NEON field site, materialized when the two lie within a stated distance. Deliberately NOT withinSpatialUnit: an external site is not contained by a NEON site, and treating proximity as containment would license false inference through the transitive spatial hierarchy."
+    },
+    "attributes" : [ "object" ],
+    "id" : "104"
+  }, {
+    "iri" : "http://www.w3.org/2006/time#hasEnd",
+    "baseIri" : "http://www.w3.org/2006/time",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/2006/time#",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "hasEnd",
+      "en" : "has end"
+    },
+    "domain" : "9",
+    "attributes" : [ "external", "object" ],
+    "id" : "106"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/madeBySensor",
+    "inverse" : "108",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "3",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation between an Observation and the Sensor which made the Observation.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sensor",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "madeBySensor",
+      "en" : "made by sensor"
+    },
+    "domain" : "13",
+    "comment" : {
+      "en" : "Relation between an Observation and the Sensor which made the Observation."
+    },
+    "attributes" : [ "external", "someValues", "object" ],
+    "id" : "107"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/hasResult",
+    "inverse" : "36",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "110",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation linking an Observation or Actuation or act of Sampling and a Result or Sample.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Result",
+        "type" : "iri"
+      }, {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sample",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampling",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "hasResult",
+      "en" : "has result"
+    },
+    "domain" : "13",
+    "comment" : {
+      "en" : "Relation linking an Observation or Actuation or act of Sampling and a Result or Sample."
+    },
+    "attributes" : [ "external", "someValues", "object" ],
+    "id" : "109"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/observedProperty",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "112",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation linking an Observation to the property that was observed. The ObservableProperty should be a property of the FeatureOfInterest (linked by hasFeatureOfInterest) of this Observation.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/ObservableProperty",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "observedProperty",
+      "en" : "observed property"
+    },
+    "domain" : "13",
+    "comment" : {
+      "en" : "Relation linking an Observation to the property that was observed. The ObservableProperty should be a property of the FeatureOfInterest (linked by hasFeatureOfInterest) of this Observation."
+    },
+    "attributes" : [ "external", "someValues", "object" ],
+    "id" : "111"
+  }, {
+    "range" : "15",
+    "domain" : "1",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "113"
+  }, {
+    "range" : "14",
+    "domain" : "1",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "114"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/hasFeatureOfInterest",
+    "inverse" : "18",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "43",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/FeatureOfInterest",
+        "type" : "iri"
+      }, {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sample",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampling",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "For example, in an Observation of the weight of a person, the FeatureOfInterest is the person and the property is its weight.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "hasFeatureOfInterest",
+      "en" : "has feature of interest"
+    },
+    "domain" : "6",
+    "comment" : {
+      "en" : "A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled."
+    },
+    "attributes" : [ "external", "someValues", "object" ],
+    "id" : "115"
+  }, {
+    "range" : "15",
+    "domain" : "14",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "116"
+  }, {
+    "range" : "1",
+    "domain" : "40",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "117"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/hasResult",
+    "inverse" : "36",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation linking an Observation or Actuation or act of Sampling and a Result or Sample.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Result",
+        "type" : "iri"
+      }, {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sample",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampling",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "hasResult",
+      "en" : "has result"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation linking an Observation or Actuation or act of Sampling and a Result or Sample."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "118"
+  }, {
+    "range" : "15",
+    "domain" : "40",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "120"
+  }, {
+    "range" : "14",
+    "domain" : "40",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "121"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/observes",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation between a Sensor and an ObservableProperty that it is capable of sensing.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/ObservableProperty",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sensor",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "observes",
+      "en" : "observes"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation between a Sensor and an ObservableProperty that it is capable of sensing."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "89"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#sampledAreaSqM",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "126",
+    "label" : {
+      "IRI-based" : "sampledAreaSqM",
+      "en" : "sampled area (m2)"
+    },
+    "domain" : "40",
+    "comment" : {
+      "en" : "Area covered by the drag cloth, so counts can be expressed as density rather than raw abundance when effort varies."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "125"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#collectedAt",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "collectedAt",
+      "en" : "collected at"
+    },
+    "domain" : "93",
+    "comment" : {
+      "en" : "The spatial unit where a tick sample was collected."
+    },
+    "attributes" : [ "object" ],
+    "id" : "129"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/isSampleOf",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation from a Sample to the FeatureOfInterest that it is intended to be representative of.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/FeatureOfInterest",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sample",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "isSampleOf",
+      "en" : "is sample of"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation from a Sample to the FeatureOfInterest that it is intended to be representative of."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "103"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#ofTaxon",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "32",
+    "label" : {
+      "IRI-based" : "ofTaxon",
+      "en" : "of taxon"
+    },
+    "domain" : "43",
+    "comment" : {
+      "en" : "Links an individual organism to its species-level taxon."
+    },
+    "attributes" : [ "object", "functional" ],
+    "id" : "133"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#individualCount",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "132",
+    "label" : {
+      "IRI-based" : "individualCount",
+      "en" : "individual count"
+    },
+    "domain" : "93",
+    "comment" : {
+      "en" : "Number of tick individuals in the tested subsample. Uniformly 1 in the NEON data examined; retained so that pooled testing, which the source field permits, would be representable without a schema change."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "134"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/hasFeatureOfInterest",
+    "inverse" : "18",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "93",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/FeatureOfInterest",
+        "type" : "iri"
+      }, {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sample",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampling",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "For example, in an Observation of the weight of a person, the FeatureOfInterest is the person and the property is its weight.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "hasFeatureOfInterest",
+      "en" : "has feature of interest"
+    },
+    "domain" : "105",
+    "comment" : {
+      "en" : "A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled."
+    },
+    "attributes" : [ "external", "someValues", "object" ],
+    "id" : "137"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#withinSpatialUnit",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "51",
+    "label" : {
+      "IRI-based" : "withinSpatialUnit",
+      "en" : "within spatial unit"
+    },
+    "superproperty" : [ "27" ],
+    "domain" : "49",
+    "comment" : {
+      "en" : "Transitive containment along the NEON spatial hierarchy (plot within site within domain). Sub-property of GeoSPARQL sfWithin so spatial reasoners interoperate."
+    },
+    "attributes" : [ "someValues", "object", "transitive" ],
+    "id" : "138"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#collectedAt",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "collectedAt",
+      "en" : "collected at"
+    },
+    "domain" : "93",
+    "comment" : {
+      "en" : "The spatial unit where a tick sample was collected."
+    },
+    "attributes" : [ "someValues", "object" ],
+    "id" : "139"
+  }, {
+    "range" : "16",
+    "domain" : "34",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "140"
+  }, {
+    "range" : "16",
+    "domain" : "2",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "141"
+  }, {
+    "range" : "105",
+    "domain" : "22",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "142"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/hasFeatureOfInterest",
+    "inverse" : "18",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "43",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/FeatureOfInterest",
+        "type" : "iri"
+      }, {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sample",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampling",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "For example, in an Observation of the weight of a person, the FeatureOfInterest is the person and the property is its weight.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "hasFeatureOfInterest",
+      "en" : "has feature of interest"
+    },
+    "domain" : "22",
+    "comment" : {
+      "en" : "A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled."
+    },
+    "attributes" : [ "external", "someValues", "object" ],
+    "id" : "143"
+  }, {
+    "range" : "21",
+    "domain" : "51",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "144"
+  }, {
+    "range" : "21",
+    "domain" : "50",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "145"
+  }, {
+    "range" : "136",
+    "domain" : "112",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "146"
+  }, {
+    "range" : "21",
+    "domain" : "52",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "147"
+  }, {
+    "range" : "21",
+    "domain" : "49",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "148"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/madeActuation",
+    "inverse" : "150",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation between an Actuator and the Actuation it has made.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuator",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "madeActuation",
+      "en" : "made actuation"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation between an Actuator and the Actuation it has made."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "149"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#larvaCount",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "130",
+    "label" : {
+      "IRI-based" : "larvaCount",
+      "en" : "larva count"
+    },
+    "domain" : "40",
+    "comment" : {
+      "en" : "Larval ticks collected in a drag bout. Larvae hatch uninfected, so their host associations determine whether the transmission cycle establishes."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "151"
+  }, {
+    "range" : "1",
+    "domain" : "105",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "152"
+  }, {
+    "range" : "1",
+    "domain" : "22",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "153"
+  }, {
+    "range" : "61",
+    "domain" : "6",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "154"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#detectedIn",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "43",
+    "label" : {
+      "IRI-based" : "detectedIn",
+      "en" : "detected in"
+    },
+    "domain" : "2",
+    "comment" : {
+      "en" : "Asserted pathogen-host detection edge: the pathogen taxon was detected in the host individual. Materialized during Stage 2 from each PathogenAssay whose hasAssayResult is Detected; this is the primary positive edge type of the temporal graph and the main link-prediction target."
+    },
+    "attributes" : [ "object" ],
+    "id" : "155"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#expressedAt",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "expressedAt",
+      "en" : "expressed at"
+    },
+    "domain" : "70",
+    "comment" : {
+      "en" : "Asserted phenophase-place edge: this phenophase was observed expressed at this spatial unit. Materialized from observations whose status is Expressed. Densely labelled, like observedAt, and it supplies the seasonal timing against which vector activity and pathogen detection can be compared."
+    },
+    "attributes" : [ "object" ],
+    "id" : "156"
+  }, {
+    "range" : "61",
+    "domain" : "40",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "157"
+  }, {
+    "range" : "31",
+    "domain" : "21",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "158"
+  }, {
+    "range" : "11",
+    "domain" : "10",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "159"
+  }, {
+    "range" : "12",
+    "domain" : "1",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "160"
+  }, {
+    "range" : "12",
+    "domain" : "13",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "161"
+  }, {
+    "range" : "12",
+    "domain" : "15",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "162"
+  }, {
+    "range" : "12",
+    "domain" : "14",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "163"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/madeByActuator",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation linking an Actuation to the Actuator that made that Actuation.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuator",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "madeByActuator",
+      "en" : "made by actuator"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation linking an Actuation to the Actuator that made that Actuation."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "150"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#neonSiteCode",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "127",
+    "label" : {
+      "IRI-based" : "neonSiteCode",
+      "en" : "NEON site code"
+    },
+    "domain" : "51",
+    "comment" : {
+      "en" : "Four-letter NEON site identifier, e.g., 'HARV'."
+    },
+    "attributes" : [ "datatype", "functional" ],
+    "id" : "164"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#neonDomainCode",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "128",
+    "label" : {
+      "IRI-based" : "neonDomainCode",
+      "en" : "NEON domain code"
+    },
+    "domain" : "50",
+    "comment" : {
+      "en" : "NEON domain identifier, e.g., 'D01'."
+    },
+    "attributes" : [ "datatype", "functional" ],
+    "id" : "166"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#ofPlantTaxon",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "ofPlantTaxon",
+      "en" : "of plant taxon"
+    },
+    "domain" : "37",
+    "comment" : {
+      "en" : "The species of a marked plant. Functional, and shared across both contributing networks so that taxa are not duplicated per source."
+    },
+    "attributes" : [ "object", "functional" ],
+    "id" : "167"
+  }, {
+    "range" : "40",
+    "domain" : "6",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "168"
+  }, {
+    "range" : "1",
+    "domain" : "6",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "169"
+  }, {
+    "range" : "14",
+    "domain" : "6",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "170"
+  }, {
+    "range" : "15",
+    "domain" : "6",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "171"
+  }, {
+    "range" : "40",
+    "domain" : "13",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "172"
+  }, {
+    "range" : "1",
+    "domain" : "13",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "173"
+  }, {
+    "range" : "14",
+    "domain" : "13",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "175"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#hostOf",
+    "inverse" : "155",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "2",
+    "label" : {
+      "IRI-based" : "hostOf",
+      "en" : "host of"
+    },
+    "domain" : "43",
+    "comment" : {
+      "en" : "Inverse of detectedIn: relates a host individual to a pathogen found in it."
+    },
+    "attributes" : [ "object" ],
+    "id" : "176"
+  }, {
+    "range" : "15",
+    "domain" : "13",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "177"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#sampledAt",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "49",
+    "label" : {
+      "IRI-based" : "sampledAt",
+      "en" : "sampled at"
+    },
+    "domain" : "6",
+    "comment" : {
+      "en" : "The spatial unit at which an observation or sampling act occurred. Combined with withinSpatialUnit, every event resolves upward to site and domain."
+    },
+    "attributes" : [ "someValues", "object" ],
+    "id" : "179"
+  }, {
+    "range" : "13",
+    "domain" : "6",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "180"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/resultTime",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "135",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "The result time is the instant of time when the Observation, Actuation or Sampling activity was completed.",
+        "type" : "label"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampling",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "resultTime",
+      "en" : "result time"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "The result time is the instant of time when the Observation, Actuation or Sampling activity was completed."
+    },
+    "attributes" : [ "external", "datatype" ],
+    "id" : "181"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#observedAt",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "observedAt",
+      "en" : "observed at"
+    },
+    "domain" : "16",
+    "comment" : {
+      "en" : "Asserted vector-presence edge: this tick species was collected at this spatial unit. Materialized from drag samples in which the taxon was identified. Unlike detectedIn and detectedAt, which record rare pathogen detections, this relation is densely labelled - roughly half of all bouts find the target taxa - which makes it a well-powered companion task on the same graph."
+    },
+    "attributes" : [ "object" ],
+    "id" : "182"
+  }, {
+    "range" : "17",
+    "domain" : "2",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "183"
+  }, {
+    "range" : "17",
+    "domain" : "16",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "184"
+  }, {
+    "range" : "17",
+    "domain" : "34",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "185"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#phenophaseIntensity",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "123",
+    "label" : {
+      "IRI-based" : "phenophaseIntensity",
+      "en" : "phenophase intensity"
+    },
+    "domain" : "14",
+    "comment" : {
+      "en" : "NEON's ordinal abundance band for the phase when expressed, for example '< 5%' or '25-49%'. Kept as recorded rather than coerced to a number, since the bands are not evenly spaced."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "186"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/madeBySensor",
+    "inverse" : "108",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation between an Observation and the Sensor which made the Observation.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sensor",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "madeBySensor",
+      "en" : "made by sensor"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation between an Observation and the Sensor which made the Observation."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "187"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/madeObservation",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relation between a Sensor and an Observation made by the Sensor.",
+        "type" : "label"
+      } ],
+      "rangeIncludes" : [ {
+        "identifier" : "rangeIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sensor",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "madeObservation",
+      "en" : "made observation"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "Relation between a Sensor and an Observation made by the Sensor."
+    },
+    "attributes" : [ "external", "object" ],
+    "id" : "108"
+  }, {
+    "iri" : "https://bryantpollard.github.io/neon-epn/ontology#fromDragSample",
+    "baseIri" : "https://bryantpollard.github.io/neon-epn/ontology",
+    "range" : "40",
+    "label" : {
+      "IRI-based" : "fromDragSample",
+      "en" : "from drag sample"
+    },
+    "domain" : "15",
+    "comment" : {
+      "en" : "Links an identified tick occurrence back to the bout that collected it, so that effort and sampled area remain recoverable."
+    },
+    "attributes" : [ "object" ],
+    "id" : "188"
+  }, {
+    "range" : "17",
+    "domain" : "32",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "190"
+  }, {
+    "range" : "38",
+    "domain" : "37",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "191"
+  }, {
+    "iri" : "http://www.w3.org/ns/sosa/hasSimpleResult",
+    "baseIri" : "http://www.w3.org/ns/sosa",
+    "range" : "165",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "The simple value of an Observation or Actuation or act of Sampling.",
+        "type" : "label"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "For instance, the values 23 or true.",
+        "type" : "label"
+      } ],
+      "domainIncludes" : [ {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Actuation",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Sampling",
+        "type" : "iri"
+      }, {
+        "identifier" : "domainIncludes",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/ns/sosa/Observation",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "hasSimpleResult",
+      "en" : "has simple result"
+    },
+    "domain" : "9",
+    "comment" : {
+      "en" : "The simple value of an Observation or Actuation or act of Sampling."
+    },
+    "attributes" : [ "external", "datatype" ],
+    "id" : "192"
+  }, {
+    "range" : "4",
+    "domain" : "3",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "193"
+  }, {
+    "range" : "38",
+    "domain" : "93",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "194"
+  }, {
+    "range" : "38",
+    "domain" : "43",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "195"
+  } ]
+}

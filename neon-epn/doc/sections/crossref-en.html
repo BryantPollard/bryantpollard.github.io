@@ -1,0 +1,2182 @@
+<h2 id="crossreference" class="list">Cross-reference for NEON-EPN Ontology: National Ecological Observatory Network Eco-Pathogen Network classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by NEON-EPN Ontology: National Ecological Observatory Network Eco-Pathogen Network.
+<div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
+ <h3 id="classes-headline" class="list">Classes</h3>
+ <ul class="hlist">
+  <li><a href="#AssayResult" title="https://bryantpollard.github.io/neon-epn/ontology#AssayResult">Assay result</a></li>
+  <li><a href="#CaptureEvent" title="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent">Capture event</a></li>
+  <li><a href="#ClimateProperty" title="https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty">Climate property</a></li>
+  <li><a href="#ClimateReading" title="https://bryantpollard.github.io/neon-epn/ontology#ClimateReading">Climate reading</a></li>
+  <li><a href="#ClimateSensor" title="https://bryantpollard.github.io/neon-epn/ontology#ClimateSensor">Climate sensor</a></li>
+  <li><a href="#DragSample" title="https://bryantpollard.github.io/neon-epn/ontology#DragSample">Drag sample</a></li>
+  <li><a href="#EcoDomain" title="https://bryantpollard.github.io/neon-epn/ontology#EcoDomain">Ecoclimatic domain</a></li>
+  <li><a href="#FieldSite" title="https://bryantpollard.github.io/neon-epn/ontology#FieldSite">Field site</a></li>
+  <li><a href="#HostIndividual" title="https://bryantpollard.github.io/neon-epn/ontology#HostIndividual">Host individual</a></li>
+  <li><a href="#PathogenAssay" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenAssay">Host pathogen assay</a></li>
+  <li><a href="#HostTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#HostTaxon">Host taxon</a></li>
+  <li><a href="#http://www.w3.org/2006/time#Instant" title="http://www.w3.org/2006/time#Instant">Instant</a></li>
+  <li><a href="#http://www.w3.org/2006/time#Interval" title="http://www.w3.org/2006/time#Interval">Interval</a></li>
+  <li><a href="#ObservationNetwork" title="https://bryantpollard.github.io/neon-epn/ontology#ObservationNetwork">Observation network</a></li>
+  <li><a href="#ObservationSite" title="https://bryantpollard.github.io/neon-epn/ontology#ObservationSite">Observation site</a></li>
+  <li><a href="#PathogenTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon">Pathogen taxon</a></li>
+  <li><a href="#PathogenTest" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest">Pathogen test</a></li>
+  <li><a href="#Phenophase" title="https://bryantpollard.github.io/neon-epn/ontology#Phenophase">Phenophase</a></li>
+  <li><a href="#PhenophaseObservation" title="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation">Phenophase observation</a></li>
+  <li><a href="#PhenophaseStatus" title="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseStatus">Phenophase status</a></li>
+  <li><a href="#PlantIndividual" title="https://bryantpollard.github.io/neon-epn/ontology#PlantIndividual">Plant individual</a></li>
+  <li><a href="#PlantTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#PlantTaxon">Plant taxon</a></li>
+  <li><a href="#Plot" title="https://bryantpollard.github.io/neon-epn/ontology#Plot">Plot</a></li>
+  <li><a href="#SpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit">Spatial unit</a></li>
+  <li><a href="#Taxon" title="https://bryantpollard.github.io/neon-epn/ontology#Taxon">Taxon</a></li>
+  <li><a href="#TickPathogenAssay" title="https://bryantpollard.github.io/neon-epn/ontology#TickPathogenAssay">Tick pathogen assay</a></li>
+  <li><a href="#TickSample" title="https://bryantpollard.github.io/neon-epn/ontology#TickSample">Tick sample</a></li>
+  <li><a href="#VectorOccurrence" title="https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence">Vector occurrence</a></li>
+  <li><a href="#VectorTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#VectorTaxon">Vector taxon</a></li>
+ </ul>
+ <div class="entity" id="AssayResult">
+  <h3>Assay result<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#AssayResult</p>
+  <div class="comment">
+   <span class="markdown">Closed value set for pathogen assay outcomes. Closure is enforced here by owl:oneOf and again defensively by SHACL in Stage 3.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    { <a href="#Detected" title="https://bryantpollard.github.io/neon-epn/ontology#Detected">detected</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#Inconclusive" title="https://bryantpollard.github.io/neon-epn/ontology#Inconclusive">inconclusive</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#NotDetected" title="https://bryantpollard.github.io/neon-epn/ontology#NotDetected">not detected</a> <sup class="type-ni" title="named individual">ni</sup> }
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasAssayResult" title="https://bryantpollard.github.io/neon-epn/ontology#hasAssayResult">has assay result</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#Detected" title="https://bryantpollard.github.io/neon-epn/ontology#Detected">detected</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Inconclusive" title="https://bryantpollard.github.io/neon-epn/ontology#Inconclusive">inconclusive</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#NotDetected" title="https://bryantpollard.github.io/neon-epn/ontology#NotDetected">not detected</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="CaptureEvent">
+  <h3>Capture event<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent</p>
+  <div class="comment">
+   <span class="markdown">A discrete NEON trapping/sampling act in which a host individual is captured at a plot at a point in time (sosa:resultTime).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/sosa/Sampling" target="_blank" title="http://www.w3.org/ns/sosa/Sampling">Sampling</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#adultTicksAttached" title="https://bryantpollard.github.io/neon-epn/ontology#adultTicksAttached">adult ticks attached</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#attachedTickCount" title="https://bryantpollard.github.io/neon-epn/ontology#attachedTickCount">attached tick count</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#larvalTicksAttached" title="https://bryantpollard.github.io/neon-epn/ontology#larvalTicksAttached">larval ticks attached</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#nymphalTicksAttached" title="https://bryantpollard.github.io/neon-epn/ontology#nymphalTicksAttached">nymphal ticks attached</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#ClimateReading" title="https://bryantpollard.github.io/neon-epn/ontology#ClimateReading">Climate reading</a> <sup class="type-c" title="class">c</sup>, <a href="#DragSample" title="https://bryantpollard.github.io/neon-epn/ontology#DragSample">Drag sample</a> <sup class="type-c" title="class">c</sup>, <a href="#PathogenTest" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest">Pathogen test</a> <sup class="type-c" title="class">c</sup>, <a href="#PhenophaseObservation" title="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation">Phenophase observation</a> <sup class="type-c" title="class">c</sup>, <a href="#VectorOccurrence" title="https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence">Vector occurrence</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ClimateProperty">
+  <h3>Climate property<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty</p>
+  <div class="comment">
+   <span class="markdown">An observable meteorological/soil property streamed by NEON instrumentation.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/sosa/ObservableProperty" target="_blank" title="http://www.w3.org/ns/sosa/ObservableProperty">Observable Property</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#AirTemperature" title="https://bryantpollard.github.io/neon-epn/ontology#AirTemperature">air temperature</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Precipitation" title="https://bryantpollard.github.io/neon-epn/ontology#Precipitation">precipitation</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#RelativeHumidity" title="https://bryantpollard.github.io/neon-epn/ontology#RelativeHumidity">relative humidity</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#SoilTemperature" title="https://bryantpollard.github.io/neon-epn/ontology#SoilTemperature">soil temperature</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#WindSpeed" title="https://bryantpollard.github.io/neon-epn/ontology#WindSpeed">wind speed</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ClimateReading">
+  <h3>Climate reading<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#ClimateReading</p>
+  <div class="comment">
+   <span class="markdown">One measurement from the climate telemetry. Native-resolution readings carry sosa:resultTime (an instant). Daily aggregates additionally carry sosa:phenomenonTime pointing at a time:Interval spanning the day, because a daily mean is not observed at an instant. Results use QUDT QuantityValue (value + unit), or sosa:hasSimpleResult in lean mode.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/sosa/Observation" target="_blank" title="http://www.w3.org/ns/sosa/Observation">Observation</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#CaptureEvent" title="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent">Capture event</a> <sup class="type-c" title="class">c</sup>, <a href="#DragSample" title="https://bryantpollard.github.io/neon-epn/ontology#DragSample">Drag sample</a> <sup class="type-c" title="class">c</sup>, <a href="#PathogenTest" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest">Pathogen test</a> <sup class="type-c" title="class">c</sup>, <a href="#PhenophaseObservation" title="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation">Phenophase observation</a> <sup class="type-c" title="class">c</sup>, <a href="#VectorOccurrence" title="https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence">Vector occurrence</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ClimateSensor">
+  <h3>Climate sensor<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#ClimateSensor</p>
+  <div class="comment">
+   <span class="markdown">A NEON instrument streaming climate readings from a deployment location.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/sosa/Sensor" target="_blank" title="http://www.w3.org/ns/sosa/Sensor">Sensor</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#deployedAt" title="https://bryantpollard.github.io/neon-epn/ontology#deployedAt">deployed at</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="DragSample">
+  <h3>Drag sample<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#DragSample</p>
+  <div class="comment">
+   <span class="markdown">One drag-cloth sampling bout at a plot: a cloth of known area is dragged through vegetation and the ticks collected are counted by life stage. Recorded whether or not ticks are found, so absence is observed rather than inferred.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/sosa/Sampling" target="_blank" title="http://www.w3.org/ns/sosa/Sampling">Sampling</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#adultCount" title="https://bryantpollard.github.io/neon-epn/ontology#adultCount">adult count</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#larvaCount" title="https://bryantpollard.github.io/neon-epn/ontology#larvaCount">larva count</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#nymphCount" title="https://bryantpollard.github.io/neon-epn/ontology#nymphCount">nymph count</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#sampledAreaSqM" title="https://bryantpollard.github.io/neon-epn/ontology#sampledAreaSqM">sampled area (m2)</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#targetTaxaPresent" title="https://bryantpollard.github.io/neon-epn/ontology#targetTaxaPresent">target taxa present</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#fromDragSample" title="https://bryantpollard.github.io/neon-epn/ontology#fromDragSample">from drag sample</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#CaptureEvent" title="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent">Capture event</a> <sup class="type-c" title="class">c</sup>, <a href="#ClimateReading" title="https://bryantpollard.github.io/neon-epn/ontology#ClimateReading">Climate reading</a> <sup class="type-c" title="class">c</sup>, <a href="#PathogenTest" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest">Pathogen test</a> <sup class="type-c" title="class">c</sup>, <a href="#PhenophaseObservation" title="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation">Phenophase observation</a> <sup class="type-c" title="class">c</sup>, <a href="#VectorOccurrence" title="https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence">Vector occurrence</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="EcoDomain">
+  <h3>Ecoclimatic domain<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#EcoDomain</p>
+  <div class="comment">
+   <span class="markdown">One of NEON's 20 ecoclimatic domains (e.g., D01 Northeast).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#SpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit">Spatial unit</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#neonDomainCode" title="https://bryantpollard.github.io/neon-epn/ontology#neonDomainCode">NEON domain code</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#FieldSite" title="https://bryantpollard.github.io/neon-epn/ontology#FieldSite">Field site</a> <sup class="type-c" title="class">c</sup>, <a href="#Plot" title="https://bryantpollard.github.io/neon-epn/ontology#Plot">Plot</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="FieldSite">
+  <h3>Field site<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#FieldSite</p>
+  <div class="comment">
+   <span class="markdown">A NEON field site (e.g., HARV, OSBS). Every field site lies within an ecoclimatic domain.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#SpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit">Spatial unit</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#neonSiteCode" title="https://bryantpollard.github.io/neon-epn/ontology#neonSiteCode">NEON site code</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#nearFieldSite" title="https://bryantpollard.github.io/neon-epn/ontology#nearFieldSite">near field site</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#EcoDomain" title="https://bryantpollard.github.io/neon-epn/ontology#EcoDomain">Ecoclimatic domain</a> <sup class="type-c" title="class">c</sup>, <a href="#Plot" title="https://bryantpollard.github.io/neon-epn/ontology#Plot">Plot</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="HostIndividual">
+  <h3>Host individual<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#HostIndividual</p>
+  <div class="comment">
+   <span class="markdown">An individual captured/sampled organism (e.g., one tagged deer mouse). The feature of interest of pathogen assays.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/sosa/FeatureOfInterest" target="_blank" title="http://www.w3.org/ns/sosa/FeatureOfInterest">Feature Of Interest</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#ofTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#ofTaxon">of taxon</a> <sup class="type-op" title="object property">op</sup>, <a href="#tagId" title="https://bryantpollard.github.io/neon-epn/ontology#tagId">tag identifier</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#detectedIn" title="https://bryantpollard.github.io/neon-epn/ontology#detectedIn">detected in</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#TickSample" title="https://bryantpollard.github.io/neon-epn/ontology#TickSample">Tick sample</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PathogenAssay">
+  <h3>Host pathogen assay<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#PathogenAssay</p>
+  <div class="comment">
+   <span class="markdown">A laboratory test (e.g., qPCR/ELISA) of one host individual's blood sample for one pathogen taxon. Source: NEON rodent-borne pathogen status, linked to trapping by bloodSampleID.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#PathogenTest" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest">Pathogen test</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#TickPathogenAssay" title="https://bryantpollard.github.io/neon-epn/ontology#TickPathogenAssay">Tick pathogen assay</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="HostTaxon">
+  <h3>Host taxon<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#HostTaxon</p>
+  <div class="comment">
+   <span class="markdown">A taxon acting as a pathogen host in this network (e.g., small mammal species sampled by NEON).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Taxon" title="https://bryantpollard.github.io/neon-epn/ontology#Taxon">Taxon</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#ofTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#ofTaxon">of taxon</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#UnidentifiedHostTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#UnidentifiedHostTaxon">Unidentified host taxon</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#PathogenTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon">Pathogen taxon</a> <sup class="type-c" title="class">c</sup>, <a href="#PlantTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#PlantTaxon">Plant taxon</a> <sup class="type-c" title="class">c</sup>, <a href="#VectorTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#VectorTaxon">Vector taxon</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://www.w3.org/2006/time#Instant">
+  <h3>Instant<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2006/time#Instant</p>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2006/time#">http://www.w3.org/2006/time#</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://www.w3.org/2006/time#Interval">
+  <h3>Interval<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2006/time#Interval</p>
+  <div class="comment">
+   <span class="markdown">A temporal entity with extent. Used here for the span covered by a daily climate aggregate.</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2006/time#">http://www.w3.org/2006/time#</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ObservationNetwork">
+  <h3>Observation network<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#ObservationNetwork</p>
+  <div class="comment">
+   <span class="markdown">A programme that collects observations to a defined protocol. Recorded so that records from different networks remain distinguishable after integration.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/prov#Agent" target="_blank" title="http://www.w3.org/ns/prov#Agent">Agent</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#observedByNetwork" title="https://bryantpollard.github.io/neon-epn/ontology#observedByNetwork">observed by network</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#NEON" title="https://bryantpollard.github.io/neon-epn/ontology#NEON">National Ecological Observatory Network</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#USANPN" title="https://bryantpollard.github.io/neon-epn/ontology#USANPN">USA National Phenology Network</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ObservationSite">
+  <h3>Observation site<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#ObservationSite</p>
+  <div class="comment">
+   <span class="markdown">A location at which a network makes observations, where that location is not part of NEON's domain-site-plot hierarchy. USA-NPN stations are volunteer-chosen points, so they are related to NEON field sites by proximity rather than by containment.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#SpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit">Spatial unit</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#distanceToFieldSiteKm" title="https://bryantpollard.github.io/neon-epn/ontology#distanceToFieldSiteKm">distance to field site (km)</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#nearFieldSite" title="https://bryantpollard.github.io/neon-epn/ontology#nearFieldSite">near field site</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PathogenTaxon">
+  <h3>Pathogen taxon<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon</p>
+  <div class="comment">
+   <span class="markdown">A taxon acting as a pathogen or vector-borne agent tested for by NEON assays (e.g., Borrelia burgdorferi).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Taxon" title="https://bryantpollard.github.io/neon-epn/ontology#Taxon">Taxon</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#detectedAt" title="https://bryantpollard.github.io/neon-epn/ontology#detectedAt">detected at</a> <sup class="type-op" title="object property">op</sup>, <a href="#detectedIn" title="https://bryantpollard.github.io/neon-epn/ontology#detectedIn">detected in</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#testedForPathogen" title="https://bryantpollard.github.io/neon-epn/ontology#testedForPathogen">tested for pathogen</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#HostTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#HostTaxon">Host taxon</a> <sup class="type-c" title="class">c</sup>, <a href="#PlantTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#PlantTaxon">Plant taxon</a> <sup class="type-c" title="class">c</sup>, <a href="#VectorTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#VectorTaxon">Vector taxon</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PathogenTest">
+  <h3>Pathogen test<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#PathogenTest</p>
+  <div class="comment">
+   <span class="markdown">Any test for the presence of one pathogen taxon in one sampled entity, yielding exactly one closed-set result at a point in time. Specialized by PathogenAssay (host blood) and TickPathogenAssay (pooled tick subsample).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/sosa/Observation" target="_blank" title="http://www.w3.org/ns/sosa/Observation">Observation</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#PathogenAssay" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenAssay">Host pathogen assay</a> <sup class="type-c" title="class">c</sup>, <a href="#TickPathogenAssay" title="https://bryantpollard.github.io/neon-epn/ontology#TickPathogenAssay">Tick pathogen assay</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasAssayResult" title="https://bryantpollard.github.io/neon-epn/ontology#hasAssayResult">has assay result</a> <sup class="type-op" title="object property">op</sup>, <a href="#testedForPathogen" title="https://bryantpollard.github.io/neon-epn/ontology#testedForPathogen">tested for pathogen</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#CaptureEvent" title="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent">Capture event</a> <sup class="type-c" title="class">c</sup>, <a href="#ClimateReading" title="https://bryantpollard.github.io/neon-epn/ontology#ClimateReading">Climate reading</a> <sup class="type-c" title="class">c</sup>, <a href="#DragSample" title="https://bryantpollard.github.io/neon-epn/ontology#DragSample">Drag sample</a> <sup class="type-c" title="class">c</sup>, <a href="#PhenophaseObservation" title="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation">Phenophase observation</a> <sup class="type-c" title="class">c</sup>, <a href="#VectorOccurrence" title="https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence">Vector occurrence</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Phenophase">
+  <h3>Phenophase<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#Phenophase</p>
+  <div class="comment">
+   <span class="markdown">A recognisable stage in a plant's annual cycle, such as breaking leaf buds or open flowers. Members of a closed set defined by NEON's observation protocol.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#expressedAt" title="https://bryantpollard.github.io/neon-epn/ontology#expressedAt">expressed at</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#observedPhenophase" title="https://bryantpollard.github.io/neon-epn/ontology#observedPhenophase">observed phenophase</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#BreakingLeafBuds" title="https://bryantpollard.github.io/neon-epn/ontology#BreakingLeafBuds">Breaking leaf buds</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ColoredLeaves" title="https://bryantpollard.github.io/neon-epn/ontology#ColoredLeaves">Colored leaves</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#EmergingNeedles" title="https://bryantpollard.github.io/neon-epn/ontology#EmergingNeedles">Emerging needles</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#FallingLeaves" title="https://bryantpollard.github.io/neon-epn/ontology#FallingLeaves">Falling leaves</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#IncreasingLeafSize" title="https://bryantpollard.github.io/neon-epn/ontology#IncreasingLeafSize">Increasing leaf size</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#InitialGrowth" title="https://bryantpollard.github.io/neon-epn/ontology#InitialGrowth">Initial growth</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Leaves" title="https://bryantpollard.github.io/neon-epn/ontology#Leaves">Leaves</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#OpenFlowers" title="https://bryantpollard.github.io/neon-epn/ontology#OpenFlowers">Open flowers</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#OpenPollenCones" title="https://bryantpollard.github.io/neon-epn/ontology#OpenPollenCones">Open pollen cones</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#YoungNeedles" title="https://bryantpollard.github.io/neon-epn/ontology#YoungNeedles">Young needles</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PhenophaseObservation">
+  <h3>Phenophase observation<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation</p>
+  <div class="comment">
+   <span class="markdown">One check of whether one phenophase is currently expressed on one plant. Recorded on every visit whether or not the phase is present, so absence is observed rather than inferred, as with drag sampling. Carries neonepn:observedByNetwork, since both NEON and USA-NPN contribute observations of the same phenophases to this class.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/sosa/Observation" target="_blank" title="http://www.w3.org/ns/sosa/Observation">Observation</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasPhenophaseStatus" title="https://bryantpollard.github.io/neon-epn/ontology#hasPhenophaseStatus">has phenophase status</a> <sup class="type-op" title="object property">op</sup>, <a href="#observedPhenophase" title="https://bryantpollard.github.io/neon-epn/ontology#observedPhenophase">observed phenophase</a> <sup class="type-op" title="object property">op</sup>, <a href="#phenophaseIntensity" title="https://bryantpollard.github.io/neon-epn/ontology#phenophaseIntensity">phenophase intensity</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#CaptureEvent" title="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent">Capture event</a> <sup class="type-c" title="class">c</sup>, <a href="#ClimateReading" title="https://bryantpollard.github.io/neon-epn/ontology#ClimateReading">Climate reading</a> <sup class="type-c" title="class">c</sup>, <a href="#DragSample" title="https://bryantpollard.github.io/neon-epn/ontology#DragSample">Drag sample</a> <sup class="type-c" title="class">c</sup>, <a href="#PathogenTest" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest">Pathogen test</a> <sup class="type-c" title="class">c</sup>, <a href="#VectorOccurrence" title="https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence">Vector occurrence</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PhenophaseStatus">
+  <h3>Phenophase status<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#PhenophaseStatus</p>
+  <div class="comment">
+   <span class="markdown">Whether a phenophase was observable on a plant at the moment of a visit. A closed set, so an unrecognised value is rejected at validation rather than propagating.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    { <a href="#Expressed" title="https://bryantpollard.github.io/neon-epn/ontology#Expressed">Expressed</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#NotExpressed" title="https://bryantpollard.github.io/neon-epn/ontology#NotExpressed">Not expressed</a> <sup class="type-ni" title="named individual">ni</sup> , <a href="#StatusUncertain" title="https://bryantpollard.github.io/neon-epn/ontology#StatusUncertain">Uncertain</a> <sup class="type-ni" title="named individual">ni</sup> }
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasPhenophaseStatus" title="https://bryantpollard.github.io/neon-epn/ontology#hasPhenophaseStatus">has phenophase status</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#Expressed" title="https://bryantpollard.github.io/neon-epn/ontology#Expressed">Expressed</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#NotExpressed" title="https://bryantpollard.github.io/neon-epn/ontology#NotExpressed">Not expressed</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#StatusUncertain" title="https://bryantpollard.github.io/neon-epn/ontology#StatusUncertain">Uncertain</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PlantIndividual">
+  <h3>Plant individual<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#PlantIndividual</p>
+  <div class="comment">
+   <span class="markdown">A marked plant observed repeatedly through the season, identified by the contributing network's individual identifier. Unlike a host animal it is sessile, so its location is fixed and it is revisited on a schedule rather than recaptured by chance. Identifiers are network-scoped: a NEON individualID and a USA-NPN individual_id may collide numerically and are kept in separate IRI spaces.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/sosa/FeatureOfInterest" target="_blank" title="http://www.w3.org/ns/sosa/FeatureOfInterest">Feature Of Interest</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#ofPlantTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#ofPlantTaxon">of plant taxon</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PlantTaxon">
+  <h3>Plant taxon<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#PlantTaxon</p>
+  <div class="comment">
+   <span class="markdown">A plant species under phenological observation, for example Quercus rubra or Acer rubrum.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Taxon" title="https://bryantpollard.github.io/neon-epn/ontology#Taxon">Taxon</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#ofPlantTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#ofPlantTaxon">of plant taxon</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#HostTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#HostTaxon">Host taxon</a> <sup class="type-c" title="class">c</sup>, <a href="#PathogenTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon">Pathogen taxon</a> <sup class="type-c" title="class">c</sup>, <a href="#VectorTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#VectorTaxon">Vector taxon</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Plot">
+  <h3>Plot<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#Plot</p>
+  <div class="comment">
+   <span class="markdown">A sampling plot within a NEON field site (e.g., a small-mammal trapping grid).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#SpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit">Spatial unit</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#plotId" title="https://bryantpollard.github.io/neon-epn/ontology#plotId">plot identifier</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#EcoDomain" title="https://bryantpollard.github.io/neon-epn/ontology#EcoDomain">Ecoclimatic domain</a> <sup class="type-c" title="class">c</sup>, <a href="#FieldSite" title="https://bryantpollard.github.io/neon-epn/ontology#FieldSite">Field site</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="SpatialUnit">
+  <h3>Spatial unit<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit</p>
+  <div class="comment">
+   <span class="markdown">Any node of the NEON spatial hierarchy (ecoclimatic domain, field site, or plot). Subclass of geo:Feature so WKT geometries can be attached.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.opengis.net/ont/geosparql#Feature" target="_blank" title="http://www.opengis.net/ont/geosparql#Feature">Feature</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#EcoDomain" title="https://bryantpollard.github.io/neon-epn/ontology#EcoDomain">Ecoclimatic domain</a> <sup class="type-c" title="class">c</sup>, <a href="#FieldSite" title="https://bryantpollard.github.io/neon-epn/ontology#FieldSite">Field site</a> <sup class="type-c" title="class">c</sup>, <a href="#ObservationSite" title="https://bryantpollard.github.io/neon-epn/ontology#ObservationSite">Observation site</a> <sup class="type-c" title="class">c</sup>, <a href="#Plot" title="https://bryantpollard.github.io/neon-epn/ontology#Plot">Plot</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#withinSpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#withinSpatialUnit">within spatial unit</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#collectedAt" title="https://bryantpollard.github.io/neon-epn/ontology#collectedAt">collected at</a> <sup class="type-op" title="object property">op</sup>, <a href="#deployedAt" title="https://bryantpollard.github.io/neon-epn/ontology#deployedAt">deployed at</a> <sup class="type-op" title="object property">op</sup>, <a href="#detectedAt" title="https://bryantpollard.github.io/neon-epn/ontology#detectedAt">detected at</a> <sup class="type-op" title="object property">op</sup>, <a href="#expressedAt" title="https://bryantpollard.github.io/neon-epn/ontology#expressedAt">expressed at</a> <sup class="type-op" title="object property">op</sup>, <a href="#observedAt" title="https://bryantpollard.github.io/neon-epn/ontology#observedAt">observed at</a> <sup class="type-op" title="object property">op</sup>, <a href="#sampledAt" title="https://bryantpollard.github.io/neon-epn/ontology#sampledAt">sampled at</a> <sup class="type-op" title="object property">op</sup>, <a href="#withinSpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#withinSpatialUnit">within spatial unit</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Taxon">
+  <h3>Taxon<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#Taxon</p>
+  <div class="comment">
+   <span class="markdown">A biological taxon referenced by the project. Individuals should carry a skos:exactMatch to the corresponding purl.obolibrary.org NCBITaxon IRI.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#HostTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#HostTaxon">Host taxon</a> <sup class="type-c" title="class">c</sup>, <a href="#PathogenTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon">Pathogen taxon</a> <sup class="type-c" title="class">c</sup>, <a href="#PlantTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#PlantTaxon">Plant taxon</a> <sup class="type-c" title="class">c</sup>, <a href="#VectorTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#VectorTaxon">Vector taxon</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="TickPathogenAssay">
+  <h3>Tick pathogen assay<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#TickPathogenAssay</p>
+  <div class="comment">
+   <span class="markdown">A laboratory test of one pooled tick subsample for one pathogen taxon. Source: NEON tick-borne pathogen status.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#PathogenTest" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest">Pathogen test</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#PathogenAssay" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenAssay">Host pathogen assay</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="TickSample">
+  <h3>Tick sample<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#TickSample</p>
+  <div class="comment">
+   <span class="markdown">A tick specimen collected by drag-cloth sampling at a plot and submitted for pathogen testing, identified by NEON subsampleID. In every NEON record examined (231,892 across 39 sites) individualCount is 1, so a sample is a single tick; the count is retained because the field permits pooling in principle. Unlike a host individual, a tick sample is an environmental sample with no tagged organism, so vector-borne detections attach to place rather than to an animal.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/sosa/FeatureOfInterest" target="_blank" title="http://www.w3.org/ns/sosa/FeatureOfInterest">Feature Of Interest</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#collectedAt" title="https://bryantpollard.github.io/neon-epn/ontology#collectedAt">collected at</a> <sup class="type-op" title="object property">op</sup>, <a href="#individualCount" title="https://bryantpollard.github.io/neon-epn/ontology#individualCount">individual count</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#HostIndividual" title="https://bryantpollard.github.io/neon-epn/ontology#HostIndividual">Host individual</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="VectorOccurrence">
+  <h3>Vector occurrence<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence</p>
+  <div class="comment">
+   <span class="markdown">Identification of one tick taxon (optionally at one life stage) within one drag sample, with the number of individuals counted.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/sosa/Observation" target="_blank" title="http://www.w3.org/ns/sosa/Observation">Observation</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#fromDragSample" title="https://bryantpollard.github.io/neon-epn/ontology#fromDragSample">from drag sample</a> <sup class="type-op" title="object property">op</sup>, <a href="#lifeStage" title="https://bryantpollard.github.io/neon-epn/ontology#lifeStage">life stage</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#ofVectorTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#ofVectorTaxon">of vector taxon</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#CaptureEvent" title="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent">Capture event</a> <sup class="type-c" title="class">c</sup>, <a href="#ClimateReading" title="https://bryantpollard.github.io/neon-epn/ontology#ClimateReading">Climate reading</a> <sup class="type-c" title="class">c</sup>, <a href="#DragSample" title="https://bryantpollard.github.io/neon-epn/ontology#DragSample">Drag sample</a> <sup class="type-c" title="class">c</sup>, <a href="#PathogenTest" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest">Pathogen test</a> <sup class="type-c" title="class">c</sup>, <a href="#PhenophaseObservation" title="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation">Phenophase observation</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="VectorTaxon">
+  <h3>Vector taxon<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#VectorTaxon</p>
+  <div class="comment">
+   <span class="markdown">A tick species that may transmit pathogens, identified from drag-cloth collections (e.g. Ixodes scapularis, Amblyomma americanum).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Taxon" title="https://bryantpollard.github.io/neon-epn/ontology#Taxon">Taxon</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#observedAt" title="https://bryantpollard.github.io/neon-epn/ontology#observedAt">observed at</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#ofVectorTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#ofVectorTaxon">of vector taxon</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#HostTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#HostTaxon">Host taxon</a> <sup class="type-c" title="class">c</sup>, <a href="#PathogenTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon">Pathogen taxon</a> <sup class="type-c" title="class">c</sup>, <a href="#PlantTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#PlantTaxon">Plant taxon</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="objectproperties">
+ <h3 id="properties" class="list">Object Properties</h3>
+ <ul class="hlist">
+  <li><a href="#collectedAt" title="https://bryantpollard.github.io/neon-epn/ontology#collectedAt">collected at</a></li>
+  <li><a href="#deployedAt" title="https://bryantpollard.github.io/neon-epn/ontology#deployedAt">deployed at</a></li>
+  <li><a href="#detectedAt" title="https://bryantpollard.github.io/neon-epn/ontology#detectedAt">detected at</a></li>
+  <li><a href="#detectedIn" title="https://bryantpollard.github.io/neon-epn/ontology#detectedIn">detected in</a></li>
+  <li><a href="#expressedAt" title="https://bryantpollard.github.io/neon-epn/ontology#expressedAt">expressed at</a></li>
+  <li><a href="#fromDragSample" title="https://bryantpollard.github.io/neon-epn/ontology#fromDragSample">from drag sample</a></li>
+  <li><a href="#hasAssayResult" title="https://bryantpollard.github.io/neon-epn/ontology#hasAssayResult">has assay result</a></li>
+  <li><a href="#http://www.w3.org/2006/time#hasBeginning" title="http://www.w3.org/2006/time#hasBeginning">has beginning</a></li>
+  <li><a href="#http://www.w3.org/2006/time#hasEnd" title="http://www.w3.org/2006/time#hasEnd">has end</a></li>
+  <li><a href="#hasPhenophaseStatus" title="https://bryantpollard.github.io/neon-epn/ontology#hasPhenophaseStatus">has phenophase status</a></li>
+  <li><a href="#hostOf" title="https://bryantpollard.github.io/neon-epn/ontology#hostOf">host of</a></li>
+  <li><a href="#nearFieldSite" title="https://bryantpollard.github.io/neon-epn/ontology#nearFieldSite">near field site</a></li>
+  <li><a href="#observedAt" title="https://bryantpollard.github.io/neon-epn/ontology#observedAt">observed at</a></li>
+  <li><a href="#observedByNetwork" title="https://bryantpollard.github.io/neon-epn/ontology#observedByNetwork">observed by network</a></li>
+  <li><a href="#observedPhenophase" title="https://bryantpollard.github.io/neon-epn/ontology#observedPhenophase">observed phenophase</a></li>
+  <li><a href="#ofPlantTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#ofPlantTaxon">of plant taxon</a></li>
+  <li><a href="#ofTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#ofTaxon">of taxon</a></li>
+  <li><a href="#ofVectorTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#ofVectorTaxon">of vector taxon</a></li>
+  <li><a href="#sampledAt" title="https://bryantpollard.github.io/neon-epn/ontology#sampledAt">sampled at</a></li>
+  <li><a href="#testedForPathogen" title="https://bryantpollard.github.io/neon-epn/ontology#testedForPathogen">tested for pathogen</a></li>
+  <li><a href="#withinSpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#withinSpatialUnit">within spatial unit</a></li>
+ </ul>
+ <div class="entity" id="collectedAt">
+  <h3>collected at<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#collectedAt</p>
+  <div class="comment">
+   <span class="markdown">The spatial unit where a tick sample was collected.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#TickSample" title="https://bryantpollard.github.io/neon-epn/ontology#TickSample">Tick sample</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#SpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit">Spatial unit</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="deployedAt">
+  <h3>deployed at<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#deployedAt</p>
+  <div class="comment">
+   <span class="markdown">The spatial unit where a sensor is installed.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ClimateSensor" title="https://bryantpollard.github.io/neon-epn/ontology#ClimateSensor">Climate sensor</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#SpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit">Spatial unit</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="detectedAt">
+  <h3>detected at<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#detectedAt</p>
+  <div class="comment">
+   <span class="markdown">Asserted pathogen-place detection edge: the pathogen taxon was detected in a vector sample collected at this spatial unit. Materialized from each TickPathogenAssay whose hasAssayResult is Detected. This is the vector-borne counterpart of detectedIn and the second link-prediction target of the temporal graph.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#PathogenTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon">Pathogen taxon</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#SpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit">Spatial unit</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="detectedIn">
+  <h3>detected in<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#detectedIn</p>
+  <div class="comment">
+   <span class="markdown">Asserted pathogen-host detection edge: the pathogen taxon was detected in the host individual. Materialized during Stage 2 from each PathogenAssay whose hasAssayResult is Detected; this is the primary positive edge type of the temporal graph and the main link-prediction target.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#PathogenTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon">Pathogen taxon</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#HostIndividual" title="https://bryantpollard.github.io/neon-epn/ontology#HostIndividual">Host individual</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#hostOf" title="https://bryantpollard.github.io/neon-epn/ontology#hostOf">host of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="expressedAt">
+  <h3>expressed at<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#expressedAt</p>
+  <div class="comment">
+   <span class="markdown">Asserted phenophase-place edge: this phenophase was observed expressed at this spatial unit. Materialized from observations whose status is Expressed. Densely labelled, like observedAt, and it supplies the seasonal timing against which vector activity and pathogen detection can be compared.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Phenophase" title="https://bryantpollard.github.io/neon-epn/ontology#Phenophase">Phenophase</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#SpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit">Spatial unit</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="fromDragSample">
+  <h3>from drag sample<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#fromDragSample</p>
+  <div class="comment">
+   <span class="markdown">Links an identified tick occurrence back to the bout that collected it, so that effort and sampled area remain recoverable.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#VectorOccurrence" title="https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence">Vector occurrence</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#DragSample" title="https://bryantpollard.github.io/neon-epn/ontology#DragSample">Drag sample</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasAssayResult">
+  <h3>has assay result<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#hasAssayResult</p>
+  <div class="comment">
+   <span class="markdown">The single outcome of an assay, drawn from the closed AssayResult value set.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#PathogenTest" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest">Pathogen test</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#AssayResult" title="https://bryantpollard.github.io/neon-epn/ontology#AssayResult">Assay result</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2006/time#hasBeginning">
+  <h3>has beginning<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2006/time#hasBeginning</p>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2006/time#">http://www.w3.org/2006/time#</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://www.w3.org/2006/time#hasEnd">
+  <h3>has end<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2006/time#hasEnd</p>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2006/time#">http://www.w3.org/2006/time#</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="hasPhenophaseStatus">
+  <h3>has phenophase status<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#hasPhenophaseStatus</p>
+  <div class="comment">
+   <span class="markdown">Relates a phenophase observation to its outcome. Functional: a single check yields one status.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#PhenophaseObservation" title="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation">Phenophase observation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#PhenophaseStatus" title="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseStatus">Phenophase status</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hostOf">
+  <h3>host of<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#hostOf</p>
+  <div class="comment">
+   <span class="markdown">Inverse of detectedIn: relates a host individual to a pathogen found in it.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#detectedIn" title="https://bryantpollard.github.io/neon-epn/ontology#detectedIn">detected in</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="nearFieldSite">
+  <h3>near field site<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#nearFieldSite</p>
+  <div class="comment">
+   <span class="markdown">Asserted proximity between an external observation site and a NEON field site, materialized when the two lie within a stated distance. Deliberately NOT withinSpatialUnit: an external site is not contained by a NEON site, and treating proximity as containment would license false inference through the transitive spatial hierarchy.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ObservationSite" title="https://bryantpollard.github.io/neon-epn/ontology#ObservationSite">Observation site</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#FieldSite" title="https://bryantpollard.github.io/neon-epn/ontology#FieldSite">Field site</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="observedAt">
+  <h3>observed at<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#observedAt</p>
+  <div class="comment">
+   <span class="markdown">Asserted vector-presence edge: this tick species was collected at this spatial unit. Materialized from drag samples in which the taxon was identified. Unlike detectedIn and detectedAt, which record rare pathogen detections, this relation is densely labelled - roughly half of all bouts find the target taxa - which makes it a well-powered companion task on the same graph.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#VectorTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#VectorTaxon">Vector taxon</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#SpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit">Spatial unit</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="observedByNetwork">
+  <h3>observed by network<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#observedByNetwork</p>
+  <div class="comment">
+   <span class="markdown">The programme whose protocol produced this observation. Present on every observation once more than one source is integrated, so that provenance survives the merge.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/ns/sosa/Observation" target="_blank" title="http://www.w3.org/ns/sosa/Observation">Observation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#ObservationNetwork" title="https://bryantpollard.github.io/neon-epn/ontology#ObservationNetwork">Observation network</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="observedPhenophase">
+  <h3>observed phenophase<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#observedPhenophase</p>
+  <div class="comment">
+   <span class="markdown">The phenophase being checked. Functional, and drawn from the closed set NEON records.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#PhenophaseObservation" title="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation">Phenophase observation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Phenophase" title="https://bryantpollard.github.io/neon-epn/ontology#Phenophase">Phenophase</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="ofPlantTaxon">
+  <h3>of plant taxon<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#ofPlantTaxon</p>
+  <div class="comment">
+   <span class="markdown">The species of a marked plant. Functional, and shared across both contributing networks so that taxa are not duplicated per source.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#PlantIndividual" title="https://bryantpollard.github.io/neon-epn/ontology#PlantIndividual">Plant individual</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#PlantTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#PlantTaxon">Plant taxon</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="ofTaxon">
+  <h3>of taxon<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#ofTaxon</p>
+  <div class="comment">
+   <span class="markdown">Links an individual organism to its species-level taxon.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#HostIndividual" title="https://bryantpollard.github.io/neon-epn/ontology#HostIndividual">Host individual</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#HostTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#HostTaxon">Host taxon</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="ofVectorTaxon">
+  <h3>of vector taxon<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#ofVectorTaxon</p>
+  <div class="comment">
+   <span class="markdown">The tick species identified in a drag-cloth collection. Functional: one occurrence records one taxon.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#VectorOccurrence" title="https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence">Vector occurrence</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#VectorTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#VectorTaxon">Vector taxon</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="sampledAt">
+  <h3>sampled at<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#sampledAt</p>
+  <div class="comment">
+   <span class="markdown">The spatial unit at which an observation or sampling act occurred. Combined with withinSpatialUnit, every event resolves upward to site and domain.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/ns/sosa/Observation" target="_blank" title="http://www.w3.org/ns/sosa/Observation">Observation</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="http://www.w3.org/ns/sosa/Sampling" target="_blank" title="http://www.w3.org/ns/sosa/Sampling">Sampling</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#SpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit">Spatial unit</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="testedForPathogen">
+  <h3>tested for pathogen<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#testedForPathogen</p>
+  <div class="comment">
+   <span class="markdown">The single pathogen taxon targeted by an assay.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#PathogenTest" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTest">Pathogen test</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#PathogenTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenTaxon">Pathogen taxon</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="withinSpatialUnit">
+  <h3>within spatial unit<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#withinSpatialUnit</p>
+  <div class="comment">
+   <span class="markdown">Transitive containment along the NEON spatial hierarchy (plot within site within domain). Sub-property of GeoSPARQL sfWithin so spatial reasoners interoperate.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> transitive</p>
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.opengis.net/ont/geosparql#sfWithin" target="_blank" title="http://www.opengis.net/ont/geosparql#sfWithin">sf Within</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#SpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit">Spatial unit</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#SpatialUnit" title="https://bryantpollard.github.io/neon-epn/ontology#SpatialUnit">Spatial unit</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dataproperties">
+ <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+ <ul class="hlist">
+  <li><a href="#adultCount" title="https://bryantpollard.github.io/neon-epn/ontology#adultCount">adult count</a></li>
+  <li><a href="#adultTicksAttached" title="https://bryantpollard.github.io/neon-epn/ontology#adultTicksAttached">adult ticks attached</a></li>
+  <li><a href="#attachedTickCount" title="https://bryantpollard.github.io/neon-epn/ontology#attachedTickCount">attached tick count</a></li>
+  <li><a href="#distanceToFieldSiteKm" title="https://bryantpollard.github.io/neon-epn/ontology#distanceToFieldSiteKm">distance to field site (km)</a></li>
+  <li><a href="#http://www.w3.org/2006/time#inXSDDateTimeStamp" title="http://www.w3.org/2006/time#inXSDDateTimeStamp">in XSD date-time stamp</a></li>
+  <li><a href="#individualCount" title="https://bryantpollard.github.io/neon-epn/ontology#individualCount">individual count</a></li>
+  <li><a href="#larvaCount" title="https://bryantpollard.github.io/neon-epn/ontology#larvaCount">larva count</a></li>
+  <li><a href="#larvalTicksAttached" title="https://bryantpollard.github.io/neon-epn/ontology#larvalTicksAttached">larval ticks attached</a></li>
+  <li><a href="#lifeStage" title="https://bryantpollard.github.io/neon-epn/ontology#lifeStage">life stage</a></li>
+  <li><a href="#neonDomainCode" title="https://bryantpollard.github.io/neon-epn/ontology#neonDomainCode">NEON domain code</a></li>
+  <li><a href="#neonSiteCode" title="https://bryantpollard.github.io/neon-epn/ontology#neonSiteCode">NEON site code</a></li>
+  <li><a href="#nymphCount" title="https://bryantpollard.github.io/neon-epn/ontology#nymphCount">nymph count</a></li>
+  <li><a href="#nymphalTicksAttached" title="https://bryantpollard.github.io/neon-epn/ontology#nymphalTicksAttached">nymphal ticks attached</a></li>
+  <li><a href="#phenophaseIntensity" title="https://bryantpollard.github.io/neon-epn/ontology#phenophaseIntensity">phenophase intensity</a></li>
+  <li><a href="#plotId" title="https://bryantpollard.github.io/neon-epn/ontology#plotId">plot identifier</a></li>
+  <li><a href="#sampledAreaSqM" title="https://bryantpollard.github.io/neon-epn/ontology#sampledAreaSqM">sampled area (m2)</a></li>
+  <li><a href="#tagId" title="https://bryantpollard.github.io/neon-epn/ontology#tagId">tag identifier</a></li>
+  <li><a href="#targetTaxaPresent" title="https://bryantpollard.github.io/neon-epn/ontology#targetTaxaPresent">target taxa present</a></li>
+ </ul>
+ <div class="entity" id="adultCount">
+  <h3>adult count<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#adultCount</p>
+  <div class="comment">
+   <span class="markdown">Adult ticks collected in a drag bout. Distinct from nymphs and larvae, which differ in both host preference and epidemiological importance.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#DragSample" title="https://bryantpollard.github.io/neon-epn/ontology#DragSample">Drag sample</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="adultTicksAttached">
+  <h3>adult ticks attached<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#adultTicksAttached</p>
+  <div class="comment">
+   <span class="markdown">Presence of attached ticks by life stage at capture. Bridges hosts to the vector layer: an animal carrying ticks links that host individual to the tick populations sampled by drag cloth at the same plot.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#CaptureEvent" title="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent">Capture event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#boolean" target="_blank" title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="attachedTickCount">
+  <h3>attached tick count<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#attachedTickCount</p>
+  <div class="comment">
+   <span class="markdown">Number of attached ticks counted at capture (NEON tickNumber). Recorded on only a small fraction of captures; absence means not counted, not zero.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#CaptureEvent" title="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent">Capture event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="distanceToFieldSiteKm">
+  <h3>distance to field site (km)<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#distanceToFieldSiteKm</p>
+  <div class="comment">
+   <span class="markdown">Great-circle distance to the nearest NEON field site. Recorded so that a user can choose a proximity threshold rather than inherit the one used at ingestion.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ObservationSite" title="https://bryantpollard.github.io/neon-epn/ontology#ObservationSite">Observation site</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#double" target="_blank" title="http://www.w3.org/2001/XMLSchema#double">double</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="http://www.w3.org/2006/time#inXSDDateTimeStamp">
+  <h3>in XSD date-time stamp<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2006/time#inXSDDateTimeStamp</p>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2006/time#">http://www.w3.org/2006/time#</a>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="individualCount">
+  <h3>individual count<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#individualCount</p>
+  <div class="comment">
+   <span class="markdown">Number of tick individuals in the tested subsample. Uniformly 1 in the NEON data examined; retained so that pooled testing, which the source field permits, would be representable without a schema change.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#TickSample" title="https://bryantpollard.github.io/neon-epn/ontology#TickSample">Tick sample</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="larvaCount">
+  <h3>larva count<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#larvaCount</p>
+  <div class="comment">
+   <span class="markdown">Larval ticks collected in a drag bout. Larvae hatch uninfected, so their host associations determine whether the transmission cycle establishes.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#DragSample" title="https://bryantpollard.github.io/neon-epn/ontology#DragSample">Drag sample</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="larvalTicksAttached">
+  <h3>larval ticks attached<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#larvalTicksAttached</p>
+  <div class="comment">
+   <span class="markdown">Whether larval ticks were attached to a captured animal. NEON records presence as Y/N, not as a count; parsing it as an integer silently discards every value.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#CaptureEvent" title="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent">Capture event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#boolean" target="_blank" title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="lifeStage">
+  <h3>life stage<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#lifeStage</p>
+  <div class="comment">
+   <span class="markdown">Life stage or sex as recorded by NEON: Larva, Nymph, Female, Male.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#VectorOccurrence" title="https://bryantpollard.github.io/neon-epn/ontology#VectorOccurrence">Vector occurrence</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="neonDomainCode">
+  <h3>NEON domain code<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#neonDomainCode</p>
+  <div class="comment">
+   <span class="markdown">NEON domain identifier, e.g., 'D01'.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#EcoDomain" title="https://bryantpollard.github.io/neon-epn/ontology#EcoDomain">Ecoclimatic domain</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="neonSiteCode">
+  <h3>NEON site code<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#neonSiteCode</p>
+  <div class="comment">
+   <span class="markdown">Four-letter NEON site identifier, e.g., 'HARV'.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#FieldSite" title="https://bryantpollard.github.io/neon-epn/ontology#FieldSite">Field site</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="nymphCount">
+  <h3>nymph count<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#nymphCount</p>
+  <div class="comment">
+   <span class="markdown">Nymphs are the life stage responsible for most human Lyme transmission, so nymphal presence is the epidemiologically relevant target.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#DragSample" title="https://bryantpollard.github.io/neon-epn/ontology#DragSample">Drag sample</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="nymphalTicksAttached">
+  <h3>nymphal ticks attached<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#nymphalTicksAttached</p>
+  <div class="comment">
+   <span class="markdown">Whether nymphal ticks were attached to a captured animal. Recorded as Y/N. Nymphs cause most human Lyme transmission, so their presence on reservoir hosts is the epidemiologically informative stage.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#CaptureEvent" title="https://bryantpollard.github.io/neon-epn/ontology#CaptureEvent">Capture event</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#boolean" target="_blank" title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="phenophaseIntensity">
+  <h3>phenophase intensity<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#phenophaseIntensity</p>
+  <div class="comment">
+   <span class="markdown">NEON's ordinal abundance band for the phase when expressed, for example '&lt; 5%' or '25-49%'. Kept as recorded rather than coerced to a number, since the bands are not evenly spaced.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#PhenophaseObservation" title="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseObservation">Phenophase observation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="plotId">
+  <h3>plot identifier<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#plotId</p>
+  <div class="comment">
+   <span class="markdown">NEON plot identifier, e.g., 'HARV_001'.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Plot" title="https://bryantpollard.github.io/neon-epn/ontology#Plot">Plot</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="sampledAreaSqM">
+  <h3>sampled area (m2)<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#sampledAreaSqM</p>
+  <div class="comment">
+   <span class="markdown">Area covered by the drag cloth, so counts can be expressed as density rather than raw abundance when effort varies.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#DragSample" title="https://bryantpollard.github.io/neon-epn/ontology#DragSample">Drag sample</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#double" target="_blank" title="http://www.w3.org/2001/XMLSchema#double">double</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="tagId">
+  <h3>tag identifier<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#tagId</p>
+  <div class="comment">
+   <span class="markdown">NEON mark-recapture tag for an individual animal.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#HostIndividual" title="https://bryantpollard.github.io/neon-epn/ontology#HostIndividual">Host individual</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="targetTaxaPresent">
+  <h3>target taxa present<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#targetTaxaPresent</p>
+  <div class="comment">
+   <span class="markdown">Whether any target tick taxa were collected in this bout. The observed negative that makes vector presence a balanced prediction task.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#DragSample" title="https://bryantpollard.github.io/neon-epn/ontology#DragSample">Drag sample</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#boolean" target="_blank" title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="namedindividuals">
+ <h3 id="namedindividuals" class="list">Named Individuals</h3>
+ <ul class="hlist">
+  <li><a href="#AirTemperature" title="https://bryantpollard.github.io/neon-epn/ontology#AirTemperature">air temperature</a></li>
+  <li><a href="#BreakingLeafBuds" title="https://bryantpollard.github.io/neon-epn/ontology#BreakingLeafBuds">Breaking leaf buds</a></li>
+  <li><a href="#ColoredLeaves" title="https://bryantpollard.github.io/neon-epn/ontology#ColoredLeaves">Colored leaves</a></li>
+  <li><a href="#Detected" title="https://bryantpollard.github.io/neon-epn/ontology#Detected">detected</a></li>
+  <li><a href="#EmergingNeedles" title="https://bryantpollard.github.io/neon-epn/ontology#EmergingNeedles">Emerging needles</a></li>
+  <li><a href="#Expressed" title="https://bryantpollard.github.io/neon-epn/ontology#Expressed">Expressed</a></li>
+  <li><a href="#FallingLeaves" title="https://bryantpollard.github.io/neon-epn/ontology#FallingLeaves">Falling leaves</a></li>
+  <li><a href="#Inconclusive" title="https://bryantpollard.github.io/neon-epn/ontology#Inconclusive">inconclusive</a></li>
+  <li><a href="#IncreasingLeafSize" title="https://bryantpollard.github.io/neon-epn/ontology#IncreasingLeafSize">Increasing leaf size</a></li>
+  <li><a href="#InitialGrowth" title="https://bryantpollard.github.io/neon-epn/ontology#InitialGrowth">Initial growth</a></li>
+  <li><a href="#Leaves" title="https://bryantpollard.github.io/neon-epn/ontology#Leaves">Leaves</a></li>
+  <li><a href="#NEON" title="https://bryantpollard.github.io/neon-epn/ontology#NEON">National Ecological Observatory Network</a></li>
+  <li><a href="#NotDetected" title="https://bryantpollard.github.io/neon-epn/ontology#NotDetected">not detected</a></li>
+  <li><a href="#NotExpressed" title="https://bryantpollard.github.io/neon-epn/ontology#NotExpressed">Not expressed</a></li>
+  <li><a href="#OpenFlowers" title="https://bryantpollard.github.io/neon-epn/ontology#OpenFlowers">Open flowers</a></li>
+  <li><a href="#OpenPollenCones" title="https://bryantpollard.github.io/neon-epn/ontology#OpenPollenCones">Open pollen cones</a></li>
+  <li><a href="#PathogenPresence" title="https://bryantpollard.github.io/neon-epn/ontology#PathogenPresence">pathogen presence</a></li>
+  <li><a href="#Precipitation" title="https://bryantpollard.github.io/neon-epn/ontology#Precipitation">precipitation</a></li>
+  <li><a href="#RelativeHumidity" title="https://bryantpollard.github.io/neon-epn/ontology#RelativeHumidity">relative humidity</a></li>
+  <li><a href="#SoilTemperature" title="https://bryantpollard.github.io/neon-epn/ontology#SoilTemperature">soil temperature</a></li>
+  <li><a href="#StatusUncertain" title="https://bryantpollard.github.io/neon-epn/ontology#StatusUncertain">Uncertain</a></li>
+  <li><a href="#UnidentifiedHostTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#UnidentifiedHostTaxon">Unidentified host taxon</a></li>
+  <li><a href="#USANPN" title="https://bryantpollard.github.io/neon-epn/ontology#USANPN">USA National Phenology Network</a></li>
+  <li><a href="#WindSpeed" title="https://bryantpollard.github.io/neon-epn/ontology#WindSpeed">wind speed</a></li>
+  <li><a href="#YoungNeedles" title="https://bryantpollard.github.io/neon-epn/ontology#YoungNeedles">Young needles</a></li>
+ </ul>
+ <div class="entity" id="AirTemperature">
+  <h3>air temperature<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#AirTemperature</p>
+  <div class="comment">
+   <span class="markdown">Air temperature at tower height. Note that ticks quest in the litter layer rather than two metres up, so this is a proxy for the microclimate they actually experience.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ClimateProperty" title="https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty">Climate property</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="BreakingLeafBuds">
+  <h3>Breaking leaf buds<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#BreakingLeafBuds</p>
+  <div class="comment">
+   <span class="markdown">The canonical green-up indicator: the first date this is expressed marks the onset of the growing season. PPO:0001012 'breaking vegetative bud' carries 'breaking leaf bud' as an alternative label.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#Phenophase" title="https://bryantpollard.github.io/neon-epn/ontology#Phenophase">Phenophase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#closeMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#closeMatch">close Match</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="http://purl.obolibrary.org/obo/PPO_0001012" target="_blank" title="http://purl.obolibrary.org/obo/PPO_0001012">P P O 0001012</a> <sup class="type-ep" title="external property">ep</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ColoredLeaves">
+  <h3>Colored leaves<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#ColoredLeaves</p>
+  <div class="comment">
+   <span class="markdown">Aligned to 'senescing true leaf present' (PPO:0002317). NEON scores leaf colour as the visible marker of senescence; PPO names the underlying state.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#Phenophase" title="https://bryantpollard.github.io/neon-epn/ontology#Phenophase">Phenophase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#closeMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#closeMatch">close Match</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="http://purl.obolibrary.org/obo/PPO_0002317" target="_blank" title="http://purl.obolibrary.org/obo/PPO_0002317">P P O 0002317</a> <sup class="type-ep" title="external property">ep</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Detected">
+  <h3>detected<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#Detected</p>
+  <div class="comment">
+   <span class="markdown">The assay found the pathogen in this sample.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#AssayResult" title="https://bryantpollard.github.io/neon-epn/ontology#AssayResult">Assay result</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="EmergingNeedles">
+  <h3>Emerging needles<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#EmergingNeedles</p>
+  <div class="comment">
+   <span class="markdown">Aligned to 'unfolding true leaf present' (PPO:0002314). PPO treats needles as vascular leaves and its unfolding stage explicitly covers conifers.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#Phenophase" title="https://bryantpollard.github.io/neon-epn/ontology#Phenophase">Phenophase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#closeMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#closeMatch">close Match</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="http://purl.obolibrary.org/obo/PPO_0002314" target="_blank" title="http://purl.obolibrary.org/obo/PPO_0002314">P P O 0002314</a> <sup class="type-ep" title="external property">ep</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Expressed">
+  <h3>Expressed<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#Expressed</p>
+  <div class="comment">
+   <span class="markdown">The phenophase is currently observable on the plant. Corresponds to PPO's 'present' traits, e.g. 'open flower present' (PPO:0002333) for OpenFlowers.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#PhenophaseStatus" title="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseStatus">Phenophase status</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="FallingLeaves">
+  <h3>Falling leaves<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#FallingLeaves</p>
+  <div class="comment">
+   <span class="markdown">Aligned to 'abscised leaf present' (PPO:0002357), which counts leaves shed within the current growing season.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#Phenophase" title="https://bryantpollard.github.io/neon-epn/ontology#Phenophase">Phenophase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#closeMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#closeMatch">close Match</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="http://purl.obolibrary.org/obo/PPO_0002357" target="_blank" title="http://purl.obolibrary.org/obo/PPO_0002357">P P O 0002357</a> <sup class="type-ep" title="external property">ep</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Inconclusive">
+  <h3>inconclusive<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#Inconclusive</p>
+  <div class="comment">
+   <span class="markdown">The assay could not be resolved. Excluded from both positives and negatives rather than treated as an absence.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#AssayResult" title="https://bryantpollard.github.io/neon-epn/ontology#AssayResult">Assay result</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="IncreasingLeafSize">
+  <h3>Increasing leaf size<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#IncreasingLeafSize</p>
+  <div class="comment">
+   <span class="markdown">Aligned to 'expanding true leaf present' (PPO:0002322).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#Phenophase" title="https://bryantpollard.github.io/neon-epn/ontology#Phenophase">Phenophase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#closeMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#closeMatch">close Match</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="http://purl.obolibrary.org/obo/PPO_0002322" target="_blank" title="http://purl.obolibrary.org/obo/PPO_0002322">P P O 0002322</a> <sup class="type-ep" title="external property">ep</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="InitialGrowth">
+  <h3>Initial growth<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#InitialGrowth</p>
+  <div class="comment">
+   <span class="markdown">NEON scores initial growth for grasses and forbs, where new basal or vegetative growth emerges without a distinct bud-break event. No PPO counterpart was found, so this individual is deliberately left unaligned rather than forced onto an approximate term.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#Phenophase" title="https://bryantpollard.github.io/neon-epn/ontology#Phenophase">Phenophase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Leaves">
+  <h3>Leaves<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#Leaves</p>
+  <div class="comment">
+   <span class="markdown">Aligned to 'true leaf present' (PPO:0002313).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#Phenophase" title="https://bryantpollard.github.io/neon-epn/ontology#Phenophase">Phenophase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#closeMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#closeMatch">close Match</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="http://purl.obolibrary.org/obo/PPO_0002313" target="_blank" title="http://purl.obolibrary.org/obo/PPO_0002313">P P O 0002313</a> <sup class="type-ep" title="external property">ep</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NEON">
+  <h3>National Ecological Observatory Network<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#NEON</p>
+  <div class="comment">
+   <span class="markdown">Continental-scale observatory operated by Battelle under NSF cooperative agreement. Observations are made by trained technicians on fixed plots to a published protocol.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ObservationNetwork" title="https://bryantpollard.github.io/neon-epn/ontology#ObservationNetwork">Observation network</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NotDetected">
+  <h3>not detected<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#NotDetected</p>
+  <div class="comment">
+   <span class="markdown">The assay was performed and did not find the pathogen. An observed absence, not a missing value: this is what makes prevalence computable, since it supplies the denominator.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#AssayResult" title="https://bryantpollard.github.io/neon-epn/ontology#AssayResult">Assay result</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NotExpressed">
+  <h3>Not expressed<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#NotExpressed</p>
+  <div class="comment">
+   <span class="markdown">The plant was checked and the phenophase was not observable. An observed absence, not a missing value; corresponds to PPO's 'absent' traits, e.g. 'open flower absent' (PPO:0002632).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#PhenophaseStatus" title="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseStatus">Phenophase status</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="OpenFlowers">
+  <h3>Open flowers<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#OpenFlowers</p>
+  <div class="comment">
+   <span class="markdown">Aligned to 'open flower present' (PPO:0002333). The closest correspondence in the set.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#Phenophase" title="https://bryantpollard.github.io/neon-epn/ontology#Phenophase">Phenophase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#closeMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#closeMatch">close Match</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="http://purl.obolibrary.org/obo/PPO_0002333" target="_blank" title="http://purl.obolibrary.org/obo/PPO_0002333">P P O 0002333</a> <sup class="type-ep" title="external property">ep</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="OpenPollenCones">
+  <h3>Open pollen cones<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#OpenPollenCones</p>
+  <div class="comment">
+   <span class="markdown">Aligned to 'open microsporangiate strobilus' (PPO:0001047). PPO offers no paired presence trait for pollen cones, so the match is to the structure class itself.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#Phenophase" title="https://bryantpollard.github.io/neon-epn/ontology#Phenophase">Phenophase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#closeMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#closeMatch">close Match</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="http://purl.obolibrary.org/obo/PPO_0001047" target="_blank" title="http://purl.obolibrary.org/obo/PPO_0001047">P P O 0001047</a> <sup class="type-ep" title="external property">ep</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PathogenPresence">
+  <h3>pathogen presence<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#PathogenPresence</p>
+  <div class="comment">
+   <span class="markdown">The observable property measured by a pathogen assay: presence/absence of a target pathogen in a host individual or its sample.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/ns/sosa/ObservableProperty" target="_blank" title="http://www.w3.org/ns/sosa/ObservableProperty">Observable Property</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Precipitation">
+  <h3>precipitation<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#Precipitation</p>
+  <div class="comment">
+   <span class="markdown">Bulk precipitation from the weighing gauge (DP1.00044.001), which replaced the deprecated DP1.00006.001 in October 2025.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ClimateProperty" title="https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty">Climate property</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="RelativeHumidity">
+  <h3>relative humidity<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#RelativeHumidity</p>
+  <div class="comment">
+   <span class="markdown">Relative humidity. Capacitive sensors read slightly above 100 percent in fog and frost; values to 105 percent are retained with a warning rather than discarded.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ClimateProperty" title="https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty">Climate property</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="SoilTemperature">
+  <h3>soil temperature<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#SoilTemperature</p>
+  <div class="comment">
+   <span class="markdown">Soil temperature. Declared for completeness; NEON soil arrays sit 9.5 km or more from the nearest drag plot, so the product is not ingested.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ClimateProperty" title="https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty">Climate property</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="StatusUncertain">
+  <h3>Uncertain<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#StatusUncertain</p>
+  <div class="comment">
+   <span class="markdown">The observer could not determine the status. Excluded from derived timing measures.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#PhenophaseStatus" title="https://bryantpollard.github.io/neon-epn/ontology#PhenophaseStatus">Phenophase status</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="UnidentifiedHostTaxon">
+  <h3>Unidentified host taxon<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#UnidentifiedHostTaxon</p>
+  <div class="comment">
+   <span class="markdown">Sentinel taxon for captured animals NEON recorded without a usable species identification (an animal escaping before identification, or an incomplete record). Modelling this explicitly keeps the capture and any assay in the graph while making the taxonomic uncertainty visible, rather than silently dropping the animal.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#HostTaxon" title="https://bryantpollard.github.io/neon-epn/ontology#HostTaxon">Host taxon</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="USANPN">
+  <h3>USA National Phenology Network<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#USANPN</p>
+  <div class="comment">
+   <span class="markdown">Volunteer phenology monitoring through the Nature's Notebook programme, coordinated by the USA-NPN National Coordinating Office. Observers are dispersed and self-selected, and the coordinating office has limited ability to verify individual observer skill, so a single record carries less assurance than a NEON record while the aggregate covers far more of the country.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ObservationNetwork" title="https://bryantpollard.github.io/neon-epn/ontology#ObservationNetwork">Observation network</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="WindSpeed">
+  <h3>wind speed<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#WindSpeed</p>
+  <div class="comment">
+   <span class="markdown">Wind speed. Declared for completeness; not currently ingested.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ClimateProperty" title="https://bryantpollard.github.io/neon-epn/ontology#ClimateProperty">Climate property</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="YoungNeedles">
+  <h3>Young needles<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://bryantpollard.github.io/neon-epn/ontology#YoungNeedles</p>
+  <div class="comment">
+   <span class="markdown">Aligned to 'immature unfolded true leaf present' (PPO:0002318).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#Phenophase" title="https://bryantpollard.github.io/neon-epn/ontology#Phenophase">Phenophase</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2004/02/skos/core#closeMatch" target="_blank" title="http://www.w3.org/2004/02/skos/core#closeMatch">close Match</a> <sup class="type-ap" title="annotation property">ap</sup> <a href="http://purl.obolibrary.org/obo/PPO_0002318" target="_blank" title="http://purl.obolibrary.org/obo/PPO_0002318">P P O 0002318</a> <sup class="type-ep" title="external property">ep</sup>
+   </dd>
+  </dl>
+ </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+<sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+<sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+<sup class="type-ni" title="Named Individuals">ni</sup>: Named Individuals <br/>
+<sup class="type-ep" title="External Properties">ep</sup>: External Properties
+</div>
+</div>
