@@ -1,0 +1,737 @@
+% NEON-EPN: an ESWC Resources Track submission.
+%
+% Springer's llncs.cls is not redistributable, so this uses article.cls with
+% geometry set to match. To submit: download llncs.cls and splncs04.bst from
+% Springer, replace the preamble down to \begin{document} with
+%   \documentclass[runningheads]{llncs}
+% and switch \bibliographystyle{splncs04}.
+%
+% Prepared for dual-anonymous review: no author names, and the repository is
+% referenced through an anonymised mirror. Replace both at camera-ready.
+
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\lstset{basicstyle=\ttfamily\footnotesize, breaklines=true,
+        frame=single, framesep=4pt, rulecolor=\color{gray!40},
+        showstringspaces=false, columns=fullflexible}
+
+\title{\textbf{NEON-EPN: A Semantic Layer over Continental Ecological
+Monitoring, and the Temporal Graph Benchmark Derived from It}}
+\author{Anonymous Author(s)\\\small Anonymous Institution}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Ecological observatories publish measurements as independent tabular products,
+each with its own identifiers, sampling design and temporal resolution. The
+scientific questions that motivate such observatories are integrative, but the
+data are not. We present \textbf{NEON-EPN}, an OWL ontology and reproducible
+pipeline that integrates five data products from the US National Ecological
+Observatory Network with volunteer phenology observations from the USA National
+Phenology Network into a single validated knowledge graph, and a derivation of
+that graph into a Temporal Graph Benchmark dataset for link prediction. The
+resource comprises 10.5 million triples over 39 sites and eleven years, passing
+a gate of 22 SHACL shapes with zero violations, and exports 725{,}826
+timestamped events across five relations with 40{,}842 held-out evaluation
+positives. Two contributions go beyond the artifact. First, aligning both
+networks to the Plant Phenology Ontology enables a cross-source query that would
+otherwise require a bespoke crosswalk: at 27 co-located sites, volunteer and
+professional observers report bud-break dates differing by a median of 1.6 days,
+with disagreement tracking sample size rather than observer type. Second, the
+derived benchmark contains four prediction relations whose optimal baselines
+differ, including one on which memorization scores \emph{below} the random
+floor --- a property we have not found in existing temporal graph benchmarks.
+Ontology, mappings, shapes, pipeline, dataset and baselines are released under
+CC~BY~4.0 and MIT.
+
+\medskip
+\noindent\textbf{Keywords:} knowledge graph $\cdot$ ontology $\cdot$ SHACL
+$\cdot$ RML $\cdot$ ecological data integration $\cdot$ temporal graph
+benchmark $\cdot$ data quality
+\end{abstract}
+
+%======================================================================
+\section{Introduction}
+
+The US National Ecological Observatory Network (NEON) operates 81 field sites
+and publishes roughly 180 standardised data products spanning organisms,
+sensors and airborne remote sensing. Its stated purpose is to enable
+continental-scale ecological inference. Its published form is a catalogue of
+independent tables.
+
+This gap is not incidental. A question such as \emph{does host community
+composition predict pathogen prevalence in ticks} requires joining small mammal
+trapping, tick pathogen assays, drag-cloth sampling and climate telemetry ---
+four products whose records share no common key, identify locations at
+different granularities, and encode identity in incompatible ways. In practice
+each research group writes the joins again, with assumptions that are neither
+recorded nor reviewable.
+
+We argue that this is precisely the problem a semantic layer addresses, and
+that ecological observatories are an underexploited application domain for
+knowledge graph technology. We present NEON-EPN, comprising:
+
+\begin{enumerate}
+  \item an OWL ontology (25 classes) reusing SOSA, GeoSPARQL, QUDT, OWL-Time,
+        NCBITaxon, ENVO, the Plant Phenology Ontology and PROV-O, with the
+        import-versus-reference decision made explicitly for each;
+  \item declarative RML mappings and a reproducible HPC pipeline producing
+        10{,}536{,}423 triples over 39 sites and eleven years;
+  \item a SHACL gate of 22 node shapes including cross-record integrity
+        constraints, passing with zero violations;
+  \item a derivation of the graph into Temporal Graph Benchmark format, with
+        five relations, 725{,}826 events and reference baselines; and
+  \item an integration of a second, independently operated observation network
+        through shared ontology terms, and a cross-source comparison that the
+        integration makes possible.
+\end{enumerate}
+
+Section~\ref{sec:validation} reports something we consider as valuable as the
+artifact: the SHACL gate caught three classes of referential defect that no
+structural check on any single product would surface, and \emph{failed} to
+catch four data-modelling errors that only distributional inspection revealed.
+We report both, because a resource paper that presents only its successes
+misrepresents what validation does.
+
+%======================================================================
+\section{Related Work}
+
+\paragraph{Semantic layers over observation networks.}
+The closest analogue is the Biodiversity Exploratories Semantic Units knowledge
+graph, which applies semantic units and a reuse-heavy vocabulary stack to a
+German long-term ecological research network. FooDS constructs an ontology and
+knowledge graph over a forest observatory in Borneo using YARRRML mappings ---
+the same declarative family we use, applied to wildlife sensor data. Both
+demonstrate that the approach transfers across observatories; neither derives a
+machine learning benchmark from the result, which is the step we add.
+
+For NEON specifically, prior semantic work is confined to metadata. NEON
+publishes EML descriptors, and a recent effort mapped units from NEON, EDI and
+DataONE to QUDT. Biodiversity ontologies including BCO and ENVO cite NEON
+specimens among their motivating use cases. To our knowledge no formal semantic
+layer over NEON \emph{observation} data has been published.
+
+\paragraph{Ontology engineering practice.}
+Recent domain ontologies in environmental and exposure science --- OntoPFAS for
+perfluoroalkyl substances is a close methodological analogue --- follow the
+Linked Open Terms methodology: requirements elicited as competency questions,
+glossaries merged, existing vocabularies reused, then formalisation and
+evaluation against those same questions. We follow the same discipline, and
+Section~\ref{sec:cq} states the questions the ontology was built to answer.
+Where our resource differs is in what follows construction: OntoPFAS publishes
+sample instances, whereas the contribution here includes a graph instantiated
+at scale over eleven years and a machine learning benchmark derived from it.
+
+\paragraph{Vocabulary reuse.}
+SOSA/SSN is the established vocabulary for observations and is used at scale in
+geospatial knowledge graphs. The Plant Phenology Ontology is directly relevant
+here: it was designed to integrate USA-NPN and NEON phenology records, and
+Section~\ref{sec:crosssource} reports what happens when that design intention
+is exercised.
+
+\paragraph{Temporal graph benchmarks.}
+TGB~2.0 provides eight datasets spanning temporal knowledge graphs and
+heterogeneous graphs, with a standardised one-vs-many evaluation protocol.
+Recent work notes the scarcity of temporal heterogeneous benchmarks and the
+resulting reliance on a small pool of datasets. Conversions between benchmark
+formats have moved from temporal graph representations into relational ones; we
+are not aware of prior work in the opposite direction, deriving a temporal
+graph benchmark from RDF.
+
+%======================================================================
+\section{Ontology Design}
+\label{sec:ontology}
+
+The ontology (\texttt{neonepn}, v0.6.0, 25 own classes, 593 triples) is
+organised around the observation as a first-class entity. This is not a
+stylistic choice: RDF triples have three positions, all occupied, and no
+natural place for a timestamp. Reifying each measurement as a
+\texttt{sosa:Observation} node gives the timestamp somewhere to live, and is
+what makes the temporal export of Section~\ref{sec:benchmark} possible at all.
+
+\subsection{Reuse, and the decision not to import}
+
+Vocabulary reuse is the primary evaluation criterion for a published ontology,
+but \emph{how} to reuse is a design decision with consequences. We distinguish
+two cases.
+
+\textbf{SOSA is imported in full.} It is load-bearing: four superficially
+unrelated event types --- an animal captured in a trap, a blood assay, a tick
+tested for pathogens, a temperature reading --- all become SOSA subclasses
+sharing one shape. That shared shape is what allows a single SPARQL query to
+span pathogen assays and sensor telemetry.
+
+\textbf{GeoSPARQL, QUDT, OWL-Time, NCBITaxon, ENVO and PPO are referenced by
+IRI} in the MIREOT style, without import. Importing OWL-Time alone pulled in
+several hundred axioms to support three terms, slowing reasoning for no
+expressive gain. We declare the terms we use and link to the authoritative
+definitions.
+
+\begin{table}[t]
+\centering
+\caption{External vocabularies and the form of reuse.}
+\label{tab:reuse}
+\small
+\begin{tabular}{llp{6.6cm}}
+\toprule
+\textbf{Vocabulary} & \textbf{Reuse} & \textbf{Role} \\
+\midrule
+SOSA/SSN      & imported  & observation, sampling, sensor, feature of interest \\
+GeoSPARQL     & referenced & site and plot geometry as WKT \\
+QUDT          & referenced & quantity values with explicit units \\
+OWL-Time      & referenced & daily intervals for aggregated climate \\
+NCBITaxon     & referenced & host, pathogen and vector taxa \\
+ENVO          & referenced & environmental context \\
+PPO           & referenced & phenophase alignment (Sec.~\ref{sec:crosssource}) \\
+PROV-O        & referenced & contributing network as an agent \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Modelling decisions that the data forced}
+
+Three decisions are worth reporting because they were not apparent from the
+product documentation.
+
+\emph{Daily climate needs an interval, not an instant.} A daily mean
+temperature is not observed at midnight. Aggregated readings carry
+\texttt{sosa:phenomenonTime} pointing at a \texttt{time:Interval}, with
+\texttt{sosa:resultTime} marking when the aggregate was computed.
+
+\emph{Proximity is not containment.} USA-NPN stations are volunteer-chosen
+points near, but not inside, NEON sites. They are modelled as
+\texttt{ObservationSite} with \texttt{nearFieldSite} and a recorded distance,
+deliberately \emph{not} \texttt{withinSpatialUnit}. Asserting containment would
+license false inference through the transitive spatial hierarchy; a SHACL shape
+enforces the prohibition rather than leaving it to documentation.
+
+\emph{Detection in an organism and detection at a place are different
+relations.} Host-borne assays attach a pathogen to an animal; tick assays have
+no host animal and attach to a location. Collapsing them would merge two
+prediction targets with different semantics --- and, as
+Section~\ref{sec:benchmark} shows, opposite statistical behaviour.
+
+\subsection{Competency questions}
+\label{sec:cq}
+
+The ontology was developed against a set of questions that a practitioner
+should be able to put to the integrated graph and that no single NEON product
+can answer. Table~\ref{tab:cq} lists them with the construct each exercises;
+all are answerable over the released graph, and the SPARQL is distributed with
+the resource.
+
+\begin{table}[t]
+\centering
+\caption{Competency questions. Each requires at least two source products, and
+CQ7 requires two independently operated observation networks.}
+\label{tab:cq}
+\small
+\begin{tabular}{llp{5.4cm}}
+\toprule
+& \textbf{Question} & \textbf{Construct exercised} \\
+\midrule
+CQ1 & Which pathogens have been detected in which host species, and where?
+    & \texttt{detectedIn} through \texttt{ofTaxon} and the spatial hierarchy \\
+CQ2 & What is the prevalence of a pathogen at a site, counting assays that
+      found nothing? & observed negatives via \texttt{hasAssayResult} \\
+CQ3 & Which tick species were collected at a plot, and in which years?
+    & \texttt{observedAt} with \texttt{sosa:resultTime} \\
+CQ4 & What were mean temperature and humidity in the 14 days before a given
+      assay, at that site? & sensor telemetry joined to biology by place and
+      time \\
+CQ5 & Do plots that tested positive for a pathogen test positive again later?
+    & temporal self-join over \texttt{detectedAt} \\
+CQ6 & On what day of year does a phenophase first appear at a site, and how
+      does it vary between years? & \texttt{expressedAt} with status
+      transitions \\
+CQ7 & Do two observation networks report the same phenophase timing at the
+      same location? & \texttt{observedByNetwork} over PPO-aligned terms
+      (Sec.~\ref{sec:crosssource}) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+CQ2 is worth singling out. Prevalence is the ratio of detections to assays
+performed, and most published representations record only detections --- the
+denominator is lost. Modelling the assay as the observation and the result as
+its outcome keeps both, which is what makes the 347{,}615 observed negatives of
+Section~\ref{sec:benchmark} available rather than inferred.
+
+CQ7 could not be answered before the second source was integrated, and is the
+question the cross-source section reports on.
+
+\subsection{Formal constraints}
+
+Disjointness and defined classes are asserted where the domain supports them,
+so that inconsistency is detectable by a reasoner rather than only by SHACL:
+
+\begin{align*}
+\mathsf{HostTaxon} \sqcap \mathsf{PathogenTaxon} \sqcap
+  \mathsf{VectorTaxon} \sqcap \mathsf{PlantTaxon} &\sqsubseteq \bot \\
+\mathsf{PathogenAssay} \sqcap \mathsf{DragSample} \sqcap
+  \mathsf{PhenophaseObservation} &\sqsubseteq \bot \\
+\mathsf{PhenophaseStatus} &\equiv \{\mathsf{Expressed},
+  \mathsf{NotExpressed}, \mathsf{StatusUncertain}\} \\
+\mathsf{VectorOccurrence} &\sqsubseteq\ =\!1\ \mathsf{ofVectorTaxon}
+\end{align*}
+
+\noindent
+The closed status set matters in practice: it is what rejected an invalid
+phenophase value during the cross-source ingestion, before any data reached the
+export.
+
+%======================================================================
+\section{Construction Pipeline}
+
+Ingestion is declarative. Each NEON product is normalised into staging CSVs and
+materialised through RML mappings (99 TriplesMaps), so the mapping from source
+column to triple is inspectable rather than embedded in procedural code. Joins
+are resolved in staging because morph-kgc join conditions over large CSVs were
+prohibitively slow.
+
+The pipeline runs as Slurm jobs on a university HPC cluster in two phases, a
+split forced by the API rather than chosen. A fully parallel 39-way download
+failed against NEON's rate limiter even with the hourly quota untouched, so
+acquisition is sequential while transformation --- pure CPU, no network --- runs
+ten-wide. A completion sentinel prevents a partial download being treated as
+finished.
+
+\paragraph{Reproducibility under change.} Extending the graph proved to be the
+main source of defect. Adding a relation touches nine files, and on two
+occasions a hardcoded list was not updated: the RDF was correct while the
+export and the baselines silently described the previous state. The released
+repository documents the checklist, and the pipeline now \emph{discovers}
+plot references by scanning staged files for the identifying column rather than
+consulting a list. We report this because the failure mode --- correct data,
+stale derived artifacts --- is invisible to validation.
+
+%======================================================================
+\section{Validation: What SHACL Caught, and What It Did Not}
+\label{sec:validation}
+
+The gate comprises 22 node shapes with cardinality, datatype, range and closed
+value-set constraints, plus SPARQL-based cross-record checks. It is a gate, not
+a report: a site graph failing any violation-severity constraint is not
+published.
+
+\subsection{Three classes of defect only integration exposes}
+
+\textbf{Dangling spatial references.} Drag-cloth bouts at 270 plots, and
+phenology plants at 60 more, referenced plot IRIs that no product ever typed.
+Each product was internally consistent; the defect existed only in the union.
+
+\textbf{A referential gap in the source data.} Three phenophase observations at
+one site concern a plant absent from NEON's own plant registry --- an
+observation with no subject. This is a gap in published data, not in our
+processing, and would be invisible to anyone reading either table alone.
+
+\textbf{Cross-source assumptions that a second network breaks.} A shape written
+when NEON was the only source required phenophase locations to be
+\texttt{Plot}. USA-NPN observations occur at \texttt{ObservationSite}, correctly
+so; the constraint produced 10{,}400 violations per site. The shape was wrong,
+not the data. Adding a source, we conclude, requires re-reading every shape
+that constrains a location or a class.
+
+\subsection{Four errors SHACL could not catch}
+
+All four passed the gate cleanly and were found only by inspecting value
+distributions against expectation.
+
+\begin{enumerate}
+  \item NEON records pathogen assays, tick species identifications and DNA
+        quality controls in one \texttt{testPathogenName} field. Counting all
+        three as detections inflated tick-borne detections from 604 to 3{,}398.
+        The tell was a ``pathogen'' with near-100\% positivity.
+  \item Tick attachment is recorded as Y/N, not as a count. Parsing it as an
+        integer silently discarded every value; the tell was a reported burden
+        of zero on every animal.
+  \item \texttt{individualCount} is 1 in all 231{,}892 tick records: these are
+        individual specimens, not pools. A pooled-prevalence correction would
+        have been wrong.
+  \item Drag bouts finding nothing have no \texttt{sampleID} --- there is no
+        sample to identify --- so requiring one discarded exactly the observed
+        negatives that make vector presence a balanced task. The tell was a
+        98\% presence rate where the raw data showed 43\%.
+\end{enumerate}
+
+Every one of these produced a well-formed graph. Structural validation proves
+data well-formed; it does not prove it correct. We believe resource papers
+should say so.
+
+%======================================================================
+\section{The Derived Benchmark}
+\label{sec:benchmark}
+
+\subsection{Deriving a temporal graph from RDF}
+
+The derivation is a reusable pattern rather than a one-off script. Timestamped
+events are read from the reified observation nodes, \emph{not} from the
+materialised shortcut edges: \texttt{detectedIn} deduplicates 246 detections to
+215 pathogen--host pairs, and a graph built from the shortcuts would lose the
+temporal dimension entirely. Any SOSA-based observation graph faces the same
+choice.
+
+\begin{table}[t]
+\centering
+\caption{Dataset composition. Prevalence is the positive fraction among
+evaluable events.}
+\label{tab:dataset}
+\small
+\begin{tabular}{llrrr}
+\toprule
+\textbf{Relation} & \textbf{head $\rightarrow$ tail} & \textbf{Events} &
+\textbf{Positives} & \textbf{Prev.} \\
+\midrule
+\texttt{detectedIn}  & pathogen $\rightarrow$ host    & 11{,}157  & 246 & 2.2\% \\
+\texttt{detectedAt}  & pathogen $\rightarrow$ plot    & 16{,}244  & 358 & 2.2\% \\
+\texttt{observedAt}  & vector $\rightarrow$ plot      & 13{,}425  & 8{,}020 & 60\% \\
+\texttt{expressedAt} & phenophase $\rightarrow$ place & 578{,}636 & 263{,}223 & 45\% \\
+\texttt{capturedAt}  & host $\rightarrow$ plot        & 106{,}364 & --- & context \\
+\midrule
+\textbf{Total} & & \textbf{725{,}826} & \textbf{271{,}847} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Two properties distinguish the dataset from existing benchmarks. It carries
+347{,}615 \textbf{observed negatives} --- assays and bouts that were performed
+and found nothing --- rather than only sampled ones. And label density spans
+more than an order of magnitude across relations sharing nodes, geography and
+time.
+
+\subsection{Negative sampling changes the conclusions}
+
+Under uniformly random negatives, three memorization baselines that measure
+different things --- presence, frequency, recency --- returned \emph{identical}
+scores to four decimal places, because an unseen pair is separable by presence
+alone. We therefore ship 50\% historical negatives: destinations the source has
+been linked to at another time. The baselines then separate, and the ordering
+differs by relation. Reported numbers use the shipped configuration;
+\texttt{--hist-neg-frac 0} reproduces the easier variant.
+
+\subsection{Four relations, four optimal baselines}
+
+\begin{table}[t]
+\centering
+\caption{Test MRR under the TGB one-vs-many protocol, 20 negatives per
+positive. Each relation is compared against \emph{its own} random floor: the
+detection relations have smaller negative pools, so their floors are higher.}
+\label{tab:baselines}
+\small
+\begin{tabular}{lrrrlr}
+\toprule
+\textbf{Relation} & \textbf{$n$} & \textbf{Random} & \textbf{EdgeBank} &
+\textbf{Best baseline} & \\
+\midrule
+\texttt{detectedIn}  &     37 & 0.246 & \textbf{0.112} & EdgeBank\,(365d)  & 0.177 \\
+\texttt{detectedAt}  &     54 & 0.254 & 0.331 & EdgeBank\,($\infty$)      & 0.331 \\
+\texttt{observedAt}  & 1{,}203 & 0.167 & 0.268 & Occurrence count         & 0.466 \\
+\texttt{expressedAt} & 39{,}548 & 0.175 & 0.276 & Occurrence count        & 0.516 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:baselines} shows a gradient tracking how regular each underlying
+process is. Phenology is seasonal clockwork and yields 0.516 to simple
+occurrence counting. Vector presence is seasonal but noisier, 0.466. Pathogen
+detection at a place is sparse and irregular, 0.331.
+
+\textbf{And pathogen detection in an individual animal defeats memorization
+entirely}, scoring 0.112 against its own 0.246 floor, with no baseline
+recovering it. The mechanism is legible: a mouse is typically captured once, so
+the true pathogen--host pair is novel, while the historical negatives are pairs
+already observed. A model scoring by recurrence ranks the truth last. This
+result survived five rebuilds and two negative-sampling schemes.
+
+We are not aware of another temporal graph benchmark in which one relation
+rewards unlimited memory, another rewards bounded recency, and a third makes
+memory actively harmful. A method cannot succeed on all four by exploiting one
+kind of structure.
+
+%======================================================================
+\section{Cross-Source Integration}
+\label{sec:crosssource}
+
+An ontology paper can assert interoperability. Demonstrating it requires a
+second source.
+
+The USA National Phenology Network's Nature's Notebook programme collects
+phenophase status records to a protocol compatible with NEON's: is this
+phenophase currently expressed on this plant, yes or no. Nine of NEON's ten
+phenophase names appear verbatim in the USA-NPN vocabulary, because NEON adopted
+USA-NPN's protocol terms --- and PPO was built to serve both. The join therefore
+runs through the PPO terms already in our ontology. \textbf{No crosswalk was
+written for the purpose.} A further 16 growth-form variants
+(``Leaves (grasses)'', ``Breaking needle buds (conifers)'') were mapped
+explicitly, raising retention from 56\% to 88\%; the remainder observe
+phenophases NEON does not record and are excluded to keep the sources
+comparable.
+
+Restricting to stations within 2\,km of a NEON site yields 79 stations covering
+38 of 39 sites at a \textbf{median separation of 230\,m} --- these are
+deliberately co-located research installations, not incidental volunteer sites.
+
+\begin{table}[t]
+\centering
+\caption{Mean day-of-year of first \emph{Breaking leaf buds} expression, by
+network, at the six best-sampled co-located sites. Full results for all 27
+paired sites are in the repository.}
+\label{tab:agreement}
+\small
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Site} & \textbf{NEON} & \textbf{USA-NPN} & \textbf{Difference} \\
+\midrule
+DELA & 150.3 & 150.0 & $-0.2$ \\
+ORNL & 124.3 & 123.5 & $-0.8$ \\
+TALL & 151.6 & 150.4 & $-1.2$ \\
+SERC & 140.7 & 140.4 & $-0.3$ \\
+UKFS & 132.0 & 131.4 & $-0.6$ \\
+HARV & 147.7 & 148.1 & $+0.5$ \\
+\midrule
+\multicolumn{4}{l}{\emph{All 27 paired sites:} mean $-0.95$ d, median
+absolute 1.59 d, 22/27 within 5 d} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{The two networks agree.} Across 27 sites the mean difference is
+$-0.95$ days and the median absolute difference 1.59 days, with no systematic
+bias in either direction. Disagreement correlates with sample size
+($r=-0.456$): the twelve sites with 570 or more paired observations all agree
+within two days without exception, while the outliers have 3, 48 and 101
+observations. One case resists that account --- JERC differs by 19.7 days on
+331 observations --- and we report it unresolved; differing species composition
+between the two sets of marked plants is the likeliest explanation.
+
+This matters beyond validation of the mapping. USA-NPN states that its
+coordinating office has limited ability to verify individual observer skill. At
+co-located sites the volunteer aggregate nevertheless tracks trained
+technicians to within about a day. That is evidence about citizen science data
+quality, obtained as a by-product of demonstrating the alignment works.
+
+We emphasise what made the question askable. Comparing two monitoring networks
+requires a vocabulary in which their observations are the same kind of thing.
+Every other analysis we performed on this graph could have been done with a
+data frame; this one could not.
+
+\begin{lstlisting}[caption={Both networks, one query, joined through shared PPO-aligned terms.}]
+SELECT ?network (AVG(?doy) AS ?meanGreenup) WHERE {
+  ?o  a neonepn:PhenophaseObservation ;
+      neonepn:observedByNetwork   ?net ;
+      neonepn:observedPhenophase  neonepn:BreakingLeafBuds ;
+      neonepn:hasPhenophaseStatus neonepn:Expressed ;
+      sosa:resultTime             ?ts .
+  BIND(REPLACE(STR(?net), "^.*#", "") AS ?network)
+} GROUP BY ?network
+\end{lstlisting}
+
+%======================================================================
+\section{Ecological Findings}
+
+The graph was built to answer integrative questions. We report the outcomes
+briefly, including the negative ones, as evidence of what the resource
+supports.
+
+The pipeline \textbf{reproduces the known Lyme gradient} from raw products with
+no prior knowledge of tick ecology: \emph{Borrelia burgdorferi} prevalence runs
+9.5\% at a Wisconsin site against 0.18\% in Florida, with magnitudes matching
+published nymphal infection rates. This is a validation rather than a
+discovery, and serves as a regression test.
+
+\textbf{Accumulated warmth predicts tick activity but not infection.}
+Degree-days above 0\,\textdegree C in the 30 days before a drag bout predict
+whether it finds ticks ($+0.00035$ per degree-day, 95\% CI
+$[+0.00017, +0.00052]$, 8{,}275 bouts, 39 sites, site fixed effects, bootstrap
+clustered on site) --- a 10.5 percentage-point difference between a
+20\,\textdegree C and a 10\,\textdegree C month. Annual temperature does not
+predict annual abundance, and no climate measure predicts infection. Questing
+responds to warmth within weeks; infection reflects multi-year host dynamics.
+
+\textbf{Three null results.} No dilution effect across three specifications, at
+site and plot scale and on both infection and presence outcomes. No short-term
+climate signal for infection. And spring timing proved \emph{unanswerable as
+posed}: green-up does not predict tick onset, but a control regression revealed
+onset tracking the \emph{sampling start date} instead --- the outcome variable
+is censored by the field calendar. We report this because the analysis
+diagnosed its own confound.
+
+%======================================================================
+\section{Availability, Licensing and Sustainability}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{ll}
+\toprule
+Ontology, shapes, mappings & CC BY 4.0 \\
+Pipeline and analysis code & MIT \\
+Derived dataset            & CC BY 4.0 \\
+Repository                 & \textit{[anonymised for review]} \\
+Persistent archive         & \textit{[DOI at camera-ready]} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+NEON data moved from CC0 to CC BY 4.0 on 30 June 2026; USA-NPN data is CC BY
+4.0. Both permit redistribution and derivative works with attribution. The
+repository documents every transformation applied, as CC BY requires, and
+carries the acknowledgement USA-NPN's attribution policy specifies.
+
+\paragraph{Ontology evaluation.} The SHACL gate validates \emph{data}; it
+says nothing about whether the model is well built. We assess the ontology
+separately, and report what we could and could not run.
+
+Competency-question coverage is reported in Section~\ref{sec:cq}: all seven
+questions return results over a single site graph, and the SPARQL is
+distributed with the resource. Structural metrics are computed locally
+following the definitions OntoMetrics uses: 27 classes, 19 object and 17
+datatype properties, 46 subclass axioms, maximum inheritance depth 3,
+inheritance richness 1.70, attribute richness 0.63. Annotation coverage is
+100\% for both \texttt{rdfs:label} and \texttt{rdfs:comment} across 87 terms
+--- it was 78\% for comments until running the evaluation exposed 19
+undocumented terms, which is a small but concrete argument for these
+instruments. A reuse audit records one imported vocabulary and seven
+referenced by IRI, with nine SKOS mappings to external terms.
+
+We were unable to run OOPS!. Its hosted interface no longer presents an input
+form, its REST endpoint returns HTTP 500, and the Docker image it now
+recommends publishes no \texttt{linux/amd64} build, so it cannot run on the
+x86 cluster available to us. We report this rather than omit the instrument,
+since a reader attempting the same evaluation will meet the same obstacles.
+FOOPS! assesses a resolvable URI rather than uploaded content and will be run
+once the ontology is served from its namespace.
+
+\paragraph{Reproducibility.} The pipeline runs end to end from five Slurm
+submissions. Offline fixtures mirroring the real source schemas allow the full
+path --- normalisation, RML materialisation, SHACL validation, export --- to be
+exercised without network access or credentials.
+
+\paragraph{Sustainability.} The ontology is versioned and published at a
+resolvable namespace. Both upstream networks are ongoing national
+infrastructure, so the pipeline re-runs against new releases without
+modification; the site window configuration is the only thing that changes.
+
+%======================================================================
+\section{Conclusion}
+
+NEON-EPN integrates six data products from two independently operated
+observation networks into a validated knowledge graph, and derives from it a
+temporal graph benchmark with properties we have not found elsewhere. The
+artifact is available, documented and reproducible.
+
+We would highlight two things for reuse. The RDF-to-temporal-graph derivation
+--- read events from reified observations, never from materialised shortcut
+edges --- applies to any SOSA-based observation graph, and we are not aware of
+prior work in that direction. And the honest account of validation in
+Section~\ref{sec:validation}: SHACL caught three classes of referential defect
+that no single-product check could surface, and missed four modelling errors
+that only distributional inspection revealed. Both facts are useful to anyone
+building a comparable resource.
+
+\paragraph{Limitations.} The two detection relations have 37 and 54 test
+positives; conclusions about them are correspondingly weak, and we report them
+separately rather than pooled. Baselines are memorization heuristics, and a
+learned model has not yet been evaluated. The cross-source comparison uses an
+approximate day-of-year and covers one phenophase.
+
+%======================================================================
+\section*{Resource Availability Statement}
+
+Source code, ontology, SHACL shapes, RML mappings, the derived dataset and all
+analysis scripts are available under the licences above. The anonymised
+repository for review is cited in the submission system; the persistent
+identifier will be supplied at camera-ready.
+
+\bibliographystyle{plain}
+\begin{thebibliography}{99}
+\small
+
+\bibitem{tgb2}
+Gastinger, J., Huang, S., Galkin, M., Loghmani, E., Parviz, A., Poursafaei, F.,
+Danovitch, J., Rossi, E., Koutis, I., Stuckenschmidt, H., Rabbany, R.,
+Rabusseau, G.: TGB 2.0: A benchmark for learning on temporal knowledge graphs
+and heterogeneous graphs. In: NeurIPS (2024)
+
+\bibitem{edgebank}
+Poursafaei, F., Huang, S., Pelrine, K., Rabbany, R.: Towards better evaluation
+for dynamic link prediction. In: NeurIPS (2022)
+
+\bibitem{ppo}
+Stucky, B.J., Guralnick, R., Deck, J., Denny, E.G., Bolmgren, K., Walls, R.:
+The Plant Phenology Ontology: A new informatics resource for large-scale
+integration of plant phenology data. Frontiers in Plant Science \textbf{9},
+517 (2018)
+
+\bibitem{sosa}
+Janowicz, K., Haller, A., Cox, S.J.D., Le Phuoc, D., Lefran\c{c}ois, M.: SOSA:
+A lightweight ontology for sensors, observations, samples, and actuators.
+Journal of Web Semantics \textbf{56}, 1--10 (2019)
+
+\bibitem{neon}
+Thibault, K.M., Laney, C.M., Yule, K.M., Franz, N.M., et al.: The US National
+Ecological Observatory Network and the Global Biodiversity Framework. Journal
+of Ecology and Environment \textbf{47} (2023)
+
+\bibitem{neonticks}
+Paull, S.H., et al.: Tick abundance, diversity and pathogen data collected by
+the National Ecological Observatory Network. Ecology (2023)
+
+\bibitem{neonderived}
+Atkins, J.W., et al.: Recommendations for developing, documenting, and
+distributing data products derived from NEON data. Ecosphere (2025)
+
+\bibitem{qudtneon}
+Porter, J.H., O'Brien, M., Frants, M., Earl, S., Martin, M., Laney, C.: Using
+a units ontology to annotate pre-existing metadata. Scientific Data (2025)
+
+\bibitem{morphkgc}
+Arenas-Guerrero, J., Chaves-Fraga, D., Toledo, J., P\'erez, M.S.,
+Corcho, O.: Morph-KGC: Scalable knowledge graph materialization with mapping
+partitions. Semantic Web (2022)
+
+\bibitem{shacl}
+Knublauch, H., Kontokostas, D.: Shapes Constraint Language (SHACL). W3C
+Recommendation (2017)
+
+\bibitem{usanpn}
+Rosemartin, A., Denny, E.G., Gerst, K.L., Marsh, R.L., Posthumus, E.E.,
+Crimmins, T.M., Weltzin, J.F.: USA National Phenology Network observational
+data documentation. USGS Open-File Report 2018--1060 (2018)
+
+\bibitem{lot}
+Poveda-Villal\'on, M., Fern\'andez-Izquierdo, A., Fern\'andez-L\'opez, M.,
+Garc\'ia-Castro, R.: LOT: An industrial oriented ontology engineering
+framework. Engineering Applications of Artificial Intelligence \textbf{111}
+(2022)
+
+\bibitem{ontopfas}
+Di Pierro, D., Abrouk, L., Guyot, A., Symeonidou, D., Labadie, P.,
+Lysaniuk, B.: OntoPFAS: Ontologie des PFAS et de leur exposition. In: PFIA
+(2025)
+
+\bibitem{oops}
+Poveda-Villal\'on, M., G\'omez-P\'erez, A., Su\'arez-Figueroa, M.C.:
+OOPS! (OntOlogy Pitfall Scanner!): An on-line tool for ontology evaluation.
+International Journal on Semantic Web and Information Systems \textbf{10}(2)
+(2014)
+
+\bibitem{dilution}
+Ostfeld, R.S., Keesing, F.: Biodiversity and disease risk: the case of Lyme
+disease. Conservation Biology \textbf{14}(3), 722--728 (2000)
+
+\end{thebibliography}
+
+\end{document}

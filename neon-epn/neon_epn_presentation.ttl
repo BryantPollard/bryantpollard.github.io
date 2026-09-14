@@ -3,6 +3,7 @@
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix ppo:     <http://purl.obolibrary.org/obo/> .
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix sosa:    <http://www.w3.org/ns/sosa/> .
@@ -19,8 +20,8 @@
 
 <https://bryantpollard.github.io/neon-epn/ontology>
     a owl:Ontology ;
-    owl:versionIRI <https://bryantpollard.github.io/neon-epn/ontology/0.4.0> ;
-    owl:versionInfo "0.4.0" ;
+    owl:versionIRI <https://bryantpollard.github.io/neon-epn/ontology/0.6.0> ;
+    owl:versionInfo "0.6.0" ;
     dcterms:title "NEON-EPN Ontology (PRESENTATION COPY - do not use as the authoritative file)"@en ;
     dcterms:creator "Bryant Pollard" ;
     dcterms:created "2026-09-04"^^xsd:date ;
@@ -34,7 +35,12 @@ serving (Stage 4), and the flattened Temporal Graph Benchmark export (Stage 5).
 Reuse policy: SOSA is imported in full - Observation, Sampling, FeatureOfInterest,
 Sensor, resultTime and hasResult are all load-bearing here. Everything else is
 soft-referenced by IRI (MIREOT-style) rather than imported: GeoSPARQL, QUDT,
-NCBITaxon, ENVO, and the three OWL-Time terms below. Importing OWL-Time in full
+NCBITaxon, ENVO, the Plant Phenology Ontology (PPO, CC BY 3.0), and the three
+OWL-Time terms below, and PROV-O for the contributing network. Phenophase
+individuals carry skos:closeMatch links to PPO, which was designed to
+accommodate both NEON and USA-NPN status-based monitoring; that shared
+vocabulary is what allows observations from the two networks to be queried
+together without a bespoke crosswalk. Importing OWL-Time in full
 pulled in Duration, GeneralDurationDescription, DateTimeDescription, TRS and a dozen
 other classes that no instance data ever used, tripling the apparent size of the
 model for no benefit."""@en ;
@@ -202,7 +208,8 @@ neonepn:PathogenTaxon
     rdfs:comment "A taxon acting as a pathogen or vector-borne agent tested for by NEON assays (e.g., Borrelia burgdorferi)."@en .
 
 [] a owl:AllDisjointClasses ;
-   owl:members ( neonepn:HostTaxon neonepn:PathogenTaxon neonepn:VectorTaxon ) ;
+   owl:members ( neonepn:HostTaxon neonepn:PathogenTaxon neonepn:VectorTaxon
+                 neonepn:PlantTaxon ) ;
    rdfs:comment "Disjoint within the scope of this model: no taxon plays both roles in NEON-EPN." .
 
 neonepn:HostIndividual
@@ -266,9 +273,12 @@ neonepn:AssayResult
     rdfs:label "Assay result"@en ;
     rdfs:comment "Closed value set for pathogen assay outcomes. Closure is enforced here by owl:oneOf and again defensively by SHACL in Stage 3."@en .
 
-neonepn:Detected      a neonepn:AssayResult , owl:NamedIndividual ; rdfs:label "detected"@en .
-neonepn:NotDetected   a neonepn:AssayResult , owl:NamedIndividual ; rdfs:label "not detected"@en .
-neonepn:Inconclusive  a neonepn:AssayResult , owl:NamedIndividual ; rdfs:label "inconclusive"@en .
+neonepn:Detected      a neonepn:AssayResult , owl:NamedIndividual ; rdfs:label "detected"@en ;
+    rdfs:comment "The assay found the pathogen in this sample."@en .
+neonepn:NotDetected   a neonepn:AssayResult , owl:NamedIndividual ; rdfs:label "not detected"@en ;
+    rdfs:comment "The assay was performed and did not find the pathogen. An observed absence, not a missing value: this is what makes prevalence computable, since it supplies the denominator."@en .
+neonepn:Inconclusive  a neonepn:AssayResult , owl:NamedIndividual ; rdfs:label "inconclusive"@en ;
+    rdfs:comment "The assay could not be resolved. Excluded from both positives and negatives rather than treated as an absence."@en .
 
 [] a owl:AllDifferent ;
    owl:distinctMembers ( neonepn:Detected neonepn:NotDetected neonepn:Inconclusive ) .
@@ -344,6 +354,222 @@ neonepn:TickPathogenAssay
     rdfs:label "Tick pathogen assay"@en ;
     rdfs:comment "A laboratory test of one pooled tick subsample for one pathogen taxon. Source: NEON tick-borne pathogen status."@en .
 
+### Observation networks: whose protocol produced a record ################
+# Once a second source is ingested, "which network observed this" becomes a
+# property of the data rather than of the file it arrived in. Recording it in
+# the graph lets a query restrict to one network, compare them, or treat
+# disagreement as a finding rather than an error.
+#
+# The two networks here are not equivalent in method. NEON uses trained
+# technicians on fixed transects to a standard protocol; USA-NPN's Nature's
+# Notebook is volunteer observation at self-selected sites, where the
+# coordinating office has limited ability to verify observer skill. Both are
+# valid; they differ in the confidence a user should place in a single record.
+
+neonepn:ObservationNetwork
+    a owl:Class ;
+    rdfs:subClassOf prov:Agent ;
+    rdfs:label "Observation network"@en ;
+    rdfs:comment "A programme that collects observations to a defined protocol. Recorded so that records from different networks remain distinguishable after integration."@en .
+
+neonepn:NEON
+    a neonepn:ObservationNetwork , owl:NamedIndividual ;
+    rdfs:label "National Ecological Observatory Network"@en ;
+    rdfs:comment "Continental-scale observatory operated by Battelle under NSF cooperative agreement. Observations are made by trained technicians on fixed plots to a published protocol."@en ;
+    rdfs:seeAlso <https://www.neonscience.org/> .
+
+neonepn:USANPN
+    a neonepn:ObservationNetwork , owl:NamedIndividual ;
+    rdfs:label "USA National Phenology Network"@en ;
+    rdfs:comment "Volunteer phenology monitoring through the Nature's Notebook programme, coordinated by the USA-NPN National Coordinating Office. Observers are dispersed and self-selected, and the coordinating office has limited ability to verify individual observer skill, so a single record carries less assurance than a NEON record while the aggregate covers far more of the country."@en ;
+    rdfs:seeAlso <https://www.usanpn.org/> .
+
+neonepn:observedByNetwork
+    a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range  neonepn:ObservationNetwork ;
+    rdfs:label "observed by network"@en ;
+    rdfs:comment "The programme whose protocol produced this observation. Present on every observation once more than one source is integrated, so that provenance survives the merge."@en .
+
+neonepn:ObservationSite
+    a owl:Class ;
+    rdfs:subClassOf neonepn:SpatialUnit ;
+    rdfs:label "Observation site"@en ;
+    rdfs:comment "A location at which a network makes observations, where that location is not part of NEON's domain-site-plot hierarchy. USA-NPN stations are volunteer-chosen points, so they are related to NEON field sites by proximity rather than by containment."@en .
+
+neonepn:nearFieldSite
+    a owl:ObjectProperty ;
+    rdfs:domain neonepn:ObservationSite ;
+    rdfs:range  neonepn:FieldSite ;
+    rdfs:label "near field site"@en ;
+    rdfs:comment "Asserted proximity between an external observation site and a NEON field site, materialized when the two lie within a stated distance. Deliberately NOT withinSpatialUnit: an external site is not contained by a NEON site, and treating proximity as containment would license false inference through the transitive spatial hierarchy."@en .
+
+neonepn:distanceToFieldSiteKm
+    a owl:DatatypeProperty ;
+    rdfs:domain neonepn:ObservationSite ;
+    rdfs:range  xsd:double ;
+    rdfs:label "distance to field site (km)"@en ;
+    rdfs:comment "Great-circle distance to the nearest NEON field site. Recorded so that a user can choose a proximity threshold rather than inherit the one used at ingestion."@en .
+
+### Plant phenology: the seasonal clock the other layers run on ############
+# NEON observes marked individual plants on a roughly weekly schedule, recording
+# whether each phenophase is currently expressed. This gives a dense, dated
+# record of when spring arrives at a site - the timing that drives both plant
+# development and arthropod activity. Phenology uses its own dedicated transects
+# rather than the plot network, so it aligns with the other layers at site level.
+
+neonepn:PlantIndividual
+    a owl:Class ;
+    rdfs:subClassOf sosa:FeatureOfInterest ,
+        [ a owl:Restriction ;
+          owl:onProperty neonepn:ofPlantTaxon ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass neonepn:PlantTaxon ] ;
+    rdfs:label "Plant individual"@en ;
+    rdfs:comment "A marked plant observed repeatedly through the season, identified by the contributing network's individual identifier. Unlike a host animal it is sessile, so its location is fixed and it is revisited on a schedule rather than recaptured by chance. Identifiers are network-scoped: a NEON individualID and a USA-NPN individual_id may collide numerically and are kept in separate IRI spaces."@en .
+
+neonepn:PlantTaxon
+    a owl:Class ;
+    rdfs:subClassOf neonepn:Taxon ;
+    rdfs:label "Plant taxon"@en ;
+    rdfs:comment "A plant species under phenological observation, for example Quercus rubra or Acer rubrum."@en .
+
+neonepn:ofPlantTaxon
+    a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain neonepn:PlantIndividual ;
+    rdfs:range  neonepn:PlantTaxon ;
+    rdfs:label "of plant taxon"@en ;
+    rdfs:comment "The species of a marked plant. Functional, and shared across both contributing networks so that taxa are not duplicated per source."@en .
+
+neonepn:Phenophase
+    a owl:Class ;
+    rdfs:label "Phenophase"@en ;
+    rdfs:comment "A recognisable stage in a plant's annual cycle, such as breaking leaf buds or open flowers. Members of a closed set defined by NEON's observation protocol."@en .
+
+# ALIGNMENT TO THE PLANT PHENOLOGY ONTOLOGY (PPO, CC BY 3.0).
+# PPO was built in part to accommodate NEON and USA-NPN status-based monitoring,
+# so the two models correspond structurally: a NEON record asks whether a
+# phenophase is currently expressed on a plant, and PPO represents exactly that
+# as paired presence traits (for example "open flower present" PPO:0002333 and
+# "open flower absent" PPO:0002632). A NEON phenophase with status Expressed is
+# therefore the PPO "present" trait, and NotExpressed the "absent" trait.
+#
+# Matches are asserted with skos:closeMatch rather than skos:exactMatch. PPO
+# models these as qualities of a whole plant bearing a structure in a stage,
+# whereas a NEON phenophase is a named observation category; the two denote the
+# same observable condition but are not the same kind of entity. Where PPO has
+# no counterpart the individual is left unaligned and says so.
+
+neonepn:BreakingLeafBuds a neonepn:Phenophase , owl:NamedIndividual ;
+    rdfs:label "Breaking leaf buds"@en ;
+    skos:closeMatch ppo:PPO_0001012 ;
+    rdfs:comment "The canonical green-up indicator: the first date this is expressed marks the onset of the growing season. PPO:0001012 'breaking vegetative bud' carries 'breaking leaf bud' as an alternative label."@en .
+
+neonepn:Leaves a neonepn:Phenophase , owl:NamedIndividual ;
+    rdfs:label "Leaves"@en ;
+    skos:closeMatch ppo:PPO_0002313 ;
+    rdfs:comment "Aligned to 'true leaf present' (PPO:0002313)."@en .
+
+neonepn:IncreasingLeafSize a neonepn:Phenophase , owl:NamedIndividual ;
+    rdfs:label "Increasing leaf size"@en ;
+    skos:closeMatch ppo:PPO_0002322 ;
+    rdfs:comment "Aligned to 'expanding true leaf present' (PPO:0002322)."@en .
+
+neonepn:ColoredLeaves a neonepn:Phenophase , owl:NamedIndividual ;
+    rdfs:label "Colored leaves"@en ;
+    skos:closeMatch ppo:PPO_0002317 ;
+    rdfs:comment "Aligned to 'senescing true leaf present' (PPO:0002317). NEON scores leaf colour as the visible marker of senescence; PPO names the underlying state."@en .
+
+neonepn:FallingLeaves a neonepn:Phenophase , owl:NamedIndividual ;
+    rdfs:label "Falling leaves"@en ;
+    skos:closeMatch ppo:PPO_0002357 ;
+    rdfs:comment "Aligned to 'abscised leaf present' (PPO:0002357), which counts leaves shed within the current growing season."@en .
+
+neonepn:OpenFlowers a neonepn:Phenophase , owl:NamedIndividual ;
+    rdfs:label "Open flowers"@en ;
+    skos:closeMatch ppo:PPO_0002333 ;
+    rdfs:comment "Aligned to 'open flower present' (PPO:0002333). The closest correspondence in the set."@en .
+
+neonepn:InitialGrowth a neonepn:Phenophase , owl:NamedIndividual ;
+    rdfs:label "Initial growth"@en ;
+    rdfs:comment "NEON scores initial growth for grasses and forbs, where new basal or vegetative growth emerges without a distinct bud-break event. No PPO counterpart was found, so this individual is deliberately left unaligned rather than forced onto an approximate term."@en .
+
+neonepn:EmergingNeedles a neonepn:Phenophase , owl:NamedIndividual ;
+    rdfs:label "Emerging needles"@en ;
+    skos:closeMatch ppo:PPO_0002314 ;
+    rdfs:comment "Aligned to 'unfolding true leaf present' (PPO:0002314). PPO treats needles as vascular leaves and its unfolding stage explicitly covers conifers."@en .
+
+neonepn:YoungNeedles a neonepn:Phenophase , owl:NamedIndividual ;
+    rdfs:label "Young needles"@en ;
+    skos:closeMatch ppo:PPO_0002318 ;
+    rdfs:comment "Aligned to 'immature unfolded true leaf present' (PPO:0002318)."@en .
+
+neonepn:OpenPollenCones a neonepn:Phenophase , owl:NamedIndividual ;
+    rdfs:label "Open pollen cones"@en ;
+    skos:closeMatch ppo:PPO_0001047 ;
+    rdfs:comment "Aligned to 'open microsporangiate strobilus' (PPO:0001047). PPO offers no paired presence trait for pollen cones, so the match is to the structure class itself."@en .
+
+neonepn:PhenophaseObservation
+    a owl:Class ;
+    rdfs:subClassOf sosa:Observation ,
+        [ a owl:Restriction ;
+          owl:onProperty neonepn:observedPhenophase ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass neonepn:Phenophase ] ,
+        [ a owl:Restriction ;
+          owl:onProperty neonepn:hasPhenophaseStatus ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass neonepn:PhenophaseStatus ] ;
+    rdfs:label "Phenophase observation"@en ;
+    rdfs:comment "One check of whether one phenophase is currently expressed on one plant. Recorded on every visit whether or not the phase is present, so absence is observed rather than inferred, as with drag sampling. Carries neonepn:observedByNetwork, since both NEON and USA-NPN contribute observations of the same phenophases to this class."@en .
+
+neonepn:PhenophaseStatus
+    a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+        owl:oneOf ( neonepn:Expressed neonepn:NotExpressed neonepn:StatusUncertain ) ] ;
+    rdfs:label "Phenophase status"@en ;
+    rdfs:comment "Whether a phenophase was observable on a plant at the moment of a visit. A closed set, so an unrecognised value is rejected at validation rather than propagating."@en .
+
+neonepn:Expressed a neonepn:PhenophaseStatus , owl:NamedIndividual ;
+    rdfs:label "Expressed"@en ;
+    rdfs:comment "The phenophase is currently observable on the plant. Corresponds to PPO's 'present' traits, e.g. 'open flower present' (PPO:0002333) for OpenFlowers."@en .
+
+neonepn:NotExpressed a neonepn:PhenophaseStatus , owl:NamedIndividual ;
+    rdfs:label "Not expressed"@en ;
+    rdfs:comment "The plant was checked and the phenophase was not observable. An observed absence, not a missing value; corresponds to PPO's 'absent' traits, e.g. 'open flower absent' (PPO:0002632)."@en .
+
+neonepn:StatusUncertain a neonepn:PhenophaseStatus , owl:NamedIndividual ;
+    rdfs:label "Uncertain"@en ;
+    rdfs:comment "The observer could not determine the status. Excluded from derived timing measures."@en .
+
+neonepn:observedPhenophase
+    a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain neonepn:PhenophaseObservation ;
+    rdfs:range  neonepn:Phenophase ;
+    rdfs:label "observed phenophase"@en ;
+    rdfs:comment "The phenophase being checked. Functional, and drawn from the closed set NEON records."@en .
+
+neonepn:hasPhenophaseStatus
+    a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain neonepn:PhenophaseObservation ;
+    rdfs:range  neonepn:PhenophaseStatus ;
+    rdfs:label "has phenophase status"@en ;
+    rdfs:comment "Relates a phenophase observation to its outcome. Functional: a single check yields one status."@en .
+
+neonepn:phenophaseIntensity
+    a owl:DatatypeProperty ;
+    rdfs:domain neonepn:PhenophaseObservation ;
+    rdfs:range  xsd:string ;
+    rdfs:label "phenophase intensity"@en ;
+    rdfs:comment "NEON's ordinal abundance band for the phase when expressed, for example '< 5%' or '25-49%'. Kept as recorded rather than coerced to a number, since the bands are not evenly spaced."@en .
+
+neonepn:expressedAt
+    a owl:ObjectProperty ;
+    rdfs:domain neonepn:Phenophase ;
+    rdfs:range  neonepn:SpatialUnit ;
+    rdfs:label "expressed at"@en ;
+    rdfs:comment "Asserted phenophase-place edge: this phenophase was observed expressed at this spatial unit. Materialized from observations whose status is Expressed. Densely labelled, like observedAt, and it supplies the seasonal timing against which vector activity and pathogen detection can be compared."@en .
+
 ### Vector abundance: drag-cloth sampling of the tick population ###########
 # Pathogen testing covers only the specimens sent to a laboratory, so detections
 # are rare. Drag-cloth sampling records the tick population itself on every bout,
@@ -390,7 +616,8 @@ neonepn:adultCount
     a owl:DatatypeProperty ;
     rdfs:domain neonepn:DragSample ;
     rdfs:range  xsd:integer ;
-    rdfs:label "adult count"@en .
+    rdfs:label "adult count"@en ;
+    rdfs:comment "Adult ticks collected in a drag bout. Distinct from nymphs and larvae, which differ in both host preference and epidemiological importance."@en .
 
 neonepn:nymphCount
     a owl:DatatypeProperty ;
@@ -403,7 +630,8 @@ neonepn:larvaCount
     a owl:DatatypeProperty ;
     rdfs:domain neonepn:DragSample ;
     rdfs:range  xsd:integer ;
-    rdfs:label "larva count"@en .
+    rdfs:label "larva count"@en ;
+    rdfs:comment "Larval ticks collected in a drag bout. Larvae hatch uninfected, so their host associations determine whether the transmission cycle establishes."@en .
 
 neonepn:VectorOccurrence
     a owl:Class ;
@@ -419,13 +647,15 @@ neonepn:ofVectorTaxon
     a owl:ObjectProperty , owl:FunctionalProperty ;
     rdfs:domain neonepn:VectorOccurrence ;
     rdfs:range  neonepn:VectorTaxon ;
-    rdfs:label "of vector taxon"@en .
+    rdfs:label "of vector taxon"@en ;
+    rdfs:comment "The tick species identified in a drag-cloth collection. Functional: one occurrence records one taxon."@en .
 
 neonepn:fromDragSample
     a owl:ObjectProperty ;
     rdfs:domain neonepn:VectorOccurrence ;
     rdfs:range  neonepn:DragSample ;
-    rdfs:label "from drag sample"@en .
+    rdfs:label "from drag sample"@en ;
+    rdfs:comment "Links an identified tick occurrence back to the bout that collected it, so that effort and sampled area remain recoverable."@en .
 
 neonepn:lifeStage
     a owl:DatatypeProperty ;
@@ -451,13 +681,15 @@ neonepn:larvalTicksAttached
     a owl:DatatypeProperty ;
     rdfs:domain neonepn:CaptureEvent ;
     rdfs:range  xsd:boolean ;
-    rdfs:label "larval ticks attached"@en .
+    rdfs:label "larval ticks attached"@en ;
+    rdfs:comment "Whether larval ticks were attached to a captured animal. NEON records presence as Y/N, not as a count; parsing it as an integer silently discards every value."@en .
 
 neonepn:nymphalTicksAttached
     a owl:DatatypeProperty ;
     rdfs:domain neonepn:CaptureEvent ;
     rdfs:range  xsd:boolean ;
-    rdfs:label "nymphal ticks attached"@en .
+    rdfs:label "nymphal ticks attached"@en ;
+    rdfs:comment "Whether nymphal ticks were attached to a captured animal. Recorded as Y/N. Nymphs cause most human Lyme transmission, so their presence on reservoir hosts is the epidemiologically informative stage."@en .
 
 neonepn:adultTicksAttached
     a owl:DatatypeProperty ;
@@ -495,11 +727,16 @@ neonepn:ClimateProperty
     rdfs:label "Climate property"@en ;
     rdfs:comment "An observable meteorological/soil property streamed by NEON instrumentation."@en .
 
-neonepn:AirTemperature   a neonepn:ClimateProperty , owl:NamedIndividual ; rdfs:label "air temperature"@en .
-neonepn:SoilTemperature  a neonepn:ClimateProperty , owl:NamedIndividual ; rdfs:label "soil temperature"@en .
-neonepn:RelativeHumidity a neonepn:ClimateProperty , owl:NamedIndividual ; rdfs:label "relative humidity"@en .
-neonepn:Precipitation    a neonepn:ClimateProperty , owl:NamedIndividual ; rdfs:label "precipitation"@en .
-neonepn:WindSpeed        a neonepn:ClimateProperty , owl:NamedIndividual ; rdfs:label "wind speed"@en .
+neonepn:AirTemperature   a neonepn:ClimateProperty , owl:NamedIndividual ; rdfs:label "air temperature"@en ;
+    rdfs:comment "Air temperature at tower height. Note that ticks quest in the litter layer rather than two metres up, so this is a proxy for the microclimate they actually experience."@en .
+neonepn:SoilTemperature  a neonepn:ClimateProperty , owl:NamedIndividual ; rdfs:label "soil temperature"@en ;
+    rdfs:comment "Soil temperature. Declared for completeness; NEON soil arrays sit 9.5 km or more from the nearest drag plot, so the product is not ingested."@en .
+neonepn:RelativeHumidity a neonepn:ClimateProperty , owl:NamedIndividual ; rdfs:label "relative humidity"@en ;
+    rdfs:comment "Relative humidity. Capacitive sensors read slightly above 100 percent in fog and frost; values to 105 percent are retained with a warning rather than discarded."@en .
+neonepn:Precipitation    a neonepn:ClimateProperty , owl:NamedIndividual ; rdfs:label "precipitation"@en ;
+    rdfs:comment "Bulk precipitation from the weighing gauge (DP1.00044.001), which replaced the deprecated DP1.00006.001 in October 2025."@en .
+neonepn:WindSpeed        a neonepn:ClimateProperty , owl:NamedIndividual ; rdfs:label "wind speed"@en ;
+    rdfs:comment "Wind speed. Declared for completeness; not currently ingested."@en .
 
 neonepn:ClimateReading
     a owl:Class ;
@@ -534,7 +771,8 @@ neonepn:deployedAt
 
 [] a owl:AllDisjointClasses ;
    owl:members ( neonepn:PathogenTest neonepn:ClimateReading neonepn:CaptureEvent
-                 neonepn:DragSample neonepn:VectorOccurrence ) .
+                 neonepn:DragSample neonepn:VectorOccurrence
+                 neonepn:PhenophaseObservation ) .
 
 [] a owl:AllDisjointClasses ;
    owl:members ( neonepn:PathogenAssay neonepn:TickPathogenAssay ) .
@@ -563,7 +801,8 @@ neonepn:detectedIn
 neonepn:hostOf
     a owl:ObjectProperty ;
     owl:inverseOf neonepn:detectedIn ;
-    rdfs:label "host of"@en .
+    rdfs:label "host of"@en ;
+    rdfs:comment "Inverse of detectedIn: relates a host individual to a pathogen found in it."@en .
 
 # Temporal note (documentation, not an axiom):
 # Discrete events (CaptureEvent, PathogenTest) carry sosa:resultTime (xsd:dateTime):
