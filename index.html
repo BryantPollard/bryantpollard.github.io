@@ -485,15 +485,39 @@
         </article>
         
         <article class="project-card">
-          <h3 class="timeline-title"><i>Name Pending Double-Blind Peer Review</i></h3>
-          <p class="timeline-meta">Jun 2025 - Aug 2026</p>
+          <h3 class="timeline-title">
+            EdgeReMIND: A Scalable, Top-Ranked Memorization Baseline for Temporal Multi-Relational Link Prediction
+          </h3>
+          <p class="timeline-meta">Jun 2025 - Sept 2026</p>
           <p>
-            A highly scalable algorithm for predicting labels on temporal
-            knowledge graphs and temporal heterogeneous graphs. Designed for
-            large-scale datasets.
+            A highly scalable algorithm for temporal link prediction on knowledge
+            graphs and heterogeneous graphs, designed for large-scale datasets.
+            Rather than learning node embeddings, EdgeReMIND scores each candidate
+            from fifteen memorization features that count and time-decay past
+            occurrences at four nested scopes, then combines them with a linear
+            layer of fifteen weights per relation. The decay half-lives are
+            calibrated from each dataset's own inter-recurrence gaps, so one
+            configuration runs untuned across timestamp units spanning seconds to
+            years. It sets the highest reported test MRR on six of eight TGB 2.0
+            datasets, including three where every embedding method exhausts
+            memory or the time budget, and runs entirely on CPU. Accepted at the
+            Learning on Graphs Conference (LoG 2026).
           </p>
           <p class="timeline-meta">
-            Repository: TBD
+            Paper:
+            
+              href="https://arxiv.org/abs/2609.17916"
+              target="_blank"
+              rel="noopener noreferrer"
+              >arXiv:2609.17916</a
+            >
+            &middot; Code:
+            
+              href="https://github.com/BryantPollard/EdgeReMIND"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
           </p>
         </article>
 
