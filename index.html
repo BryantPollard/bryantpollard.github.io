@@ -495,7 +495,7 @@
             Rather than learning node embeddings, EdgeReMIND scores each candidate
             from fifteen memorization features that count and time-decay past
             occurrences at four nested scopes, then combines them with a linear
-            layer of fifteen weights per relation. The decay half-lives are
+            layer of fifteen learned weights per relation. The decay half-lives are
             calibrated from each dataset's own inter-recurrence gaps, so one
             configuration runs untuned across timestamp units spanning seconds to
             years. It sets the highest reported test MRR on six of eight TGB 2.0
@@ -503,6 +503,14 @@
             memory or the time budget, and runs entirely on CPU. Accepted at the
             Learning on Graphs Conference (LoG 2026).
           </p>
+            <figure>
+              <img src="https://github.com/BryantPollard/EdgeReMIND/raw/main/EdgeReMINDLeaderBoard.png"
+                   alt="EdgeReMIND results vs TGB 2.0 benchmark"
+                   style="max-width:100%; height:auto;">
+              <figcaption class="timeline-meta">
+                Test MRR on the TGB 2.0 leaderboard. EdgeReMIND (blue) is the only relation-aware method that runs on all eight datasets, and sets the highest reported test MRR on six of them — entirely on CPU. OOM means out of memory; OOT means out of time.
+              </figcaption>
+            </figure>
           <p class="timeline-meta">
             Paper: <a href="https://arxiv.org/abs/2609.17916" target="_blank" rel="noopener noreferrer">arXiv:2609.17916</a> &middot; Code: <a href="https://github.com/BryantPollard/EdgeReMIND" target="_blank" rel="noopener noreferrer">GitHub</a>
           </p>
@@ -651,7 +659,7 @@
             Active member of the world's largest technical professional
             organization. I use IEEE Xplore and global conference output to stay
             at the forefront of AI and graph systems and to contribute to local
-            chapter technical discussions.
+            
           </p>
         </div>
         <div class="timeline-item">
